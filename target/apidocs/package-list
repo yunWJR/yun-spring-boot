@@ -1,6 +1,10 @@
-com.skkj.ws.sdk
-com.skkj.ws.sdk.base
-com.skkj.ws.sdk.config
-com.skkj.ws.sdk.dtovo
-com.skkj.ws.sdk.service
-com.skkj.ws.sdk.util
+com.yun.util
+com.yun.util.auth
+com.yun.util.common
+com.yun.util.idGenerator
+com.yun.util.jpa.baseEntity
+com.yun.util.jpa.repository
+com.yun.util.longJson
+com.yun.util.module.dtovo
+com.yun.util.module.rsp
+com.yun.util.token
