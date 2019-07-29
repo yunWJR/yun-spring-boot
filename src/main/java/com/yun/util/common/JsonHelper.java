@@ -1,6 +1,7 @@
 package com.yun.util.common;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -45,6 +46,21 @@ public class JsonHelper {
         T obj;
         try {
             obj = OBJECT_MAPPER.readValue(json, clazz);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+
+        return obj;
+
+        // return JSON.parseObject(json, clazz, features);
+    }
+
+    public static <T> T toObjType(String json, TypeReference valueTypeRef) {
+        // T obj = default(T); // todo
+        T obj;
+        try {
+            obj = OBJECT_MAPPER.readValue(json, valueTypeRef);
         } catch (IOException e) {
             e.printStackTrace();
             return null;
