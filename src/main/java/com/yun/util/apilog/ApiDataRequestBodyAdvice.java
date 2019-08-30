@@ -35,10 +35,10 @@ public class ApiDataRequestBodyAdvice implements RequestBodyAdvice {
                                 Type targetType, Class<? extends HttpMessageConverter<?>> converterType) {
         ApiData apiData = ApiDataUtil.getAdviceData();
 
-        if (apiData != null) {
+        if (apiData != null && inputMessage.getHeaders() != null) {
             boolean isJsonBody = false;
             List<String> ctHeaders = inputMessage.getHeaders().get("Content-Type");
-            if (ctHeaders.size() > 0) {
+            if (ctHeaders != null && ctHeaders.size() > 0) {
                 for (String ctHeader : ctHeaders) {
                     if (ApiDataUtil.isJson(ctHeader)) {
                         isJsonBody = true;

@@ -31,8 +31,10 @@ public class ApiDataResponseBodyAdvice implements ResponseBodyAdvice {
 
         ApiData apiData = ApiDataUtil.getAdviceData();
 
-        if (apiData != null) {
-            if (ApiDataUtil.isJson(request.getHeaders().getContentType().toString())) {
+        if (apiData != null && request.getHeaders() != null) {
+            MediaType ctType = request.getHeaders().getContentType();
+
+            if (ctType != null && ApiDataUtil.isJson(ctType.toString())) {
                 apiData.setResponse(JsonHelper.toStr(body));
             } else {
                 apiData.setResponse("无法解析非 JSON 类型的 response");

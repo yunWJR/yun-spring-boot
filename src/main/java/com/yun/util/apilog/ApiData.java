@@ -86,8 +86,10 @@ public class ApiData {
 
         this.query = request.getURI().getQuery();
 
-        this.header = JSONUtil.toJsonStr(request.getHeaders().entrySet());
-
+        if (request.getHeaders() != null) {
+            this.header = JSONUtil.toJsonStr(request.getHeaders().entrySet());
+        }
+        
         updateEndTime();
     }
 }
