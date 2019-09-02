@@ -45,9 +45,9 @@ public class ApiDataResponseBodyAdvice implements ResponseBodyAdvice {
         }
 
         if (isJsonBody) {
-            apiData.setBody(JsonHelper.toStr(body));
+            apiData.setResponse(JsonHelper.toStr(body));
         } else {
-            apiData.setBody("无法解析非 JSON 类型的 response");
+            apiData.setResponse("无法解析非 JSON 类型的 response");
         }
 
         apiData.updateHttp(request);
