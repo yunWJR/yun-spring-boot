@@ -34,9 +34,12 @@ public class ApiDataRequestBodyAdvice implements RequestBodyAdvice {
     public Object afterBodyRead(Object body, HttpInputMessage inputMessage, MethodParameter parameter,
                                 Type targetType, Class<? extends HttpMessageConverter<?>> converterType) {
         ApiData apiData = ApiDataUtil.getAdviceData();
+        if (apiData == null) {
+            apiData = ApiData.newItem();
+        }
 
-        if (apiData != null && inputMessage.getHeaders() != null) {
-            boolean isJsonBody = false;
+        boolean isJsonBody = false;
+        if (inputMessage.getHeaders() != null) {
             List<String> ctHeaders = inputMessage.getHeaders().get("Content-Type");
             if (ctHeaders != null && ctHeaders.size() > 0) {
                 for (String ctHeader : ctHeaders) {
@@ -46,15 +49,15 @@ public class ApiDataRequestBodyAdvice implements RequestBodyAdvice {
                     }
                 }
             }
-
-            if (isJsonBody) {
-                apiData.setBody(JsonHelper.toStr(body));
-            } else {
-                apiData.setBody("无法解析非 JSON 类型的 body");
-            }
-
-            ApiDataUtil.saveAdviceData(apiData);
         }
+
+        if (isJsonBody) {
+            apiData.setBody(JsonHelper.toStr(body));
+        } else {
+            apiData.setBody("无法解析非 JSON 类型的 body");
+        }
+
+        ApiDataUtil.saveAdviceData(apiData);
 
         return body;
     }

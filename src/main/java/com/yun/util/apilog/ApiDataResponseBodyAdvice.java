@@ -30,22 +30,31 @@ public class ApiDataResponseBodyAdvice implements ResponseBodyAdvice {
                                   Class selectedConverterType, ServerHttpRequest request, ServerHttpResponse response) {
 
         ApiData apiData = ApiDataUtil.getAdviceData();
+        if (apiData == null) {
+            apiData = ApiData.newItem();
+        }
 
-        if (apiData != null && request.getHeaders() != null) {
+        boolean isJsonBody = false;
+
+        if (request.getHeaders() != null) {
             MediaType ctType = request.getHeaders().getContentType();
 
             if (ctType != null && ApiDataUtil.isJson(ctType.toString())) {
-                apiData.setResponse(JsonHelper.toStr(body));
-            } else {
-                apiData.setResponse("无法解析非 JSON 类型的 response");
+                isJsonBody = true;
             }
-
-            apiData.updateHttp(request);
-
-            log.info("api data {}", value("api_data", apiData));
-
-            ApiDataUtil.removeAdviceData();
         }
+
+        if (isJsonBody) {
+            apiData.setBody(JsonHelper.toStr(body));
+        } else {
+            apiData.setBody("无法解析非 JSON 类型的 response");
+        }
+
+        apiData.updateHttp(request);
+
+        log.info("api data {}", value("api_data", apiData));
+
+        ApiDataUtil.removeAdviceData();
 
         return body;
     }

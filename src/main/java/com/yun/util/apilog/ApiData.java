@@ -73,23 +73,43 @@ public class ApiData {
         }
     }
 
+    public static ApiData newItem() {
+        ApiData apiData = new ApiData();
+
+        apiData.setStartTime(0);
+
+        return apiData;
+    }
+
     public void updateEndTime() {
         this.endTime = System.currentTimeMillis();
+
+        // 无开始时间记录
+        if (this.startTime == 0) {
+            this.costTime = 99999;
+            return;
+        }
 
         this.costTime = this.endTime - this.startTime;
     }
 
     public void updateHttp(ServerHttpRequest request) {
-        this.host = request.getURI().getHost();
+        if (request == null) {
+            return;
+        }
 
-        this.url = request.getURI().getPath();
+        if (request.getURI() != null) {
+            this.host = request.getURI().getHost();
 
-        this.query = request.getURI().getQuery();
+            this.url = request.getURI().getPath();
+
+            this.query = request.getURI().getQuery();
+        }
 
         if (request.getHeaders() != null) {
             this.header = JSONUtil.toJsonStr(request.getHeaders().entrySet());
         }
-        
+
         updateEndTime();
     }
 }
