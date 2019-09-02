@@ -99,7 +99,11 @@ public class ApiData {
         }
 
         if (request.getURI() != null) {
-            this.host = request.getURI().getHost();
+            if (request.getMethod() == null) {
+                this.host = request.getURI().getHost();
+            } else {
+                this.host = request.getMethod() + " " + request.getURI().getHost();
+            }
 
             this.url = request.getURI().getPath();
 
