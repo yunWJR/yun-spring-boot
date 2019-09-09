@@ -2,12 +2,15 @@ package com.yun.util.apilog;
 
 import com.yun.util.common.JsonHelper;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.MethodParameter;
 import org.springframework.http.MediaType;
 import org.springframework.http.server.ServerHttpRequest;
 import org.springframework.http.server.ServerHttpResponse;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
+
+import java.util.Map;
 
 import static net.logstash.logback.argument.StructuredArguments.value;
 
@@ -19,6 +22,11 @@ import static net.logstash.logback.argument.StructuredArguments.value;
 @Slf4j
 @RestControllerAdvice
 public class ApiDataResponseBodyAdvice implements ResponseBodyAdvice {
+    @Autowired
+    private ApiLogProperty apiLogProperty;
+
+    @Autowired
+    private ApiLogAdapter apiLogAdapter;
 
     @Override
     public boolean supports(MethodParameter returnType, Class converterType) {
@@ -52,7 +60,15 @@ public class ApiDataResponseBodyAdvice implements ResponseBodyAdvice {
 
         apiData.updateHttp(request);
 
-        log.info("api data {}", value("api_data", apiData));
+        if (apiLogAdapter == null || apiLogAdapter.beforeLog(apiData)) {
+            try {
+                Map alMap = apiData.getLogMap(apiLogProperty);
+
+                log.info(apiLogProperty.getMsg() + " {}", value(apiLogProperty.getPrefix(), alMap));
+            } catch (Exception e) {
+                log.error(e.getMessage());
+            }
+        }
 
         ApiDataUtil.removeAdviceData();
 

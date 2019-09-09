@@ -71,6 +71,47 @@ public class JsonHelper {
         // return JSON.parseObject(json, clazz, features);
     }
 
+    public static <T> T mapToObj(Map<String, Object> map, Class<T> beanClass) {
+        if (map == null) {
+            return null;
+        }
+
+        try {
+            T obj = beanClass.newInstance();
+            BeanInfo beanInfo = Introspector.getBeanInfo(obj.getClass());
+            PropertyDescriptor[] propertyDescriptors = beanInfo.getPropertyDescriptors();
+            for (PropertyDescriptor property : propertyDescriptors) {
+                Method setter = property.getWriteMethod();
+                Object mspPro = map.get(property.getName());
+                if (setter != null && mspPro != null) {
+                    setter.invoke(obj, mspPro);
+                }
+            }
+            return obj;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public static Map objToMapJack(Object obj) {
+        Map map = OBJECT_MAPPER.convertValue(obj, Map.class);
+
+        return map;
+    }
+
+    public static <T> T mapToObjJack(Map map, Class<T> clazz) {
+        T obj;
+        try {
+            obj = OBJECT_MAPPER.convertValue(map, clazz);
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
+            return null;
+        }
+
+        return obj;
+    }
+
     // enum 转换失败
     public static <T> T mapToObject(Map<String, Object> map, Class<T> beanClass) {
         if (map == null) {

@@ -32,6 +32,12 @@ public class ApiData {
 
     private String query;
 
+    private String account;
+
+    private String version;
+
+    private String deviceType;
+
     @JsonIgnore
     private String header;
 
@@ -40,6 +46,9 @@ public class ApiData {
 
     @JsonIgnore
     private String response;
+
+    @JsonIgnore
+    private Map customMap = new HashMap();
 
     public ApiData() {
         this.startTime = System.currentTimeMillis();
@@ -115,5 +124,49 @@ public class ApiData {
         }
 
         updateEndTime();
+    }
+
+    public Map getLogMap(ApiLogProperty prop) {
+        Map map = new HashMap(10);
+        if (prop.getIndex().isStartTime()) {
+            map.put("startTime", startTime);
+        }
+        if (prop.getIndex().isStartTime()) {
+            map.put("endTime", endTime);
+        }
+        if (prop.getIndex().isCostTime()) {
+            map.put("costTime", costTime);
+        }
+        if (prop.getIndex().isHost()) {
+            map.put("host", host);
+        }
+        if (prop.getIndex().isUrl()) {
+            map.put("url", url);
+        }
+        if (prop.getIndex().isQuery()) {
+            map.put("query", query);
+        }
+        if (prop.getIndex().isAccount()) {
+            map.put("account", account);
+        }
+        if (prop.getIndex().isVersion()) {
+            map.put("version", version);
+        }
+        if (prop.getIndex().isDeviceType()) {
+            map.put("deviceType", deviceType);
+        }
+        if (prop.getIndex().isHeader()) {
+            map.put("header", header);
+        }
+        if (prop.getIndex().isBody()) {
+            map.put("body", body);
+        }
+        if (prop.getIndex().isResponse()) {
+            map.put("response", response);
+        }
+
+        map.putAll(customMap);
+
+        return map;
     }
 }

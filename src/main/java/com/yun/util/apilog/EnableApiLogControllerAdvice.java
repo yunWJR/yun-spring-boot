@@ -12,7 +12,8 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.TYPE})
 @Documented
-@Import({ApiDataControllerBodyAdvice.class, ApiDataRequestBodyAdvice.class, ApiDataResponseBodyAdvice.class})
+@Import({ApiDataControllerBodyAdvice.class, ApiDataRequestBodyAdvice.class,
+        ApiDataResponseBodyAdvice.class, ApiLogProperty.class, ApiLogAdapterConfig.class})
 public @interface EnableApiLogControllerAdvice {
 
 }

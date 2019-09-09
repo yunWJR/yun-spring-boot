@@ -13,7 +13,7 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.TYPE})
 @Documented
-@Import({HttpWrapperFilterConfig.class, ApiDataInterceptorConfig.class})
+@Import({HttpWrapperFilterConfig.class, ApiDataInterceptorConfig.class, ApiLogProperty.class})
 public @interface EnableApiLogInterceptor {
 
 }

@@ -21,6 +21,13 @@ public class ApiDataUtil {
         return getData(API_DATA_ADVICE);
     }
 
+    public static void putAdviceData(String key, Object value) {
+        ApiData apiData = getAdviceData();
+        if (apiData != null) {
+            apiData.getCustomMap().put(key, value);
+        }
+    }
+
     public static void removeAdviceData() {
         ThreadLocalUtil.remove(API_DATA_ADVICE);
     }

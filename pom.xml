@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.github.yunwjr</groupId>
     <artifactId>yun-util</artifactId>
-    <version>0.0.12</version>
+    <version>0.0.13</version>
     <name>yun-util</name>
     <description>yun-util</description>
     <url>https://github.com/yunWJR/yun-util</url>
