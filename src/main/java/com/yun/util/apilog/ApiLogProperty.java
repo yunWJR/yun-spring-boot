@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 @ConfigurationProperties(prefix = "yun.apilog")
 @Data
 public class ApiLogProperty {
-    private Index index;
+    private Index index = new Index();
 
     private String prefix = "api_data";
 

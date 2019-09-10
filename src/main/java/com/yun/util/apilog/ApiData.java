@@ -131,7 +131,7 @@ public class ApiData {
         if (prop.getIndex().isStartTime()) {
             map.put("startTime", startTime);
         }
-        if (prop.getIndex().isStartTime()) {
+        if (prop.getIndex().isEndTime()) {
             map.put("endTime", endTime);
         }
         if (prop.getIndex().isCostTime()) {

@@ -23,9 +23,13 @@ public class ApiDataUtil {
 
     public static void putAdviceData(String key, Object value) {
         ApiData apiData = getAdviceData();
-        if (apiData != null) {
-            apiData.getCustomMap().put(key, value);
+        if (apiData == null) {
+            apiData = new ApiData();
         }
+
+        apiData.getCustomMap().put(key, value);
+
+        saveAdviceData(apiData);
     }
 
     public static void removeAdviceData() {

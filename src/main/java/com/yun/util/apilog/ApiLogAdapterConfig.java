@@ -13,7 +13,7 @@ import org.springframework.context.annotation.Configuration;
 public class ApiLogAdapterConfig {
     @Bean
     @ConditionalOnMissingBean
-    ApiLogAdapterImpl apiLogAdapterBean() {
+    ApiLogAdapter apiLogAdapterBean() {
         return new ApiLogAdapterImpl();
     }
 }
