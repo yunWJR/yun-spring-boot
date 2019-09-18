@@ -20,7 +20,7 @@ public class ApiDataHeartConfig {
      * 每60s，一次心跳日志
      */
     @Scheduled(fixedRate = 60000)
-    private void heartLogTask() {
+    public void heartLogTask() {
         log.info("api data {}", value("api_data_heart", System.currentTimeMillis()));
     }
 }

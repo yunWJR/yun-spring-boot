@@ -15,8 +15,12 @@ public class AuthDtoUtil {
     }
 
     public static Object getTokenDto() {
+        return getTokenDto(isThrowEp());
+    }
+
+    public static Object getTokenDto(boolean throwEp) {
         Object dto = ThreadLocalUtil.get(AuthPropertyUtil.instance.getObj().getTokenAuthKey());
-        if (dto == null) {
+        if (dto == null && throwEp) {
             throw RspDataException.RstTypeErrBeanWithType(RspDataCodeType.NoToken);
         }
         return dto;
@@ -27,8 +31,12 @@ public class AuthDtoUtil {
     }
 
     public static Object getAccessDto() {
+        return getAccessDto(isThrowEp());
+    }
+
+    public static Object getAccessDto(boolean throwEp) {
         Object loginUser = ThreadLocalUtil.get(AuthPropertyUtil.instance.getObj().getAccessAuthKey());
-        if (loginUser == null) {
+        if (loginUser == null && throwEp) {
             throw RspDataException.RstTypeErrBeanWithType(RspDataCodeType.NoAccessExp);
         }
         return loginUser;
@@ -39,8 +47,12 @@ public class AuthDtoUtil {
     }
 
     public static Object getDeviceDto() {
+        return getDeviceDto(isThrowEp());
+    }
+
+    public static Object getDeviceDto(boolean throwEp) {
         Object loginUser = ThreadLocalUtil.get(AuthPropertyUtil.instance.getObj().getDeviceTypeKey());
-        if (loginUser == null) {
+        if (loginUser == null && throwEp) {
             throw RspDataException.RstTypeErrBeanWithType(RspDataCodeType.NoDeviceExp);
         }
         return loginUser;
@@ -48,5 +60,13 @@ public class AuthDtoUtil {
 
     public static void removeAll() {
         ThreadLocalUtil.removeThreadLocal();
+    }
+
+    private static boolean isThrowEp() {
+        if (AuthPropertyUtil.instance.getObj() != null) {
+            return AuthPropertyUtil.instance.getObj().getThrowEp();
+        }
+
+        return false;
     }
 }

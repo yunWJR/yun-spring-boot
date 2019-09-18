@@ -16,4 +16,6 @@ public class AuthProperty {
     private String tokenAuthKey = "Authorization";
     private String accessAuthKey = "ACCESS_AUTH";
     private String deviceTypeKey = "DEVICE_TYPE";
+
+    private Boolean throwEp = false;
 }
