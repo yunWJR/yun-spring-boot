@@ -13,7 +13,7 @@ import java.lang.annotation.*;
 @Target({ElementType.TYPE})
 @Documented
 @Import({ApiDataControllerBodyAdvice.class, ApiDataRequestBodyAdvice.class,
-        ApiDataResponseBodyAdvice.class, ApiLogProperty.class, ApiLogAdapterConfig.class})
+        ApiDataResponseBodyAdvice.class, ApiLogProperty.class})
 public @interface EnableApiLogControllerAdvice {
 
 }

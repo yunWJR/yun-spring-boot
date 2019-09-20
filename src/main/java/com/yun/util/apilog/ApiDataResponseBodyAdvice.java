@@ -26,7 +26,7 @@ public class ApiDataResponseBodyAdvice implements ResponseBodyAdvice {
     private ApiLogProperty apiLogProperty;
 
     @Autowired
-    private ApiLogAdapter apiLogAdapter;
+    private ApiLogInterceptor apiLogInterceptor;
 
     @Override
     public boolean supports(MethodParameter returnType, Class converterType) {
@@ -60,7 +60,7 @@ public class ApiDataResponseBodyAdvice implements ResponseBodyAdvice {
 
         apiData.updateHttp(request);
 
-        if (apiLogAdapter == null || apiLogAdapter.beforeLog(apiData)) {
+        if (apiLogInterceptor == null || apiLogInterceptor.beforeLog(apiData)) {
             try {
                 Map alMap = apiData.getLogMap(apiLogProperty);
 

@@ -1,4 +1,5 @@
 com.yun.util
+com.yun.util.apilog
 com.yun.util.auth
 com.yun.util.common
 com.yun.util.idGenerator
