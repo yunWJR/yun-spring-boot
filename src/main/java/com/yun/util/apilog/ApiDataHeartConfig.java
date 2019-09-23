@@ -25,7 +25,7 @@ public class ApiDataHeartConfig {
      */
     @Scheduled(fixedRate = 60000)
     public void heartLogTask() {
-        if (apiLogInterceptor != null && apiLogInterceptor.beforeHeart()) {
+        if (apiLogInterceptor == null || apiLogInterceptor.beforeHeart()) {
             log.info("api data {}", value("api_data_heart", System.currentTimeMillis()));
         }
     }

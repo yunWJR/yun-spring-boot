@@ -12,7 +12,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 
 import java.util.Map;
 
-import static net.logstash.logback.argument.StructuredArguments.value;
+import static net.logstash.logback.argument.StructuredArguments.entries;
 
 /**
  * @author: yun
@@ -55,16 +55,16 @@ public class ApiDataResponseBodyAdvice implements ResponseBodyAdvice {
         if (isJsonBody) {
             apiData.setResponse(JsonHelper.toStr(body));
         } else {
-            apiData.setResponse("无法解析非 JSON 类型的 response");
+            apiData.setResponse(body.toString());
         }
 
         apiData.updateHttp(request);
 
         if (apiLogInterceptor == null || apiLogInterceptor.beforeLog(apiData)) {
             try {
-                Map alMap = apiData.getLogMap(apiLogProperty);
+                Map alMap = apiData.getLogMapWithPre(apiLogProperty);
 
-                log.info(apiLogProperty.getMsg() + " {}", value(apiLogProperty.getPrefix(), alMap));
+                log.info(apiLogProperty.getMsg() + " {}", entries(alMap));
             } catch (Exception e) {
                 log.error(e.getMessage());
             }
