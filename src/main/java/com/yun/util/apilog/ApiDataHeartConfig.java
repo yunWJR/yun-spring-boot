@@ -17,7 +17,7 @@ import static net.logstash.logback.argument.StructuredArguments.value;
 @EnableScheduling
 @Slf4j
 public class ApiDataHeartConfig {
-    @Autowired
+    @Autowired(required = false)
     private ApiLogInterceptor apiLogInterceptor;
 
     /**

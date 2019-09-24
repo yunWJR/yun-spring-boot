@@ -12,7 +12,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 
 import java.util.Map;
 
-import static net.logstash.logback.argument.StructuredArguments.entries;
+import static net.logstash.logback.argument.StructuredArguments.value;
 
 /**
  * @author: yun
@@ -25,7 +25,7 @@ public class ApiDataResponseBodyAdvice implements ResponseBodyAdvice {
     @Autowired
     private ApiLogProperty apiLogProperty;
 
-    @Autowired
+    @Autowired(required = false)
     private ApiLogInterceptor apiLogInterceptor;
 
     @Override
@@ -62,9 +62,9 @@ public class ApiDataResponseBodyAdvice implements ResponseBodyAdvice {
 
         if (apiLogInterceptor == null || apiLogInterceptor.beforeLog(apiData)) {
             try {
-                Map alMap = apiData.getLogMapWithPre(apiLogProperty);
+                Map alMap = apiData.getLogMap(apiLogProperty);
 
-                log.info(apiLogProperty.getMsg() + " {}", entries(alMap));
+                log.info(apiLogProperty.getMsg() + " {}", value(apiLogProperty.getPrefix(), alMap));
             } catch (Exception e) {
                 log.error(e.getMessage());
             }

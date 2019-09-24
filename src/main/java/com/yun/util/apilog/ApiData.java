@@ -126,55 +126,47 @@ public class ApiData {
         updateEndTime();
     }
 
-    public Map getLogMapWithPre(ApiLogProperty prop) {
+    public Map getLogMap(ApiLogProperty prop) {
         Map map = new HashMap(10);
         if (prop.getIndex().isStartTime()) {
-            map.put(mapNameWithPre("startTime", prop.getPrefix()), startTime);
+            map.put("startTime", startTime);
         }
         if (prop.getIndex().isEndTime()) {
-            map.put(mapNameWithPre("endTime", prop.getPrefix()), endTime);
+            map.put("endTime", endTime);
         }
         if (prop.getIndex().isCostTime()) {
-            map.put(mapNameWithPre("costTime", prop.getPrefix()), costTime);
+            map.put("costTime", costTime);
         }
         if (prop.getIndex().isHost()) {
-            map.put(mapNameWithPre("host", prop.getPrefix()), host);
+            map.put("host", host);
         }
         if (prop.getIndex().isUrl()) {
-            map.put(mapNameWithPre("url", prop.getPrefix()), url);
+            map.put("url", url);
         }
         if (prop.getIndex().isQuery()) {
-            map.put(mapNameWithPre("query", prop.getPrefix()), query);
+            map.put("query", query);
         }
         if (prop.getIndex().isAccount()) {
-            map.put(mapNameWithPre("account", prop.getPrefix()), account);
+            map.put("account", account);
         }
         if (prop.getIndex().isVersion()) {
-            map.put(mapNameWithPre("version", prop.getPrefix()), version);
+            map.put("version", version);
         }
         if (prop.getIndex().isDeviceType()) {
-            map.put(mapNameWithPre("deviceType", prop.getPrefix()), deviceType);
+            map.put("deviceType", deviceType);
         }
         if (prop.getIndex().isHeader()) {
-            map.put(mapNameWithPre("header", prop.getPrefix()), header);
+            map.put("header", header);
         }
         if (prop.getIndex().isBody()) {
-            map.put(mapNameWithPre("body", prop.getPrefix()), body);
+            map.put("body", body);
         }
         if (prop.getIndex().isResponse()) {
-            map.put(mapNameWithPre("response", prop.getPrefix()), response);
+            map.put("response", response);
         }
 
         map.putAll(customMap);
 
         return map;
-    }
-
-    private String mapNameWithPre(String name, String pre) {
-        if (pre != null) {
-            return pre + "." + name;
-        }
-
-        return name;
     }
 }
