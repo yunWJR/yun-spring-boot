@@ -7,7 +7,6 @@ import javax.persistence.MappedSuperclass;
 
 /**
  * The itemType Base entity with auto pkId.
- *
  * @Description: userservice auto pkId
  * @Author: yun
  * @CreatedOn: 2018 /5/28 09:51.
@@ -20,7 +19,6 @@ public abstract class BaseEntityWithAutoId {
 
     /**
      * Gets pkId.
-     *
      * @return the pkId
      */
     public Long getId() {
@@ -29,9 +27,7 @@ public abstract class BaseEntityWithAutoId {
 
     /**
      * Sets pkId.
-     *
-     * @param id
-     *         the pkId
+     * @param id the pkId
      */
     public void setId(Long id) {
         this.id = id;

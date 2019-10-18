@@ -2,8 +2,8 @@ package com.yun.util.jpa.baseEntity;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.yun.util.longJson.LongJsonDeserializer;
-import com.yun.util.longJson.LongJsonSerializer;
+import com.yun.util.longjson.LongJsonDeserializer;
+import com.yun.util.longjson.LongJsonSerializer;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.GeneratedValue;

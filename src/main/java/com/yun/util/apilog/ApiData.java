@@ -127,7 +127,7 @@ public class ApiData {
     }
 
     public Map getLogMap(ApiLogProperty prop) {
-        Map map = new HashMap(10);
+        Map map = new HashMap(customMap.size() + 20);
         if (prop.getIndex().isStartTime()) {
             map.put("startTime", startTime);
         }

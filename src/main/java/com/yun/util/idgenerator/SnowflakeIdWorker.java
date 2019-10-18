@@ -1,4 +1,4 @@
-package com.yun.util.idGenerator;
+package com.yun.util.idgenerator;
 
 import org.springframework.stereotype.Component;
 

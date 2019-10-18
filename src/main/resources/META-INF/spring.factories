@@ -1,1 +1,3 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=com.yun.util.YunUtilAutoConfiguration
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.yun.util.YunUtilAutoConfiguration,\
+  com.yun.util.common.SpringContextUtil

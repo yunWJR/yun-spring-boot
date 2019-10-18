@@ -1,4 +1,4 @@
-package com.yun.util.idGenerator;
+package com.yun.util.idgenerator;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;

@@ -21,7 +21,6 @@ public class BaseEntityWithUuidDate extends BaseEntityWithDate {
 
     /**
      * Gets pkId.
-     *
      * @return the pkId
      */
     public String getId() {
@@ -30,9 +29,7 @@ public class BaseEntityWithUuidDate extends BaseEntityWithDate {
 
     /**
      * Sets pkId.
-     *
-     * @param id
-     *         the pkId
+     * @param id the pkId
      */
     public void setId(String id) {
         this.id = id;

@@ -16,12 +16,12 @@ public class RspDataException extends RuntimeException {
     // region --Constructor
 
     public RspDataException(RspData rst) {
-        super();
+        super(rst.getErrorMsg());
         this.rst = rst;
     }
 
     public RspDataException(Integer code, String error) {
-        super();
+        super(error);
         this.rst = new RspData(code, error);
     }
 

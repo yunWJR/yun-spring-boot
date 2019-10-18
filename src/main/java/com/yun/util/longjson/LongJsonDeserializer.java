@@ -1,4 +1,4 @@
-package com.yun.util.longJson;
+package com.yun.util.longjson;
 
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;

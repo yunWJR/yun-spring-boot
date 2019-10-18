@@ -11,7 +11,7 @@ public class StringUtil {
             return true;
         }
 
-        if (str.length() == 0) {
+        if (str.isEmpty()) {
             return true;
         }
 
