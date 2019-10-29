@@ -46,23 +46,8 @@
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-jpa</artifactId>
+            <artifactId>spring-boot-starter-logging</artifactId>
             <version>${spring.boot.version}</version>
-        </dependency>
-
-        <!--        支持 JPA-->
-        <!-- https://mvnrepository.com/artifact/com.querydsl/querydsl-jpa -->
-        <dependency>
-            <groupId>com.querydsl</groupId>
-            <artifactId>querydsl-jpa</artifactId>
-            <version>${querydsl.version}</version>
-        </dependency>
-        <!--        支持 JPA-->
-        <!-- https://mvnrepository.com/artifact/com.querydsl/querydsl-apt -->
-        <dependency>
-            <groupId>com.querydsl</groupId>
-            <artifactId>querydsl-apt</artifactId>
-            <version>${querydsl.version}</version>
         </dependency>
 
         <dependency>
@@ -78,14 +63,12 @@
             <optional>true</optional>
         </dependency>
 
-
         <!-- https://mvnrepository.com/artifact/cn.hutool/hutool-all -->
         <dependency>
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-all</artifactId>
             <version>${hutool-all.version}</version>
         </dependency>
-
 
         <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
         <dependency>

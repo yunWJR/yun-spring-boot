@@ -4,8 +4,7 @@ import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
 
@@ -15,8 +14,8 @@ import java.io.IOException;
  * @createdOn: 2018/7/27 09:04.
  */
 
+@Slf4j
 public class LongJsonDeserializer extends JsonDeserializer<Long> {
-    private static final Logger logger = LoggerFactory.getLogger(LongJsonDeserializer.class);
 
     @Override
     public Long deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException, JsonProcessingException {
@@ -24,7 +23,7 @@ public class LongJsonDeserializer extends JsonDeserializer<Long> {
         try {
             return value == null ? null : Long.parseLong(value);
         } catch (NumberFormatException e) {
-            logger.error("解析长整形错误", e);
+            log.error("解析长整形错误", e);
             return null;
         }
     }
