@@ -20,7 +20,7 @@ import java.util.Map;
  * @createdOn: 2018/7/20 13:56.
  */
 
-public class JsonHelper {
+public class JsonUtil {
 
     // jackson转换工具
     private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper()

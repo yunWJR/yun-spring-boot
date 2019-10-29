@@ -1,9 +1,9 @@
 package com.yun.util.common;
 
-import cn.hutool.core.bean.BeanUtil;
-import cn.hutool.core.bean.copier.CopyOptions;
 import com.yun.util.module.rsp.RspDataCodeType;
 import com.yun.util.module.rsp.RspDataException;
+import lombok.SneakyThrows;
+import org.springframework.beans.BeanUtils;
 
 import java.math.BigDecimal;
 import java.text.ParseException;
@@ -18,25 +18,29 @@ import java.util.Date;
 public class PropUtil {
 
     public static <T, D> T copyProp(D org, T tag, String... ignoreProperties) {
-        BeanUtil.copyProperties(org, tag,
-                CopyOptions.create().setIgnoreNullValue(true).setIgnoreError(true).
-                        setIgnoreProperties(ignoreProperties));
+        BeanUtils.copyProperties(org, tag, ignoreProperties);
+
+        // hutool
+        // BeanUtil.copyProperties(org, tag,
+        //         CopyOptions.create().setIgnoreNullValue(true).setIgnoreError(true).
+        //                 setIgnoreProperties(ignoreProperties));
 
         return tag;
     }
 
     // 比JsonHelper.newObj快
+    @SneakyThrows
     public static <T> T copyPropForNew(T org, Class<T> clazz, String... ignoreProperties) {
-        T newItem = null;
-        try {
-            newItem = clazz.newInstance();
+        T newItem = clazz.newInstance();
+        copyProp(org, newItem, ignoreProperties);
 
-            BeanUtil.copyProperties(org, newItem,
-                    CopyOptions.create().setIgnoreNullValue(true).setIgnoreError(true).
-                            setIgnoreProperties(ignoreProperties));
-        } catch (Exception e) {
-
-        }
+        // try {
+        //     newItem = clazz.newInstance();
+        //
+        //     copyProp(org,newItem,ignoreProperties);
+        // } catch (Exception e) {
+        //     e.printStackTrace();
+        // }
 
         return newItem;
     }

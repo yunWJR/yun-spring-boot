@@ -1,7 +1,7 @@
 package com.yun.util.apilog;
 
-import cn.hutool.json.JSONUtil;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.yun.util.common.JsonUtil;
 import lombok.Data;
 import org.springframework.http.server.ServerHttpRequest;
 
@@ -73,7 +73,7 @@ public class ApiData {
             headerMap.put(name, value);
         }
 
-        this.header = JSONUtil.toJsonStr(headerMap);
+        this.header = JsonUtil.toStr(headerMap);
 
         try {
             this.body = new RequestWrapper(request).getBodyString();
@@ -120,7 +120,7 @@ public class ApiData {
         }
 
         if (request.getHeaders() != null) {
-            this.header = JSONUtil.toJsonStr(request.getHeaders().entrySet());
+            this.header = JsonUtil.toStr(request.getHeaders().entrySet());
         }
 
         updateEndTime();

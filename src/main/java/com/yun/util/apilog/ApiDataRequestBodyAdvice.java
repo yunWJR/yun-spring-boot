@@ -1,6 +1,6 @@
 package com.yun.util.apilog;
 
-import com.yun.util.common.JsonHelper;
+import com.yun.util.common.JsonUtil;
 import org.springframework.core.MethodParameter;
 import org.springframework.http.HttpInputMessage;
 import org.springframework.http.converter.HttpMessageConverter;
@@ -52,7 +52,7 @@ public class ApiDataRequestBodyAdvice implements RequestBodyAdvice {
         }
 
         if (isJsonBody) {
-            apiData.setBody(JsonHelper.toStr(body));
+            apiData.setBody(JsonUtil.toStr(body));
         } else {
             apiData.setBody(body.toString());
         }

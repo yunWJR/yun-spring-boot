@@ -1,6 +1,6 @@
 package com.yun.util.apilog;
 
-import com.yun.util.common.JsonHelper;
+import com.yun.util.common.JsonUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.MethodParameter;
@@ -53,7 +53,7 @@ public class ApiDataResponseBodyAdvice implements ResponseBodyAdvice {
         }
 
         if (isJsonBody) {
-            apiData.setResponse(JsonHelper.toStr(body));
+            apiData.setResponse(JsonUtil.toStr(body));
         } else {
             apiData.setResponse(body.toString());
         }
