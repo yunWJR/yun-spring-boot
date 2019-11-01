@@ -138,21 +138,21 @@ public class GlobalExceptionHandler {
         }
 
         List<ObjectError> errors = e.getBindingResult().getAllErrors();
-        String errMsg = null;
-        if (errors.size() > 0) {
-            FieldError err = (FieldError) errors.get(0);
-            if (err != null) {
-                errMsg = String.format("参数(%s) 错误：%s", err.getField(), err.getDefaultMessage());
+        StringBuilder errorStr = new StringBuilder("参数不合法：");
+        for (ObjectError error : errors) {
+            String err = "";
+            if (error.getClass().equals(FieldError.class)) {
+                FieldError fErr = (FieldError) error;
+
+                err = fErr.getField() + ":" + fErr.getDefaultMessage();
+            } else {
+                err = error.getDefaultMessage();
             }
 
-            // todo 其他类型
+            errorStr.append(err).append(";");
         }
 
-        if (errMsg == null) {
-            errMsg = e.getMessage();
-        }
-
-        return new RspDataT(RspDataCodeType.ComErr, errMsg);
+        return new RspDataT(RspDataCodeType.ComErr, errorStr.toString());
     }
 
     // region --private method
