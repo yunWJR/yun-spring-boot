@@ -1,149 +1,149 @@
 {
+  "hints": [],
   "groups": [
     {
+      "sourceType": "com.yun.util.idgenerator.SnowflakeIdWorkerProperties",
       "name": "snowflakeidworker",
-      "type": "com.yun.util.idGenerator.SnowflakeIdWorkerProperties",
-      "sourceType": "com.yun.util.idGenerator.SnowflakeIdWorkerProperties"
+      "type": "com.yun.util.idgenerator.SnowflakeIdWorkerProperties"
     },
     {
+      "sourceType": "com.yun.util.apilog.ApiLogProperty",
       "name": "yun.apilog",
-      "type": "com.yun.util.apilog.ApiLogProperty",
-      "sourceType": "com.yun.util.apilog.ApiLogProperty"
+      "type": "com.yun.util.apilog.ApiLogProperty"
     },
     {
+      "sourceType": "com.yun.util.apilog.ApiLogProperty",
       "name": "yun.apilog.index",
-      "type": "com.yun.util.apilog.ApiLogProperty$Index",
-      "sourceType": "com.yun.util.apilog.ApiLogProperty"
+      "type": "com.yun.util.apilog.ApiLogProperty$Index"
     },
     {
+      "sourceType": "com.yun.util.auth.AuthProperty",
       "name": "yun.auth",
-      "type": "com.yun.util.auth.AuthProperty",
-      "sourceType": "com.yun.util.auth.AuthProperty"
+      "type": "com.yun.util.auth.AuthProperty"
     }
   ],
   "properties": [
     {
+      "sourceType": "com.yun.util.idgenerator.SnowflakeIdWorkerProperties",
+      "defaultValue": 0,
       "name": "snowflakeidworker.datacenterid",
-      "type": "java.lang.Long",
       "description": "数据中心ID(0~31)",
-      "sourceType": "com.yun.util.idGenerator.SnowflakeIdWorkerProperties",
-      "defaultValue": 0
+      "type": "java.lang.Long"
     },
     {
+      "sourceType": "com.yun.util.idgenerator.SnowflakeIdWorkerProperties",
+      "defaultValue": 0,
       "name": "snowflakeidworker.workerid",
-      "type": "java.lang.Long",
       "description": "工作机器ID(0~31)",
-      "sourceType": "com.yun.util.idGenerator.SnowflakeIdWorkerProperties",
-      "defaultValue": 0
+      "type": "java.lang.Long"
     },
     {
+      "sourceType": "com.yun.util.apilog.ApiLogProperty$Index",
+      "defaultValue": true,
       "name": "yun.apilog.index.account",
-      "type": "java.lang.Boolean",
-      "sourceType": "com.yun.util.apilog.ApiLogProperty$Index",
-      "defaultValue": true
+      "type": "java.lang.Boolean"
     },
     {
+      "sourceType": "com.yun.util.apilog.ApiLogProperty$Index",
+      "defaultValue": true,
       "name": "yun.apilog.index.body",
-      "type": "java.lang.Boolean",
-      "sourceType": "com.yun.util.apilog.ApiLogProperty$Index",
-      "defaultValue": true
+      "type": "java.lang.Boolean"
     },
     {
+      "sourceType": "com.yun.util.apilog.ApiLogProperty$Index",
+      "defaultValue": true,
       "name": "yun.apilog.index.cost-time",
-      "type": "java.lang.Boolean",
-      "sourceType": "com.yun.util.apilog.ApiLogProperty$Index",
-      "defaultValue": true
+      "type": "java.lang.Boolean"
     },
     {
+      "sourceType": "com.yun.util.apilog.ApiLogProperty$Index",
+      "defaultValue": true,
       "name": "yun.apilog.index.device-type",
-      "type": "java.lang.Boolean",
-      "sourceType": "com.yun.util.apilog.ApiLogProperty$Index",
-      "defaultValue": true
+      "type": "java.lang.Boolean"
     },
     {
+      "sourceType": "com.yun.util.apilog.ApiLogProperty$Index",
+      "defaultValue": false,
       "name": "yun.apilog.index.end-time",
-      "type": "java.lang.Boolean",
-      "sourceType": "com.yun.util.apilog.ApiLogProperty$Index",
-      "defaultValue": false
+      "type": "java.lang.Boolean"
     },
     {
+      "sourceType": "com.yun.util.apilog.ApiLogProperty$Index",
+      "defaultValue": true,
       "name": "yun.apilog.index.header",
-      "type": "java.lang.Boolean",
-      "sourceType": "com.yun.util.apilog.ApiLogProperty$Index",
-      "defaultValue": true
+      "type": "java.lang.Boolean"
     },
     {
+      "sourceType": "com.yun.util.apilog.ApiLogProperty$Index",
+      "defaultValue": true,
       "name": "yun.apilog.index.host",
-      "type": "java.lang.Boolean",
-      "sourceType": "com.yun.util.apilog.ApiLogProperty$Index",
-      "defaultValue": true
+      "type": "java.lang.Boolean"
     },
     {
+      "sourceType": "com.yun.util.apilog.ApiLogProperty$Index",
+      "defaultValue": true,
       "name": "yun.apilog.index.query",
-      "type": "java.lang.Boolean",
-      "sourceType": "com.yun.util.apilog.ApiLogProperty$Index",
-      "defaultValue": true
+      "type": "java.lang.Boolean"
     },
     {
+      "sourceType": "com.yun.util.apilog.ApiLogProperty$Index",
+      "defaultValue": true,
       "name": "yun.apilog.index.response",
-      "type": "java.lang.Boolean",
-      "sourceType": "com.yun.util.apilog.ApiLogProperty$Index",
-      "defaultValue": true
+      "type": "java.lang.Boolean"
     },
     {
+      "sourceType": "com.yun.util.apilog.ApiLogProperty$Index",
+      "defaultValue": false,
       "name": "yun.apilog.index.start-time",
-      "type": "java.lang.Boolean",
-      "sourceType": "com.yun.util.apilog.ApiLogProperty$Index",
-      "defaultValue": false
+      "type": "java.lang.Boolean"
     },
     {
+      "sourceType": "com.yun.util.apilog.ApiLogProperty$Index",
+      "defaultValue": true,
       "name": "yun.apilog.index.url",
-      "type": "java.lang.Boolean",
-      "sourceType": "com.yun.util.apilog.ApiLogProperty$Index",
-      "defaultValue": true
+      "type": "java.lang.Boolean"
     },
     {
+      "sourceType": "com.yun.util.apilog.ApiLogProperty$Index",
+      "defaultValue": true,
       "name": "yun.apilog.index.version",
-      "type": "java.lang.Boolean",
-      "sourceType": "com.yun.util.apilog.ApiLogProperty$Index",
-      "defaultValue": true
+      "type": "java.lang.Boolean"
     },
     {
+      "sourceType": "com.yun.util.apilog.ApiLogProperty",
+      "defaultValue": "api data",
       "name": "yun.apilog.msg",
-      "type": "java.lang.String",
-      "sourceType": "com.yun.util.apilog.ApiLogProperty",
-      "defaultValue": "api data"
+      "type": "java.lang.String"
     },
     {
+      "sourceType": "com.yun.util.apilog.ApiLogProperty",
+      "defaultValue": "api_data",
       "name": "yun.apilog.prefix",
-      "type": "java.lang.String",
-      "sourceType": "com.yun.util.apilog.ApiLogProperty",
-      "defaultValue": "api_data"
+      "type": "java.lang.String"
     },
     {
+      "sourceType": "com.yun.util.auth.AuthProperty",
+      "defaultValue": "ACCESS_AUTH",
       "name": "yun.auth.access-auth-key",
-      "type": "java.lang.String",
-      "sourceType": "com.yun.util.auth.AuthProperty",
-      "defaultValue": "ACCESS_AUTH"
+      "type": "java.lang.String"
     },
     {
+      "sourceType": "com.yun.util.auth.AuthProperty",
+      "defaultValue": "DEVICE_TYPE",
       "name": "yun.auth.device-type-key",
-      "type": "java.lang.String",
-      "sourceType": "com.yun.util.auth.AuthProperty",
-      "defaultValue": "DEVICE_TYPE"
+      "type": "java.lang.String"
     },
     {
+      "sourceType": "com.yun.util.auth.AuthProperty",
+      "defaultValue": false,
       "name": "yun.auth.throw-ep",
-      "type": "java.lang.Boolean",
-      "sourceType": "com.yun.util.auth.AuthProperty",
-      "defaultValue": false
+      "type": "java.lang.Boolean"
     },
     {
-      "name": "yun.auth.token-auth-key",
-      "type": "java.lang.String",
       "sourceType": "com.yun.util.auth.AuthProperty",
-      "defaultValue": "Authorization"
+      "defaultValue": "Authorization",
+      "name": "yun.auth.token-auth-key",
+      "type": "java.lang.String"
     }
-  ],
-  "hints": []
+  ]
 }

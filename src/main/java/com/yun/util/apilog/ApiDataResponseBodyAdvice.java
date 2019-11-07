@@ -2,7 +2,6 @@ package com.yun.util.apilog;
 
 import com.yun.util.common.JsonUtil;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.MethodParameter;
 import org.springframework.http.MediaType;
 import org.springframework.http.server.ServerHttpRequest;
@@ -22,11 +21,14 @@ import static net.logstash.logback.argument.StructuredArguments.value;
 @Slf4j
 @RestControllerAdvice
 public class ApiDataResponseBodyAdvice implements ResponseBodyAdvice {
-    @Autowired
-    private ApiLogProperty apiLogProperty;
+    private final ApiLogProperty apiLogProperty;
 
-    @Autowired(required = false)
-    private ApiLogInterceptor apiLogInterceptor;
+    private final ApiLogInterceptor apiLogInterceptor;
+
+    public ApiDataResponseBodyAdvice(ApiLogProperty apiLogProperty, ApiLogInterceptor apiLogInterceptor) {
+        this.apiLogProperty = apiLogProperty;
+        this.apiLogInterceptor = apiLogInterceptor;
+    }
 
     @Override
     public boolean supports(MethodParameter returnType, Class converterType) {

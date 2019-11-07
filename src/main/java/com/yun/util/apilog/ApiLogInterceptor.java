@@ -9,14 +9,14 @@ public interface ApiLogInterceptor {
 
     /**
      * @param apiData
-     * @return
+     * @return true -记录日志；false -不记录
      */
     default boolean beforeLog(ApiData apiData) {
         return true;
     }
 
     /**
-     * @return false -不发送心跳
+     * @return true -发送心跳； false -不发送心跳
      */
     default boolean beforeHeart() {
         return true;

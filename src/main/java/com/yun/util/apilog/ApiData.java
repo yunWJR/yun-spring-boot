@@ -38,6 +38,8 @@ public class ApiData {
 
     private String deviceType;
 
+    private String deviceInfo;
+
     @JsonIgnore
     private String header;
 
@@ -154,6 +156,9 @@ public class ApiData {
         }
         if (prop.getIndex().isDeviceType()) {
             map.put("deviceType", deviceType);
+        }
+        if (prop.getIndex().isDeviceInfo()) {
+            map.put("deviceInfo", deviceInfo);
         }
         if (prop.getIndex().isHeader()) {
             map.put("header", header);

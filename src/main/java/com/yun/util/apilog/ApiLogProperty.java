@@ -39,6 +39,8 @@ public class ApiLogProperty {
 
         private boolean deviceType = true;
 
+        private boolean deviceInfo = true;
+
         private boolean header = true;
 
         private boolean body = true;

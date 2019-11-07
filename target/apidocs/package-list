@@ -2,10 +2,10 @@ com.yun.util
 com.yun.util.apilog
 com.yun.util.auth
 com.yun.util.common
-com.yun.util.idGenerator
-com.yun.util.jpa.baseEntity
-com.yun.util.jpa.repository
-com.yun.util.longJson
+com.yun.util.idgenerator
+com.yun.util.longjson
+com.yun.util.module.config
 com.yun.util.module.dtovo
 com.yun.util.module.rsp
+com.yun.util.module.service
 com.yun.util.token

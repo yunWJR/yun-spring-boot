@@ -16,9 +16,13 @@ import static net.logstash.logback.argument.StructuredArguments.value;
 @Configuration
 @EnableScheduling
 @Slf4j
-public class ApiDataHeartConfig {
+public class ApiDataHeartScheduleConfig {
+    private final ApiLogInterceptorComposite apiLogInterceptor;
+
     @Autowired(required = false)
-    private ApiLogInterceptor apiLogInterceptor;
+    public ApiDataHeartScheduleConfig(ApiLogInterceptorComposite apiLogInterceptor) {
+        this.apiLogInterceptor = apiLogInterceptor;
+    }
 
     /**
      * 每60s，一次心跳日志
