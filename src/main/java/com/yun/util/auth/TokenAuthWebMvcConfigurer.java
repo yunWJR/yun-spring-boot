@@ -5,7 +5,6 @@ import org.springframework.format.FormatterRegistry;
 import org.springframework.web.servlet.config.annotation.*;
 
 /**
- *
  * @author: yun
  * @createdOn: 2019/11/7 17:22.
  */

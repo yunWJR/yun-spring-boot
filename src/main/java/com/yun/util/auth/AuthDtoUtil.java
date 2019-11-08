@@ -11,7 +11,7 @@ import com.yun.util.module.rsp.RspDataException;
 
 public class AuthDtoUtil {
     public static void saveTokenDto(Object dto) {
-        ThreadLocalUtil.put(AuthPropertyUtil.instance.getObj().getTokenAuthKey(), dto);
+        ThreadLocalUtil.put(AuthPropertyUtil.prop().getTokenAuthKey(), dto);
     }
 
     public static Object getTokenDto() {
@@ -19,7 +19,7 @@ public class AuthDtoUtil {
     }
 
     public static Object getTokenDto(boolean throwEp) {
-        Object dto = ThreadLocalUtil.get(AuthPropertyUtil.instance.getObj().getTokenAuthKey());
+        Object dto = ThreadLocalUtil.get(AuthPropertyUtil.prop().getTokenAuthKey());
         if (dto == null && throwEp) {
             throw RspDataException.RstTypeErrBeanWithType(RspDataCodeType.NoToken);
         }
@@ -27,7 +27,7 @@ public class AuthDtoUtil {
     }
 
     public static void saveAccessDto(Object dto) {
-        ThreadLocalUtil.put(AuthPropertyUtil.instance.getObj().getAccessAuthKey(), dto);
+        ThreadLocalUtil.put(AuthPropertyUtil.prop().getAccessAuthKey(), dto);
     }
 
     public static Object getAccessDto() {
@@ -35,7 +35,7 @@ public class AuthDtoUtil {
     }
 
     public static Object getAccessDto(boolean throwEp) {
-        Object loginUser = ThreadLocalUtil.get(AuthPropertyUtil.instance.getObj().getAccessAuthKey());
+        Object loginUser = ThreadLocalUtil.get(AuthPropertyUtil.prop().getAccessAuthKey());
         if (loginUser == null && throwEp) {
             throw RspDataException.RstTypeErrBeanWithType(RspDataCodeType.NoAccessExp);
         }
@@ -43,7 +43,7 @@ public class AuthDtoUtil {
     }
 
     public static void saveDeviceDto(Object dto) {
-        ThreadLocalUtil.put(AuthPropertyUtil.instance.getObj().getDeviceTypeKey(), dto);
+        ThreadLocalUtil.put(AuthPropertyUtil.prop().getDeviceTypeKey(), dto);
     }
 
     public static Object getDeviceDto() {
@@ -51,7 +51,7 @@ public class AuthDtoUtil {
     }
 
     public static Object getDeviceDto(boolean throwEp) {
-        Object loginUser = ThreadLocalUtil.get(AuthPropertyUtil.instance.getObj().getDeviceTypeKey());
+        Object loginUser = ThreadLocalUtil.get(AuthPropertyUtil.prop().getDeviceTypeKey());
         if (loginUser == null && throwEp) {
             throw RspDataException.RstTypeErrBeanWithType(RspDataCodeType.NoDeviceExp);
         }
@@ -63,8 +63,8 @@ public class AuthDtoUtil {
     }
 
     private static boolean isThrowEp() {
-        if (AuthPropertyUtil.instance.getObj() != null) {
-            return AuthPropertyUtil.instance.getObj().getThrowEp();
+        if (AuthPropertyUtil.prop() != null) {
+            return AuthPropertyUtil.prop().getThrowEp();
         }
 
         return false;

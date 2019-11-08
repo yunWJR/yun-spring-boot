@@ -11,21 +11,30 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Data
-public class SpringEvnConfig {
+public class SpringEvnImpl implements SpringEvn {
 
     @Value("${spring.profiles.active}")
     private String profile;
 
+    @Value("${yun.evn.pro_name}")
+    private String proName = "pro";
+
     private Boolean isProEvn;
 
+    @Override
     public boolean isProEvn() {
+        if (StringUtil.isNullOrEmpty(proName)) {
+            proName = "pro";
+        }
+
         if (isProEvn == null) {
-            isProEvn = "pro".equals(profile);
+            isProEvn = proName.equals(profile);
         }
 
         return isProEvn;
     }
 
+    @Override
     public Integer isProValue() {
         return isProEvn ? 1 : 0;
     }

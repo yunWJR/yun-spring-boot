@@ -6,13 +6,14 @@ import org.springframework.stereotype.Component;
 import javax.annotation.PostConstruct;
 
 /**
+ * AuthProperty 工具类
  * @author: yun
  * @createdOn: 2019-07-29 14:59.
  */
 
 @Component
 public class AuthPropertyUtil {
-    public static AuthPropertyUtil instance;
+    private static AuthPropertyUtil instance;
 
     @Autowired
     private AuthProperty obj;
@@ -20,12 +21,16 @@ public class AuthPropertyUtil {
     public AuthPropertyUtil() {
     }
 
+    public static AuthProperty prop() {
+        return instance.getObj();
+    }
+
     @PostConstruct
     public void init() {
         instance = this;
     }
 
-    public AuthProperty getObj() {
+    private AuthProperty getObj() {
         return obj;
     }
 

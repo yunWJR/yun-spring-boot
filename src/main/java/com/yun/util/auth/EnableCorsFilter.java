@@ -13,6 +13,6 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.TYPE})
 @Documented
-@Import({AuthProperty.class, AuthUtil.class, AuthPropertyUtil.class, TokenAuthWebMvcConfigurer.class})
-public @interface EnableAuthHandler {
+@Import({CorsFilterConfig.class})
+public @interface EnableCorsFilter {
 }

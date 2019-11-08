@@ -80,7 +80,7 @@ public class TokenAuthHandlerInterceptor implements HandlerInterceptor {
         }
 
         // token 检查
-        String tokenStr = request.getHeader(AuthPropertyUtil.instance.getObj().getTokenAuthKey());
+        String tokenStr = request.getHeader(AuthPropertyUtil.prop().getTokenAuthKey());
 
         // 无 token
         if (StringUtils.isBlank(tokenStr)) {
@@ -118,19 +118,19 @@ public class TokenAuthHandlerInterceptor implements HandlerInterceptor {
     }
 
     private void savePara(HttpServletRequest request) {
-        String hVale = request.getHeader(AuthPropertyUtil.instance.getObj().getDeviceTypeKey());
+        String hVale = request.getHeader(AuthPropertyUtil.prop().getDeviceTypeKey());
         if (!StringUtil.isNullOrEmpty(hVale)) {
-            ThreadLocalUtil.put(AuthPropertyUtil.instance.getObj().getDeviceTypeKey(), hVale);
+            ThreadLocalUtil.put(AuthPropertyUtil.prop().getDeviceTypeKey(), hVale);
         }
 
-        hVale = request.getHeader(AuthPropertyUtil.instance.getObj().getAccessAuthKey());
+        hVale = request.getHeader(AuthPropertyUtil.prop().getAccessAuthKey());
         if (!StringUtil.isNullOrEmpty(hVale)) {
-            ThreadLocalUtil.put(AuthPropertyUtil.instance.getObj().getAccessAuthKey(), hVale);
+            ThreadLocalUtil.put(AuthPropertyUtil.prop().getAccessAuthKey(), hVale);
         }
 
-        hVale = request.getHeader(AuthPropertyUtil.instance.getObj().getTokenAuthKey());
+        hVale = request.getHeader(AuthPropertyUtil.prop().getTokenAuthKey());
         if (!StringUtil.isNullOrEmpty(hVale)) {
-            ThreadLocalUtil.put(AuthPropertyUtil.instance.getObj().getTokenAuthKey(), hVale);
+            ThreadLocalUtil.put(AuthPropertyUtil.prop().getTokenAuthKey(), hVale);
         }
 
         tokenAuthHd().savePara(request);

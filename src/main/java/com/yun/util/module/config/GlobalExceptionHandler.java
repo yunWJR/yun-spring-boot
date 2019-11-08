@@ -1,10 +1,12 @@
 package com.yun.util.module.config;
 
+import com.yun.util.common.JsonUtil;
+import com.yun.util.common.SpringEvn;
 import com.yun.util.module.rsp.RspDataCodeType;
 import com.yun.util.module.rsp.RspDataException;
 import com.yun.util.module.rsp.RspDataT;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.FieldError;
@@ -28,19 +30,17 @@ import java.util.List;
 @Component
 public class GlobalExceptionHandler {
 
-    @Value("${spring.profiles.active}")
-    private String profile;
-
-    private Boolean isProEvn;
+    @Autowired
+    private SpringEvn springEvn;
 
     public boolean isProEvn() {
-        if (isProEvn == null) {
-            isProEvn = "pro".equals(profile);
-        }
-
-        return isProEvn;
+        return springEvn.isProEvn();
     }
 
+    /**
+     * 可 overwrite
+     * @return
+     */
     public boolean isDetailsInProEvn() {
         return true;
     }
@@ -63,11 +63,11 @@ public class GlobalExceptionHandler {
         return new RspDataT(RspDataCodeType.ComErr, e.getMessage());
     }
 
-    /**
-     * Hibernate 抛出的参数验证异常
-     * @param e
-     * @return
-     */
+    // /**
+    //  * Hibernate 抛出的参数验证异常
+    //  * @param e
+    //  * @return
+    //  */
     // @ExceptionHandler(ConstraintViolationException.class)
     // @ResponseBody
     // public RspDataT ConstraintViolationException(ConstraintViolationException e) {
@@ -96,12 +96,24 @@ public class GlobalExceptionHandler {
     //     log.error("参数非法异常={}", e.getMessage(), e);
     //     return new RspDataT(RspDataCodeType.ComErr, errMsg);
     // }
+
+    /**
+     * RspDataException 异常处理
+     * @param e
+     * @return
+     */
     @ExceptionHandler(RspDataException.class)
     @ResponseBody
     public RspDataT handleBusinessException(RspDataException e) {
+        if (e.getRst() != null) {
+            log.error(JsonUtil.toStr(e.getRst()));
+
+            return e.getRst();
+        }
+
         log.error(getLogFileExceptionMsg(e));
 
-        return new RspDataT(e.getRst().getCode(), e.getRst().getErrorMsg());
+        return new RspDataT(RspDataCodeType.ComErr, e.getMessage());
     }
 
     /**
