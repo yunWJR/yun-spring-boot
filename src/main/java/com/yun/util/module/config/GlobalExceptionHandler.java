@@ -18,6 +18,9 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.util.List;
 
 /**
@@ -43,24 +46,6 @@ public class GlobalExceptionHandler {
      */
     public boolean isDetailsInProEvn() {
         return true;
-    }
-
-    /**
-     * 参数非法异常.
-     * @param e the e
-     * @return the wrapper
-     */
-    @ExceptionHandler(IllegalArgumentException.class)
-    @ResponseStatus(HttpStatus.ACCEPTED)
-    @ResponseBody
-    public RspDataT illegalArgumentException(IllegalArgumentException e) {
-        log.error(getLogFileExceptionMsg(e));
-
-        if (isProEvn()) {
-            return new RspDataT(RspDataCodeType.ComErr, isDetailsInProEvn() ? e.getMessage() : "参数异常");
-        }
-
-        return new RspDataT(RspDataCodeType.ComErr, e.getMessage());
     }
 
     // /**
@@ -96,6 +81,24 @@ public class GlobalExceptionHandler {
     //     log.error("参数非法异常={}", e.getMessage(), e);
     //     return new RspDataT(RspDataCodeType.ComErr, errMsg);
     // }
+
+    /**
+     * 参数非法异常.
+     * @param e the e
+     * @return the wrapper
+     */
+    @ExceptionHandler(IllegalArgumentException.class)
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    @ResponseBody
+    public RspDataT illegalArgumentException(IllegalArgumentException e) {
+        log.error(getLogFileExceptionMsg(e));
+
+        if (isProEvn()) {
+            return new RspDataT(RspDataCodeType.ComErr, isDetailsInProEvn() ? e.getMessage() : "参数异常");
+        }
+
+        return new RspDataT(RspDataCodeType.ComErr, e.getMessage());
+    }
 
     /**
      * RspDataException 异常处理
@@ -167,7 +170,7 @@ public class GlobalExceptionHandler {
         return new RspDataT(RspDataCodeType.ComErr, errorStr.toString());
     }
 
-    // region --private method
+    // region -- method
 
     public String getExceptionMsg(Exception e) {
         String errMsg = null;
@@ -183,7 +186,32 @@ public class GlobalExceptionHandler {
     }
 
     public String getLogFileExceptionMsg(Exception e) {
-        return e.getMessage();
+        return e.getMessage() + "\n" + getStackMessage(e);
+    }
+
+    public String getStackMessage(Exception e) {
+        StringWriter sw = null;
+        PrintWriter pw = null;
+        try {
+            sw = new StringWriter();
+            pw = new PrintWriter(sw);
+            // 将出错的栈信息输出到printWriter中
+            e.printStackTrace(pw);
+            pw.flush();
+            sw.flush();
+        } finally {
+            if (sw != null) {
+                try {
+                    sw.close();
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                }
+            }
+            if (pw != null) {
+                pw.close();
+            }
+        }
+        return sw.toString();
     }
 
     // endregion

@@ -16,8 +16,8 @@ public class SpringEvnImpl implements SpringEvn {
     @Value("${spring.profiles.active}")
     private String profile;
 
-    @Value("${yun.evn.pro_name}")
-    private String proName = "pro";
+    @Value("${yun.evn.pro-name:pro}")
+    private String proName;
 
     private Boolean isProEvn;
 

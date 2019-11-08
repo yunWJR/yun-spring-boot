@@ -63,12 +63,23 @@ public class ApiDataUtil {
      * @param hd
      * @return boolean
      */
-    public static boolean isJson(String hd) {
+    public static boolean isJsonContent(String hd) {
         if (hd != null) {
-            return hd.equals(MediaType.APPLICATION_JSON_VALUE) ||
-                    hd.equals(MediaType.APPLICATION_JSON_UTF8_VALUE);
+            return hd.contains(MediaType.APPLICATION_JSON_VALUE);
         }
 
         return false;
+    }
+
+    public static boolean isUrlencodedContent(String hd) {
+        if (hd != null) {
+            return hd.contains(MediaType.APPLICATION_FORM_URLENCODED_VALUE);
+        }
+
+        return false;
+    }
+
+    public static boolean canToJson(String header) {
+        return isJsonContent(header) || isUrlencodedContent(header);
     }
 }

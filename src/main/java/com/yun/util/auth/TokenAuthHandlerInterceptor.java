@@ -1,8 +1,6 @@
 package com.yun.util.auth;
 
 import com.yun.util.common.SpringContextUtil;
-import com.yun.util.common.StringUtil;
-import com.yun.util.common.ThreadLocalUtil;
 import com.yun.util.module.rsp.RspDataException;
 import net.logstash.logback.encoder.org.apache.commons.lang3.StringUtils;
 import org.springframework.web.method.HandlerMethod;
@@ -118,20 +116,21 @@ public class TokenAuthHandlerInterceptor implements HandlerInterceptor {
     }
 
     private void savePara(HttpServletRequest request) {
-        String hVale = request.getHeader(AuthPropertyUtil.prop().getDeviceTypeKey());
-        if (!StringUtil.isNullOrEmpty(hVale)) {
-            ThreadLocalUtil.put(AuthPropertyUtil.prop().getDeviceTypeKey(), hVale);
-        }
-
-        hVale = request.getHeader(AuthPropertyUtil.prop().getAccessAuthKey());
-        if (!StringUtil.isNullOrEmpty(hVale)) {
-            ThreadLocalUtil.put(AuthPropertyUtil.prop().getAccessAuthKey(), hVale);
-        }
-
-        hVale = request.getHeader(AuthPropertyUtil.prop().getTokenAuthKey());
-        if (!StringUtil.isNullOrEmpty(hVale)) {
-            ThreadLocalUtil.put(AuthPropertyUtil.prop().getTokenAuthKey(), hVale);
-        }
+        // 不记录默认值，避免冲突，header 参数里面已经记录这些内容
+        // String hVale = request.getHeader(AuthPropertyUtil.prop().getDeviceTypeKey());
+        // if (!StringUtil.isNullOrEmpty(hVale)) {
+        //     ThreadLocalUtil.put(AuthPropertyUtil.prop().getDeviceTypeKey(), hVale);
+        // }
+        //
+        // hVale = request.getHeader(AuthPropertyUtil.prop().getAccessAuthKey());
+        // if (!StringUtil.isNullOrEmpty(hVale)) {
+        //     ThreadLocalUtil.put(AuthPropertyUtil.prop().getAccessAuthKey(), hVale);
+        // }
+        //
+        // hVale = request.getHeader(AuthPropertyUtil.prop().getTokenAuthKey());
+        // if (!StringUtil.isNullOrEmpty(hVale)) {
+        //     ThreadLocalUtil.put(AuthPropertyUtil.prop().getTokenAuthKey(), hVale);
+        // }
 
         tokenAuthHd().savePara(request);
     }

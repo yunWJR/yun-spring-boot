@@ -49,7 +49,7 @@ public class ApiDataResponseBodyAdvice implements ResponseBodyAdvice {
         if (request.getHeaders() != null) {
             MediaType ctType = request.getHeaders().getContentType();
 
-            if (ctType != null && ApiDataUtil.isJson(ctType.toString())) {
+            if (ctType != null && ApiDataUtil.canToJson(ctType.toString())) {
                 isJsonBody = true;
             }
         }

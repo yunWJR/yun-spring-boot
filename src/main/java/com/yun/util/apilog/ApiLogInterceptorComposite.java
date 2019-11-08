@@ -1,6 +1,7 @@
 package com.yun.util.apilog;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
 import java.util.Collections;
@@ -12,6 +13,7 @@ import java.util.List;
  */
 
 @Component
+@Primary
 public class ApiLogInterceptorComposite implements ApiLogInterceptor {
     private List<ApiLogInterceptor> list = Collections.emptyList();
 

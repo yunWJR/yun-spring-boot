@@ -43,7 +43,7 @@ public class ApiDataRequestBodyAdvice implements RequestBodyAdvice {
             List<String> ctHeaders = inputMessage.getHeaders().get("Content-Type");
             if (ctHeaders != null && ctHeaders.size() > 0) {
                 for (String ctHeader : ctHeaders) {
-                    if (ApiDataUtil.isJson(ctHeader)) {
+                    if (ApiDataUtil.canToJson(ctHeader)) {
                         isJsonBody = true;
                         break;
                     }
