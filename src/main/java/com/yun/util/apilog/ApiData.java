@@ -104,7 +104,7 @@ public class ApiData {
         this.costTime = this.endTime - this.startTime;
     }
 
-    public void updateHttp(ServerHttpRequest request) {
+    public void updateHttp(ServerHttpRequest request, ApiLogFiled filed) {
         if (request == null) {
             return;
         }
@@ -121,8 +121,19 @@ public class ApiData {
             this.query = request.getURI().getQuery();
         }
 
-        if (request.getHeaders() != null) {
+        if (request.getHeaders() != null && (filed == null || filed.header())) {
             this.header = JsonUtil.toStr(request.getHeaders().entrySet());
+        }
+
+        // filed
+        if (filed != null && !filed.requestBody()) {
+            this.body = "disable";
+        }
+        if (filed != null && !filed.responseBody()) {
+            this.response = "disable";
+        }
+        if (filed != null && !filed.header()) {
+            this.header = "disable";
         }
 
         updateEndTime();
