@@ -8,7 +8,7 @@
 
 > java:1.8
 
-> springboot:2.0.0
+> springboot:2.0.0 以上
 
 
 
@@ -18,7 +18,7 @@
 <dependency>
     <groupId>com.github.yunwjr</groupId>
     <artifactId>yun-util</artifactId>
-    <version>0.0.18</version>
+    <version>0.0.23</version>
 </dependency>
 ```
 
