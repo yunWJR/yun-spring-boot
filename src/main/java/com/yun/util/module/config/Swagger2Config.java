@@ -87,7 +87,7 @@ public class Swagger2Config {
         }
 
         // 正式环境不显示接口文档-通过包名控制
-        if (prop.isEnableOnPro() && springEvn.isProEvn()) {
+        if (!prop.isEnableOnPro() && springEvn.isProEvn()) {
             return new Docket(DocumentationType.SWAGGER_2)
                     .globalOperationParameters(operationParameters)
                     .apiInfo(apiInfo())
