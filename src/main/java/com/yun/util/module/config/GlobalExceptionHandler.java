@@ -90,14 +90,23 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(IllegalArgumentException.class)
     @ResponseStatus(HttpStatus.ACCEPTED)
     @ResponseBody
-    public RspDataT illegalArgumentException(IllegalArgumentException e) {
+    public RspDataT handleIllegalArgumentException(IllegalArgumentException e) {
         log.error(getLogFileExceptionMsg(e));
+
+        RspDataT rst = handleIllegalArgumentExceptionPre(e);
+        if (rst != null) {
+            return rst;
+        }
 
         if (isProEvn()) {
             return new RspDataT(RspDataCodeType.ComErr, isDetailsInProEvn() ? e.getMessage() : "参数异常");
         }
 
         return new RspDataT(RspDataCodeType.ComErr, e.getMessage());
+    }
+
+    public RspDataT handleIllegalArgumentExceptionPre(IllegalArgumentException e) {
+        return null;
     }
 
     /**
@@ -107,16 +116,28 @@ public class GlobalExceptionHandler {
      */
     @ExceptionHandler(RspDataException.class)
     @ResponseBody
-    public RspDataT handleBusinessException(RspDataException e) {
+    public RspDataT handleRspDataException(RspDataException e) {
         if (e.getRst() != null) {
             log.error(JsonUtil.toStr(e.getRst()));
+        } else {
+            log.error(getLogFileExceptionMsg(e));
+        }
+
+        RspDataT rst = handleRspDataExceptionPre(e);
+        if (rst != null) {
+            return rst;
+        }
+
+        if (e.getRst() != null) {
 
             return e.getRst();
         }
 
-        log.error(getLogFileExceptionMsg(e));
-
         return new RspDataT(RspDataCodeType.ComErr, e.getMessage());
+    }
+
+    public RspDataT handleRspDataExceptionPre(RspDataException e) {
+        return null;
     }
 
     /**
@@ -129,6 +150,11 @@ public class GlobalExceptionHandler {
     public RspDataT handleException(Exception e) {
         log.error(getLogFileExceptionMsg(e));
 
+        RspDataT rst = handleExceptionPre(e);
+        if (rst != null) {
+            return rst;
+        }
+
         if (isProEvn()) {
             return new RspDataT(RspDataCodeType.ComErr, isDetailsInProEvn() ? e.getMessage() : "参数异常");
         }
@@ -136,6 +162,10 @@ public class GlobalExceptionHandler {
         String errMsg = this.getExceptionMsg(e);
 
         return RspDataT.ComErrBean(errMsg);
+    }
+
+    public RspDataT handleExceptionPre(Exception e) {
+        return null;
     }
 
     /**
@@ -147,6 +177,11 @@ public class GlobalExceptionHandler {
     @ResponseBody
     public RspDataT handleMethodArgumentNotValidException(MethodArgumentNotValidException e, HttpServletRequest req) {
         log.error(getLogFileExceptionMsg(e));
+
+        RspDataT rst = handleMethodArgumentNotValidExceptionPre(e, req);
+        if (rst != null) {
+            return rst;
+        }
 
         if (isProEvn()) {
             return new RspDataT(RspDataCodeType.ComErr, isDetailsInProEvn() ? e.getMessage() : "参数验证失败");
@@ -168,6 +203,10 @@ public class GlobalExceptionHandler {
         }
 
         return new RspDataT(RspDataCodeType.ComErr, errorStr.toString());
+    }
+
+    public RspDataT handleMethodArgumentNotValidExceptionPre(MethodArgumentNotValidException e, HttpServletRequest req) {
+        return null;
     }
 
     // region -- method
