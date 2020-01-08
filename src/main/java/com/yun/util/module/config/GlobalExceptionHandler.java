@@ -21,6 +21,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.lang.reflect.Field;
 import java.util.List;
 
 /**
@@ -30,7 +31,7 @@ import java.util.List;
  */
 @Slf4j
 @RestControllerAdvice
-@Component
+// @Component
 public class GlobalExceptionHandler {
 
     @Autowired
@@ -187,17 +188,46 @@ public class GlobalExceptionHandler {
             return new RspDataT(RspDataCodeType.ComErr, isDetailsInProEvn() ? e.getMessage() : "参数验证失败");
         }
 
-        List<ObjectError> errors = e.getBindingResult().getAllErrors();
+        List<FieldError> errors = e.getBindingResult().getFieldErrors();
         StringBuilder errorStr = new StringBuilder("参数不合法：");
-        for (ObjectError error : errors) {
-            String err = "";
-            if (error.getClass().equals(FieldError.class)) {
-                FieldError fErr = (FieldError) error;
-
-                err = fErr.getField() + ":" + fErr.getDefaultMessage();
-            } else {
-                err = error.getDefaultMessage();
-            }
+        for (FieldError error : errors) {
+            String err = error.getField() + ":" + error.getDefaultMessage();
+            // if (error.getClass().equals(FieldError.class)) {
+            //     FieldError fErr = (FieldError) error;
+            //
+            //     err = fErr.getField() + ":" + fErr.getDefaultMessage();
+            // } else {
+            //     Class errorClass = error.getClass();
+            //
+            //     String fieldName = null;
+            //     String errDt = null;
+            //
+            //     try {
+            //         Field fF = errorClass.getField("field");
+            //         if (fF != null) {
+            //             Object value = fF.get(errorClass);
+            //             if (value != null) {
+            //                 fieldName = value.toString();
+            //             }
+            //         }
+            //
+            //         Field fDm = errorClass.getField("defaultMessage");
+            //         if (fDm != null) {
+            //             Object value = fDm.get(errorClass);
+            //             if (value != null) {
+            //                 errDt = value.toString();
+            //             }
+            //         }
+            //     } catch (Exception ee) {
+            //         ee.printStackTrace();
+            //     }
+            //
+            //     if (fieldName != null && errDt != null) {
+            //         err = fieldName + ":" + errDt;
+            //     } else {
+            //         err = error.getDefaultMessage();
+            //     }
+            // }
 
             errorStr.append(err).append(";");
         }
