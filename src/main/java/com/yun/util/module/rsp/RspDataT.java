@@ -68,7 +68,7 @@ public class RspDataT<T> {
     public RspDataT(RspDataCodeType type, String errorMsg) {
         this.code = type.getCode();
 
-        if (errorMsg.length() > 0) {
+        if (errorMsg != null && errorMsg.length() > 0) {
             this.errorMsg = errorMsg;
         } else {
             this.errorMsg = type.getMsg();
