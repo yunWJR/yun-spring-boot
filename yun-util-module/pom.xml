@@ -22,7 +22,13 @@
     <dependencies>
         <dependency>
             <groupId>com.github.yunwjr</groupId>
-            <artifactId>yun-util-apilog</artifactId>
+            <artifactId>yun-util-common</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.yunwjr</groupId>
+            <artifactId>yun-util-auth</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
 
