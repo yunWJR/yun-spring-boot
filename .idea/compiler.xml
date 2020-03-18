@@ -7,12 +7,30 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="yun-util-apilog" />
+        <module name="yun-util-xxx" />
+        <module name="yun-util-module" />
+        <module name="yun-util-bom" />
+        <module name="yun-util-idgenerator" />
+        <module name="yun-util-longjson" />
+        <module name="yun-util-auth" />
+        <module name="yun-util-token" />
+        <module name="yun-util-common" />
         <module name="yun-util-all" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="yun-util" target="8" />
       <module name="yun-util-all" target="8" />
+      <module name="yun-util-apilog" target="8" />
+      <module name="yun-util-auth" target="8" />
+      <module name="yun-util-bom" target="8" />
+      <module name="yun-util-common" target="8" />
+      <module name="yun-util-idgenerator" target="8" />
+      <module name="yun-util-longjson" target="8" />
+      <module name="yun-util-module" target="8" />
+      <module name="yun-util-token" target="8" />
+      <module name="yun-util-xxx" target="8" />
     </bytecodeTargetLevel>
   </component>
 </project>

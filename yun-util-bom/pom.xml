@@ -11,22 +11,10 @@
         <version>0.0.27</version>
     </parent>
 
-    <artifactId>yun-util-all</artifactId>
+    <artifactId>yun-util-bom</artifactId>
     <name>${project.artifactId}</name>
-    <description>yun-uti的所有功能</description>
+    <description>所有模块汇总，可以通过exclude方式排除不需要的模块</description>
     <url>https://github.com/yunWJR/yun-util</url>
-
-    <properties>
-        <java.version>1.8</java.version>
-        <spring.boot.version>2.0.0.RELEASE</spring.boot.version>
-        <hutool-all.version>5.0.4</hutool-all.version>
-        <lombok.version>1.18.10</lombok.version>
-        <jjwt.version>0.9.1</jjwt.version>
-        <logstash-logback-encoder.version>6.2</logstash-logback-encoder.version>
-        <javax.servlet-api.version>4.0.1</javax.servlet-api.version>
-        <spring-webmvc.version>5.2.0.RELEASE</spring-webmvc.version>
-        <querydsl.version>4.2.1</querydsl.version>
-    </properties>
 
     <dependencies>
         <dependency>
@@ -72,20 +60,4 @@
         </dependency>
     </dependencies>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>${compile.version}</source>
-                    <target>${compile.version}</target>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
 </project>

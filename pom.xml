@@ -7,13 +7,22 @@
 
     <groupId>com.github.yunwjr</groupId>
     <artifactId>yun-util</artifactId>
-    <version>0.0.25</version>
+    <version>0.0.27</version>
     <name>yun-util</name>
     <description>yun-util</description>
     <url>https://github.com/yunWJR/yun-util</url>
 
     <modules>
         <module>yun-util-all</module>
+        <module>yun-util-bom</module>
+        <module>yun-util-common</module>
+        <module>yun-util-apilog</module>
+        <module>yun-util-auth</module>
+        <module>yun-util-idgenerator</module>
+        <module>yun-util-longjson</module>
+        <module>yun-util-module</module>
+        <module>yun-util-token</module>
+        <module>yun-util-xxx</module>
     </modules>
 
     <licenses>
@@ -47,6 +56,7 @@
         <yun-util.version>0.0.24</yun-util.version>
         <java.version>1.8</java.version>
         <compile.version>8</compile.version>
+
         <spring.boot.version>2.0.0.RELEASE</spring.boot.version>
         <hutool-all.version>5.0.4</hutool-all.version>
         <lombok.version>1.18.10</lombok.version>
@@ -58,107 +68,107 @@
     </properties>
 
     <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-logging</artifactId>
-            <version>${spring.boot.version}</version>
-        </dependency>
+        <!--        <dependency>-->
+        <!--            <groupId>org.springframework.boot</groupId>-->
+        <!--            <artifactId>spring-boot-starter-logging</artifactId>-->
+        <!--            <version>${spring.boot.version}</version>-->
+        <!--        </dependency>-->
 
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-autoconfigure</artifactId>
-            <version>${spring.boot.version}</version>
-        </dependency>
+        <!--        <dependency>-->
+        <!--            <groupId>org.springframework.boot</groupId>-->
+        <!--            <artifactId>spring-boot-autoconfigure</artifactId>-->
+        <!--            <version>${spring.boot.version}</version>-->
+        <!--        </dependency>-->
 
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-configuration-processor</artifactId>
-            <version>${spring.boot.version}</version>
-            <optional>true</optional>
-        </dependency>
+        <!--        <dependency>-->
+        <!--            <groupId>org.springframework.boot</groupId>-->
+        <!--            <artifactId>spring-boot-configuration-processor</artifactId>-->
+        <!--            <version>${spring.boot.version}</version>-->
+        <!--            <optional>true</optional>-->
+        <!--        </dependency>-->
 
-        <!-- https://mvnrepository.com/artifact/cn.hutool/hutool-all -->
-        <dependency>
-            <groupId>cn.hutool</groupId>
-            <artifactId>hutool-all</artifactId>
-            <version>${hutool-all.version}</version>
-        </dependency>
+        <!--        &lt;!&ndash; https://mvnrepository.com/artifact/cn.hutool/hutool-all &ndash;&gt;-->
+        <!--        <dependency>-->
+        <!--            <groupId>cn.hutool</groupId>-->
+        <!--            <artifactId>hutool-all</artifactId>-->
+        <!--            <version>${hutool-all.version}</version>-->
+        <!--        </dependency>-->
 
-        <!--swagger2-->
-        <!--https://mvnrepository.com/artifact/io.springfox/springfox-swagger-ui-->
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger2</artifactId>
-            <version>2.9.2</version>
-            <exclusions>
-                <!--                去除 input 错误-->
-                <exclusion>
-                    <groupId>io.swagger</groupId>
-                    <artifactId>swagger-models</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <!--                去除 input 错误-->
-        <dependency>
-            <groupId>io.swagger</groupId>
-            <artifactId>swagger-models</artifactId>
-            <version>1.5.21</version>
-        </dependency>
+        <!--        &lt;!&ndash;swagger2&ndash;&gt;-->
+        <!--        &lt;!&ndash;https://mvnrepository.com/artifact/io.springfox/springfox-swagger-ui&ndash;&gt;-->
+        <!--        <dependency>-->
+        <!--            <groupId>io.springfox</groupId>-->
+        <!--            <artifactId>springfox-swagger2</artifactId>-->
+        <!--            <version>2.9.2</version>-->
+        <!--            <exclusions>-->
+        <!--                &lt;!&ndash;                去除 input 错误&ndash;&gt;-->
+        <!--                <exclusion>-->
+        <!--                    <groupId>io.swagger</groupId>-->
+        <!--                    <artifactId>swagger-models</artifactId>-->
+        <!--                </exclusion>-->
+        <!--            </exclusions>-->
+        <!--        </dependency>-->
+        <!--        &lt;!&ndash;                去除 input 错误&ndash;&gt;-->
+        <!--        <dependency>-->
+        <!--            <groupId>io.swagger</groupId>-->
+        <!--            <artifactId>swagger-models</artifactId>-->
+        <!--            <version>1.5.21</version>-->
+        <!--        </dependency>-->
 
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger-ui</artifactId>
-            <version>2.9.2</version>
-        </dependency>
+        <!--        <dependency>-->
+        <!--            <groupId>io.springfox</groupId>-->
+        <!--            <artifactId>springfox-swagger-ui</artifactId>-->
+        <!--            <version>2.9.2</version>-->
+        <!--        </dependency>-->
 
-        <!-- https://mvnrepository.com/artifact/com.github.xiaoymin/swagger-bootstrap-ui -->
-        <dependency>
-            <groupId>com.github.xiaoymin</groupId>
-            <artifactId>swagger-bootstrap-ui</artifactId>
-            <version>1.9.6</version>
-        </dependency>
+        <!--        &lt;!&ndash; https://mvnrepository.com/artifact/com.github.xiaoymin/swagger-bootstrap-ui &ndash;&gt;-->
+        <!--        <dependency>-->
+        <!--            <groupId>com.github.xiaoymin</groupId>-->
+        <!--            <artifactId>swagger-bootstrap-ui</artifactId>-->
+        <!--            <version>1.9.6</version>-->
+        <!--        </dependency>-->
 
-        <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>${lombok.version}</version>
-            <scope>provided</scope>
-            <!--            <scope>test</scope>-->
-        </dependency>
+        <!--        &lt;!&ndash; https://mvnrepository.com/artifact/org.projectlombok/lombok &ndash;&gt;-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.projectlombok</groupId>-->
+        <!--            <artifactId>lombok</artifactId>-->
+        <!--            <version>${lombok.version}</version>-->
+        <!--            <scope>provided</scope>-->
+        <!--            &lt;!&ndash;            <scope>test</scope>&ndash;&gt;-->
+        <!--        </dependency>-->
 
-        <!--jjwt-->
-        <dependency>
-            <groupId>io.jsonwebtoken</groupId>
-            <artifactId>jjwt</artifactId>
-            <version>${jjwt.version}</version>
-        </dependency>
+        <!--        &lt;!&ndash;jjwt&ndash;&gt;-->
+        <!--        <dependency>-->
+        <!--            <groupId>io.jsonwebtoken</groupId>-->
+        <!--            <artifactId>jjwt</artifactId>-->
+        <!--            <version>${jjwt.version}</version>-->
+        <!--        </dependency>-->
 
-        <!-- for apilog-->
-        <!-- https://mvnrepository.com/artifact/net.logstash.logback/logstash-logback-encoder -->
-        <dependency>
-            <groupId>net.logstash.logback</groupId>
-            <artifactId>logstash-logback-encoder</artifactId>
-            <version>${logstash-logback-encoder.version}</version>
-        </dependency>
+        <!--        &lt;!&ndash; for apilog&ndash;&gt;-->
+        <!--        &lt;!&ndash; https://mvnrepository.com/artifact/net.logstash.logback/logstash-logback-encoder &ndash;&gt;-->
+        <!--        <dependency>-->
+        <!--            <groupId>net.logstash.logback</groupId>-->
+        <!--            <artifactId>logstash-logback-encoder</artifactId>-->
+        <!--            <version>${logstash-logback-encoder.version}</version>-->
+        <!--        </dependency>-->
 
-        <!-- for apilog-->
-        <!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
-            <version>${javax.servlet-api.version}</version>
-            <scope>provided</scope>
-        </dependency>
+        <!--        &lt;!&ndash; for apilog&ndash;&gt;-->
+        <!--        &lt;!&ndash; https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api &ndash;&gt;-->
+        <!--        <dependency>-->
+        <!--            <groupId>javax.servlet</groupId>-->
+        <!--            <artifactId>javax.servlet-api</artifactId>-->
+        <!--            <version>${javax.servlet-api.version}</version>-->
+        <!--            <scope>provided</scope>-->
+        <!--        </dependency>-->
 
-        <!-- for apilog-->
-        <!-- https://mvnrepository.com/artifact/org.springframework/spring-webmvc -->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-webmvc</artifactId>
-            <version>${spring-webmvc.version}</version>
-            <scope>provided</scope>
-        </dependency>
+        <!--        &lt;!&ndash; for apilog&ndash;&gt;-->
+        <!--        &lt;!&ndash; https://mvnrepository.com/artifact/org.springframework/spring-webmvc &ndash;&gt;-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.springframework</groupId>-->
+        <!--            <artifactId>spring-webmvc</artifactId>-->
+        <!--            <version>${spring-webmvc.version}</version>-->
+        <!--            <scope>provided</scope>-->
+        <!--        </dependency>-->
 
         <!--        <dependency>-->
         <!--            <groupId>org.springframework</groupId>-->
