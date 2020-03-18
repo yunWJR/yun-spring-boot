@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/yun-util.iml" filepath="$PROJECT_DIR$/yun-util.iml" />
+      <module fileurl="file://$PROJECT_DIR$/yun-util-all/yun-util-all.iml" filepath="$PROJECT_DIR$/yun-util-all/yun-util-all.iml" />
     </modules>
   </component>
 </project>
