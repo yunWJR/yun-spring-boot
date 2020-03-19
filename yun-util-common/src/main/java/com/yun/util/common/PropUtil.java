@@ -1,6 +1,5 @@
 package com.yun.util.common;
 
-import lombok.SneakyThrows;
 import org.springframework.beans.BeanUtils;
 
 import java.math.BigDecimal;
@@ -27,8 +26,7 @@ public class PropUtil {
     }
 
     // 比JsonHelper.newObj快
-    @SneakyThrows
-    public static <T> T copyPropForNew(T org, Class<T> clazz, String... ignoreProperties) {
+    public static <T> T copyPropForNew(T org, Class<T> clazz, String... ignoreProperties) throws IllegalAccessException, InstantiationException {
         T newItem = clazz.newInstance();
         copyProp(org, newItem, ignoreProperties);
 

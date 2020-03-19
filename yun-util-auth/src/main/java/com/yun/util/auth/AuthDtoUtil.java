@@ -1,8 +1,6 @@
 package com.yun.util.auth;
 
 import com.yun.util.common.ThreadLocalUtil;
-import com.yun.util.module.rsp.RspDataCodeType;
-import com.yun.util.module.rsp.RspDataException;
 
 /**
  * @author: yun
@@ -21,7 +19,7 @@ public class AuthDtoUtil {
     public static Object getTokenDto(boolean throwEp) {
         Object dto = ThreadLocalUtil.get(AuthPropertyUtil.prop().getTokenAuthKey());
         if (dto == null && throwEp) {
-            throw RspDataException.RstTypeErrBeanWithType(RspDataCodeType.NoToken);
+            throw AuthException.ErrWithType(RspDataCodeType.NoToken);
         }
         return dto;
     }
@@ -45,7 +43,7 @@ public class AuthDtoUtil {
     public static Object getAccessDto(boolean throwEp) {
         Object loginUser = ThreadLocalUtil.get(AuthPropertyUtil.prop().getAccessAuthKey());
         if (loginUser == null && throwEp) {
-            throw RspDataException.RstTypeErrBeanWithType(RspDataCodeType.NoAccessExp);
+            throw AuthException.ErrWithType(RspDataCodeType.NoAccessExp);
         }
         return loginUser;
     }
@@ -65,7 +63,7 @@ public class AuthDtoUtil {
     public static Object getDeviceDto(boolean throwEp) {
         Object loginUser = ThreadLocalUtil.get(AuthPropertyUtil.prop().getDeviceTypeKey());
         if (loginUser == null && throwEp) {
-            throw RspDataException.RstTypeErrBeanWithType(RspDataCodeType.NoDeviceExp);
+            throw AuthException.ErrWithType(RspDataCodeType.NoDeviceExp);
         }
         return loginUser;
     }
@@ -84,7 +82,7 @@ public class AuthDtoUtil {
         }
 
         if (dto == null && throwEp) {
-            throw RspDataException.RstTypeErrBeanWithType(code);
+            throw AuthException.ErrWithType(code);
         }
 
         return null;

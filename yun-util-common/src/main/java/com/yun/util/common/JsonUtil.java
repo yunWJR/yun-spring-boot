@@ -60,7 +60,7 @@ public class JsonUtil {
         // T obj = default(T); // todo
         T obj;
         try {
-            obj = OBJECT_MAPPER.readValue(json, valueTypeRef);
+            obj = (T) OBJECT_MAPPER.readValue(json, valueTypeRef);
         } catch (IOException e) {
             e.printStackTrace();
             return null;

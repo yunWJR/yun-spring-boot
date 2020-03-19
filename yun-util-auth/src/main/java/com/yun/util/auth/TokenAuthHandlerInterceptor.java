@@ -1,8 +1,7 @@
 package com.yun.util.auth;
 
 import com.yun.util.common.SpringContextUtil;
-import com.yun.util.module.rsp.RspDataException;
-import net.logstash.logback.encoder.org.apache.commons.lang3.StringUtils;
+import com.yun.util.common.StringUtil;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
@@ -40,7 +39,7 @@ public class TokenAuthHandlerInterceptor implements HandlerInterceptor {
         }
 
         if (tokenAuthHandler == null) {
-            throw RspDataException.RstComErrBeanWithStr("请实现TokenAuthHandler接口");
+            throw AuthException.ComErr("请实现TokenAuthHandler接口");
         }
 
         return tokenAuthHandler;
@@ -68,7 +67,7 @@ public class TokenAuthHandlerInterceptor implements HandlerInterceptor {
 
         // 是否设置系统状态
         if (authUtil().noAuthWhenSystemStop(handlerMethod)) {
-            throw RspDataException.RstComErrBeanWithStr("服务器已停止，请稍候重试");
+            throw AuthException.ComErr("服务器已停止，请稍候重试");
         }
 
         // 根据注解确定是否检查
@@ -81,7 +80,7 @@ public class TokenAuthHandlerInterceptor implements HandlerInterceptor {
         String tokenStr = request.getHeader(AuthPropertyUtil.prop().getTokenAuthKey());
 
         // 无 token
-        if (StringUtils.isBlank(tokenStr)) {
+        if (StringUtil.isNullOrEmpty(tokenStr)) {
             setRspNoToken(response);
 
             return false;

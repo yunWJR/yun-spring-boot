@@ -1,6 +1,7 @@
 package com.yun.util.apilog;
 
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.EnableScheduling;
@@ -15,8 +16,9 @@ import static net.logstash.logback.argument.StructuredArguments.value;
 
 @Configuration
 @EnableScheduling
-@Slf4j
 public class ApiDataHeartScheduleConfig {
+    private final Logger log = LoggerFactory.getLogger(ApiDataHeartScheduleConfig.class);
+
     private final ApiLogInterceptorComposite apiLogInterceptor;
 
     @Autowired(required = false)

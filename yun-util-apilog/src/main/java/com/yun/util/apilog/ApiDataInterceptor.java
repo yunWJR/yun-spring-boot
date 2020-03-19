@@ -1,7 +1,8 @@
 package com.yun.util.apilog;
 
 import com.yun.util.common.ThreadLocalUtil;
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -16,9 +17,9 @@ import static net.logstash.logback.argument.StructuredArguments.value;
  * @createdOn: 2019/8/30 09:47.
  */
 
-@Slf4j
 public class ApiDataInterceptor implements HandlerInterceptor {
     private final static String API_DATA_LT_KEY = "API_DATA";
+    private final Logger log = LoggerFactory.getLogger(ApiDataInterceptor.class);
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {

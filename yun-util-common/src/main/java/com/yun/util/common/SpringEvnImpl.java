@@ -1,6 +1,5 @@
 package com.yun.util.common;
 
-import lombok.Data;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -10,7 +9,6 @@ import org.springframework.stereotype.Component;
  */
 
 @Component
-@Data
 public class SpringEvnImpl implements SpringEvn {
 
     @Value("${spring.profiles.active}")
@@ -19,23 +17,47 @@ public class SpringEvnImpl implements SpringEvn {
     @Value("${yun.evn.pro-name:pro}")
     private String proName;
 
-    private Boolean isProEvn;
+    private Boolean isPro;
 
     @Override
     public boolean isProEvn() {
-        if (StringUtil.isNullOrEmpty(proName)) {
-            proName = "pro";
+        if (isPro == null) {
+            if (StringUtil.hasCtn(proName)) {
+                isPro = proName.equals(profile);
+            } else {
+                isPro = "pro".equals(profile.toLowerCase()) || "prod".equals(profile.toLowerCase());
+            }
         }
 
-        if (isProEvn == null) {
-            isProEvn = proName.equals(profile);
-        }
-
-        return isProEvn;
+        return isPro;
     }
 
     @Override
     public Integer isProValue() {
-        return isProEvn ? 1 : 0;
+        return isPro ? 1 : 0;
+    }
+
+    public String getProfile() {
+        return profile;
+    }
+
+    public void setProfile(String profile) {
+        this.profile = profile;
+    }
+
+    public String getProName() {
+        return proName;
+    }
+
+    public void setProName(String proName) {
+        this.proName = proName;
+    }
+
+    public Boolean getPro() {
+        return isPro;
+    }
+
+    public void setPro(Boolean pro) {
+        isPro = pro;
     }
 }

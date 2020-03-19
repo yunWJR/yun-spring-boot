@@ -5,12 +5,11 @@ import com.yun.util.common.SpringEvn;
 import com.yun.util.module.rsp.RspDataCodeType;
 import com.yun.util.module.rsp.RspDataException;
 import com.yun.util.module.rsp.RspDataT;
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.stereotype.Component;
 import org.springframework.validation.FieldError;
-import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -21,7 +20,6 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
-import java.lang.reflect.Field;
 import java.util.List;
 
 /**
@@ -29,10 +27,10 @@ import java.util.List;
  * @author: yun
  * @createdOn: 2019-02-25 13:23.
  */
-@Slf4j
 @RestControllerAdvice
 // @Component
 public class GlobalExceptionHandler {
+    private final Logger log = LoggerFactory.getLogger(GlobalExceptionHandler.class);
 
     @Autowired
     private SpringEvn springEvn;

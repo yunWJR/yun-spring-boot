@@ -1,7 +1,8 @@
 package com.yun.util.apilog;
 
 import com.yun.util.common.JsonUtil;
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.core.MethodParameter;
 import org.springframework.http.MediaType;
 import org.springframework.http.server.ServerHttpRequest;
@@ -22,9 +23,10 @@ import static net.logstash.logback.argument.StructuredArguments.value;
  * @createdOn: 2019/8/30 13:37.
  */
 
-@Slf4j
 @RestControllerAdvice
 public class ApiDataResponseBodyAdvice implements ResponseBodyAdvice {
+    private final Logger log = LoggerFactory.getLogger(ApiDataInterceptor.class);
+
     private final ApiLogProperty apiLogProperty;
 
     private final ApiLogInterceptor apiLogInterceptor;

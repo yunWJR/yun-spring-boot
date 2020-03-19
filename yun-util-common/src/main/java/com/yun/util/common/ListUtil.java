@@ -4,6 +4,7 @@ import java.util.*;
 
 /**
  * The itemType List util.
+ * todo 使用 stream 识别
  * @author: yun
  * @createdOn: 2018 /8/3 16:44.
  */

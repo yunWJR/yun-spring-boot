@@ -1,8 +1,6 @@
 package com.yun.util.token;
 
 import com.yun.util.common.StringUtil;
-import com.yun.util.module.rsp.RspDataCodeType;
-import com.yun.util.module.rsp.RspDataException;
 import io.jsonwebtoken.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import sun.misc.BASE64Decoder;
@@ -148,14 +146,14 @@ public class AuthTokenUtil {
 
             // 生成失败
             if (StringUtil.isNullOrEmpty(token)) {
-                throw RspDataException.RstTypeErrBeanWithType(RspDataCodeType.TokenUnknown);
+                throw new TokenException(-1, "token为 null");
             }
 
             return token;
         } catch (Exception e) {
             e.printStackTrace();
             // 生成失败
-            throw RspDataException.RstTypeErrBeanWithType(RspDataCodeType.TokenUnknown);
+            throw new TokenException(-1, "token失败:" + e.getMessage());
         }
     }
 
@@ -186,13 +184,13 @@ public class AuthTokenUtil {
 
                 return payload;
             } else {
-                throw RspDataException.RstTypeErrBeanWithType(RspDataCodeType.TokenError);
+                throw new TokenException(-1, "token解析失败");
             }
         } catch (ExpiredJwtException expT) {
             // token过期
-            throw RspDataException.RstTypeErrBeanWithType(RspDataCodeType.TokenExp);
+            throw new TokenException(-1, "token过期");
         } catch (Exception e) {
-            throw RspDataException.RstTypeErrBeanWithType(RspDataCodeType.TokenError);
+            throw new TokenException(-1, "token解析失败:" + e.getMessage());
         }
     }
 

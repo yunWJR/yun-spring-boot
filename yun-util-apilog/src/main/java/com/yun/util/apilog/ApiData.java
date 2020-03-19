@@ -2,7 +2,6 @@ package com.yun.util.apilog;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.yun.util.common.JsonUtil;
-import lombok.Data;
 import org.springframework.http.server.ServerHttpRequest;
 
 import javax.servlet.http.HttpServletRequest;
@@ -16,9 +15,10 @@ import java.util.Map;
  * @createdOn: 2019/8/29 14:40.
  */
 
-@Data
 public class ApiData {
-    @JsonIgnore
+
+    // region --Field
+
     private long startTime;
 
     @JsonIgnore
@@ -51,6 +51,10 @@ public class ApiData {
 
     @JsonIgnore
     private Map customMap = new HashMap();
+
+    // endregion
+
+    // region --Constructor
 
     public ApiData() {
         this.startTime = System.currentTimeMillis();
@@ -185,4 +189,122 @@ public class ApiData {
 
         return map;
     }
+
+    // endregion
+
+    // region --Getter and Setter
+
+    public long getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(long startTime) {
+        this.startTime = startTime;
+    }
+
+    public long getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(long endTime) {
+        this.endTime = endTime;
+    }
+
+    public long getCostTime() {
+        return costTime;
+    }
+
+    public void setCostTime(long costTime) {
+        this.costTime = costTime;
+    }
+
+    public String getHost() {
+        return host;
+    }
+
+    public void setHost(String host) {
+        this.host = host;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public String getQuery() {
+        return query;
+    }
+
+    public void setQuery(String query) {
+        this.query = query;
+    }
+
+    public String getAccount() {
+        return account;
+    }
+
+    public void setAccount(String account) {
+        this.account = account;
+    }
+
+    public String getVersion() {
+        return version;
+    }
+
+    public void setVersion(String version) {
+        this.version = version;
+    }
+
+    public String getDeviceType() {
+        return deviceType;
+    }
+
+    public void setDeviceType(String deviceType) {
+        this.deviceType = deviceType;
+    }
+
+    public String getDeviceInfo() {
+        return deviceInfo;
+    }
+
+    public void setDeviceInfo(String deviceInfo) {
+        this.deviceInfo = deviceInfo;
+    }
+
+    public String getHeader() {
+        return header;
+    }
+
+    public void setHeader(String header) {
+        this.header = header;
+    }
+
+    public String getBody() {
+        return body;
+    }
+
+    public void setBody(String body) {
+        this.body = body;
+    }
+
+    public String getResponse() {
+        return response;
+    }
+
+    public void setResponse(String response) {
+        this.response = response;
+    }
+
+    public Map getCustomMap() {
+        return customMap;
+    }
+
+    public void setCustomMap(Map customMap) {
+        this.customMap = customMap;
+    }
+
+    // endregion
 }

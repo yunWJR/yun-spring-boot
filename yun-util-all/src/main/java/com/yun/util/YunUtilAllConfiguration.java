@@ -6,7 +6,7 @@ import com.yun.util.auth.EnableAuthHandler;
 import com.yun.util.auth.EnableCorsFilter;
 import com.yun.util.common.SpringEvn;
 import com.yun.util.common.SpringEvnImpl;
-import com.yun.util.module.config.EnableSwagger;
+import com.yun.util.swagger.EnableSwagger;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -34,7 +34,8 @@ public class YunUtilAllConfiguration {
 
     @ConditionalOnMissingBean(SpringEvn.class)
     @Bean()
-    public SpringEvn computer2() {
+    public SpringEvn springEvn() {
         return new SpringEvnImpl();
     }
+
 }
