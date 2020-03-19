@@ -1,0 +1,20 @@
+package com.yun.util.examples.module.test;
+
+import com.yun.util.module.rsp.RspDataException;
+import org.springframework.stereotype.Service;
+
+/**
+ * @author: yun
+ * @createdOn: 2020/3/19 16:41.
+ */
+
+@Service
+public class ExceptionServerImpl {
+    public void runtimeException() {
+        throw new RuntimeException("exception test");
+    }
+
+    public void rspDataException() {
+        throw new RspDataException(-1, "dasd");
+    }
+}

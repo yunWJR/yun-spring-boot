@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <springProperty scop="context" name="spring.application.name" source="spring.application.name" defaultValue=""/>
+    <springProperty scop="context" name="spring.profiles.active" source="spring.profiles.active" defaultValue=""/>
+
+    <property name="app_active_name" value="${spring.application.name}-${spring.profiles.active}"/>
+    <property name="log.path" value="logs/${app_active_name}"/>
+
+    <!-- 彩色日志格式 -->
+    <property name="CONSOLE_LOG_PATTERN"
+              value="${CONSOLE_LOG_PATTERN:-%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr(${PID:- }){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}}"/>
+
+    <!-- 彩色日志依赖的渲染类 -->
+    <conversionRule conversionWord="clr" converterClass="org.springframework.boot.logging.logback.ColorConverter"/>
+    <conversionRule conversionWord="wex"
+                    converterClass="org.springframework.boot.logging.logback.WhitespaceThrowableProxyConverter"/>
+    <conversionRule conversionWord="wEx"
+                    converterClass="org.springframework.boot.logging.logback.ExtendedWhitespaceThrowableProxyConverter"/>
+
+    <!-- Console -->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>${CONSOLE_LOG_PATTERN}</pattern>
+        </encoder>
+    </appender>
+
+    <property name="FILE_PATTERN"
+              value="%date [%thread] traceId:[%X{traceId}] spanId:[%X{spanId}] parentId:[%X{parentId}] spanExportable:[%X{spanExportable}] %-5level [%logger{50}] %file:%line - %msg%n"/>
+
+    <appender name="ALL_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.path}/all.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>${log.path}/%d{yyyy-MM, aux}/all.%d{yyyy-MM-dd}.%i.log.gz</fileNamePattern>
+            <maxFileSize>50MB</maxFileSize>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${FILE_PATTERN}</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+
+    <appender name="ERROR_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.path}/error.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>${log.path}/%d{yyyy-MM}/error.%d{yyyy-MM-dd}.%i.log.gz</fileNamePattern>
+            <maxFileSize>50MB</maxFileSize>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${FILE_PATTERN}</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>ERROR</level>
+        </filter>
+    </appender>
+
+    <appender name="LOGSTASH" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
+        <destination>192.168.0.111:9800</destination>
+
+        <param name="Encoding" value="UTF-8"/>
+
+        <encoder charset="UTF-8" class="net.logstash.logback.encoder.LogstashEncoder">
+            <customFields>{"appname":"${app_active_name}"}</customFields>
+        </encoder>
+
+        <writeBufferSize>16384</writeBufferSize>
+        <keepAliveDuration>5 minutes</keepAliveDuration>
+        <!--        <writeTimeout>2 minute</writeTimeout>-->
+    </appender>
+
+    <!--    LOGSTASH 记录 apilog 信息-->
+    <logger name="com.yun.util.apilog" level="INFO" additivity="false">
+        <appender-ref ref="LOGSTASH"/>
+    </logger>
+
+    <!--    LOGSTASH 记录yun-util WARN 以上的日志-->
+    <logger name="com.yun.util" level="WARN" additivity="true">
+        <appender-ref ref="LOGSTASH"/>
+    </logger>
+
+    <!--    LOGSTASH 记录WARN 以上的日志-->
+    <logger name="com.yun.util.examples" level="WARN" additivity="true">
+        <appender-ref ref="LOGSTASH"/>
+    </logger>
+
+    <!-- 控制台输出日志级别 -->
+    <root level="info">
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="ALL_FILE"/>
+        <appender-ref ref="ERROR_FILE"/>
+        <!--        <appender-ref ref="LOGSTASH"/>-->
+    </root>
+</configuration>

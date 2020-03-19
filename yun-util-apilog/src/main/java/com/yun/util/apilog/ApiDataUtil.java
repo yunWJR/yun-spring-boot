@@ -82,4 +82,26 @@ public class ApiDataUtil {
     public static boolean canToJson(String header) {
         return isJsonContent(header) || isUrlencodedContent(header);
     }
+
+    public static boolean saveThrowable(Throwable e) {
+        boolean save = false;
+
+        ApiData dData = getAdviceData();
+        if (dData != null) {
+            dData.setThrowable(e);
+            saveAdviceData(dData);
+
+            save = true;
+        }
+
+        ApiData iData = getInterceptorData();
+        if (iData != null) {
+            iData.setThrowable(e);
+            saveInterceptorData(iData);
+
+            save = true;
+        }
+
+        return save;
+    }
 }

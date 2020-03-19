@@ -27,6 +27,12 @@
         </dependency>
 
         <dependency>
+            <groupId>com.github.yunwjr</groupId>
+            <artifactId>yun-util-apilog</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
+
+        <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
             <version>${javax.servlet-api.version}</version>
@@ -38,6 +44,7 @@
             <version>${jackson-core.version}</version>
             <optional>true</optional>
         </dependency>
+
     </dependencies>
 
     <build>

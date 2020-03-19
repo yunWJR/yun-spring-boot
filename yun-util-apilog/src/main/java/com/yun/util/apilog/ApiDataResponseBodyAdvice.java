@@ -66,7 +66,11 @@ public class ApiDataResponseBodyAdvice implements ResponseBodyAdvice {
             try {
                 Map alMap = apiData.getLogMap(apiLogProperty);
 
-                log.info(apiLogProperty.getMsg() + " {}", value(apiLogProperty.getPrefix(), alMap));
+                if (apiData.getThrowable() != null) {
+                    log.error(apiLogProperty.getMsg() + " {}", value(apiLogProperty.getPrefix(), alMap));
+                } else {
+                    log.info(apiLogProperty.getMsg() + " {}", value(apiLogProperty.getPrefix(), alMap));
+                }
             } catch (Exception e) {
                 log.error(e.getMessage());
             }

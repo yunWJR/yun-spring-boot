@@ -39,7 +39,12 @@ public class ApiDataInterceptor implements HandlerInterceptor {
         if (apiData != null) {
             apiData.updateEndTime();
 
-            log.info("api data {}", value("api_data", apiData));
+            if (apiData.getThrowable() != null) {
+                log.error("api data {}", value("api_data", apiData));
+            } else {
+                log.info("api data {}", value("api_data", apiData));
+            }
+
             // log.info("api data {}", fields(apiData));
 
             ApiDataUtil.removeInterceptorData();

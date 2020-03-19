@@ -2,6 +2,7 @@ package com.yun.util.apilog;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.yun.util.common.JsonUtil;
+import com.yun.util.common.ThrowableUtil;
 import org.springframework.http.server.ServerHttpRequest;
 
 import javax.servlet.http.HttpServletRequest;
@@ -39,6 +40,8 @@ public class ApiData {
     private String deviceType;
 
     private String deviceInfo;
+
+    private Throwable throwable;
 
     @JsonIgnore
     private String header;
@@ -184,6 +187,9 @@ public class ApiData {
         if (prop.getIndex().isResponse()) {
             map.put("response", response);
         }
+        if (throwable != null && prop.getIndex().isThrowable()) {
+            map.put("throwable", ThrowableUtil.getStack(throwable));
+        }
 
         map.putAll(customMap);
 
@@ -304,6 +310,14 @@ public class ApiData {
 
     public void setCustomMap(Map customMap) {
         this.customMap = customMap;
+    }
+
+    public Throwable getThrowable() {
+        return throwable;
+    }
+
+    public void setThrowable(Throwable throwable) {
+        this.throwable = throwable;
     }
 
     // endregion

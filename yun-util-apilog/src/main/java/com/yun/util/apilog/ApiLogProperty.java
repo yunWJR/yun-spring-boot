@@ -68,6 +68,8 @@ public class ApiLogProperty {
 
         private boolean response = true;
 
+        private boolean throwable = true;
+
         public boolean isStartTime() {
             return startTime;
         }
@@ -170,6 +172,14 @@ public class ApiLogProperty {
 
         public void setResponse(boolean response) {
             this.response = response;
+        }
+
+        public boolean isThrowable() {
+            return throwable;
+        }
+
+        public void setThrowable(boolean throwable) {
+            this.throwable = throwable;
         }
     }
 }
