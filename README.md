@@ -17,8 +17,8 @@
 ```xml
 <dependency>
     <groupId>com.github.yunwjr</groupId>
-    <artifactId>yun-util</artifactId>
-    <version>0.0.23</version>
+    <artifactId>yun-util-all</artifactId>
+    <version>0.0.28</version>
 </dependency>
 ```
 
