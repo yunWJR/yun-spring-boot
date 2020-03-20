@@ -1,4 +1,4 @@
-package com.yun.util.apilog;
+package com.yun.util.apilog.interceptor;
 
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;

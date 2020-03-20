@@ -1,5 +1,7 @@
-package com.yun.util.apilog;
+package com.yun.util.apilog.advice;
 
+import com.yun.util.apilog.ApiLogInterceptorComposite;
+import com.yun.util.apilog.ApiLogProperties;
 import org.springframework.context.annotation.Import;
 
 import java.lang.annotation.*;
@@ -13,7 +15,7 @@ import java.lang.annotation.*;
 @Target({ElementType.TYPE})
 @Documented
 @Import({ApiDataControllerBodyAdvice.class, ApiDataRequestBodyAdvice.class,
-        ApiDataResponseBodyAdvice.class, ApiLogProperty.class, ApiLogInterceptorComposite.class})
+        ApiDataResponseBodyAdvice.class, ApiLogProperties.class, ApiLogInterceptorComposite.class})
 public @interface EnableApiLogControllerAdvice {
 
 }

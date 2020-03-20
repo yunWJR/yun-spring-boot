@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
-import java.util.Collections;
 import java.util.List;
 
 /**
@@ -15,7 +14,7 @@ import java.util.List;
 @Component
 @Primary
 public class ApiLogInterceptorComposite implements ApiLogInterceptor {
-    private List<ApiLogInterceptor> list = Collections.emptyList();
+    private List<ApiLogInterceptor> list = null;
 
     @Autowired(required = false)
     public void setConfigurers(List<ApiLogInterceptor> items) {
@@ -25,7 +24,7 @@ public class ApiLogInterceptorComposite implements ApiLogInterceptor {
     @Override
     public boolean beforeLog(ApiData apiData) {
         if (list == null) {
-            list = Collections.emptyList();
+            return true;
         }
 
         for (ApiLogInterceptor apiLogInterceptor : list) {
@@ -40,7 +39,7 @@ public class ApiLogInterceptorComposite implements ApiLogInterceptor {
     @Override
     public boolean beforeHeart() {
         if (list == null) {
-            list = Collections.emptyList();
+            return true;
         }
 
         for (ApiLogInterceptor apiLogInterceptor : list) {

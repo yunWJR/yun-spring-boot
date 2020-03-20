@@ -1,5 +1,10 @@
-package com.yun.util.apilog;
+package com.yun.util.apilog.advice;
 
+import com.yun.util.apilog.ApiData;
+import com.yun.util.apilog.ApiDataUtil;
+import com.yun.util.apilog.ApiLogInterceptor;
+import com.yun.util.apilog.ApiLogProperties;
+import com.yun.util.apilog.annotations.ApiLogFiled;
 import com.yun.util.common.JsonUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,17 +30,17 @@ import static net.logstash.logback.argument.StructuredArguments.value;
 
 @RestControllerAdvice
 public class ApiDataResponseBodyAdvice implements ResponseBodyAdvice {
-    private final Logger log = LoggerFactory.getLogger(ApiDataInterceptor.class);
+    private final Logger log = LoggerFactory.getLogger(ApiDataResponseBodyAdvice.class);
 
-    private final ApiLogProperty apiLogProperty;
+    private final ApiLogProperties apiLogProperties;
 
     private final ApiLogInterceptor apiLogInterceptor;
 
     private Map<Method, ApiLogFiled> mtFiledMap = new HashMap<>();
     private HashSet<Method> noFiledSet = new HashSet<>();
 
-    public ApiDataResponseBodyAdvice(ApiLogProperty apiLogProperty, ApiLogInterceptor apiLogInterceptor) {
-        this.apiLogProperty = apiLogProperty;
+    public ApiDataResponseBodyAdvice(ApiLogProperties apiLogProperties, ApiLogInterceptor apiLogInterceptor) {
+        this.apiLogProperties = apiLogProperties;
         this.apiLogInterceptor = apiLogInterceptor;
     }
 
@@ -62,14 +67,15 @@ public class ApiDataResponseBodyAdvice implements ResponseBodyAdvice {
 
         apiData.updateHttp(request, filed);
 
+        // 判断是否需要记录日志
         if (apiLogInterceptor == null || apiLogInterceptor.beforeLog(apiData)) {
             try {
-                Map alMap = apiData.getLogMap(apiLogProperty);
+                Map alMap = apiData.getLogMap(apiLogProperties);
 
-                if (apiData.getThrowable() != null) {
-                    log.error(apiLogProperty.getMsg() + " {}", value(apiLogProperty.getPrefix(), alMap));
+                if (apiData.isErrorData()) {
+                    log.error(apiLogProperties.getMsg() + " {}", value(apiLogProperties.getPrefix(), alMap));
                 } else {
-                    log.info(apiLogProperty.getMsg() + " {}", value(apiLogProperty.getPrefix(), alMap));
+                    log.info(apiLogProperties.getMsg() + " {}", value(apiLogProperties.getPrefix(), alMap));
                 }
             } catch (Exception e) {
                 log.error(e.getMessage());

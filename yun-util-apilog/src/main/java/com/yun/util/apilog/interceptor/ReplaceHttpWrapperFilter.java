@@ -1,4 +1,4 @@
-package com.yun.util.apilog;
+package com.yun.util.apilog.interceptor;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;

@@ -1,18 +1,17 @@
-package com.yun.util.apilog;
+package com.yun.util.apilog.heart;
 
 import org.springframework.context.annotation.Import;
 
 import java.lang.annotation.*;
 
 /**
- * 只开启RequestWrapper
  * @author: yun
- * @createdOn: 2019/8/30 10:57.
+ * @createdOn: 2019/9/5 16:18.
  */
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.TYPE})
 @Documented
-@Import({HttpWrapperFilterConfig.class})
-public @interface EnableRequestWrapper {
+@Import({ApiDataHeartScheduleConfig.class})
+public @interface EnableHeartLog {
 }

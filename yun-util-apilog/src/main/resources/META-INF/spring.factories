@@ -1,2 +1,2 @@
 #org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-#  com.yun.util.apilog.EnableApiLogControllerAdvice
+#  com.yun.util.apilog.advice.EnableApiLogControllerAdvice

@@ -1,5 +1,7 @@
-package com.yun.util.apilog;
+package com.yun.util.apilog.advice;
 
+import com.yun.util.apilog.ApiData;
+import com.yun.util.apilog.ApiDataUtil;
 import com.yun.util.common.JsonUtil;
 import org.springframework.core.MethodParameter;
 import org.springframework.http.HttpInputMessage;
@@ -30,6 +32,15 @@ public class ApiDataRequestBodyAdvice implements RequestBodyAdvice {
         return inputMessage;
     }
 
+    /**
+     * 记录请求数据
+     * @param body
+     * @param inputMessage
+     * @param parameter
+     * @param targetType
+     * @param converterType
+     * @return
+     */
     @Override
     public Object afterBodyRead(Object body, HttpInputMessage inputMessage, MethodParameter parameter,
                                 Type targetType, Class<? extends HttpMessageConverter<?>> converterType) {

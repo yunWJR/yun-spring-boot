@@ -1,5 +1,6 @@
-package com.yun.util.apilog;
+package com.yun.util.apilog.heart;
 
+import com.yun.util.apilog.ApiLogInterceptorComposite;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,9 +28,9 @@ public class ApiDataHeartScheduleConfig {
     }
 
     /**
-     * 每60s，一次心跳日志
+     * 读取配置文件，默认每60s，一次心跳日志
      */
-    @Scheduled(fixedRate = 60000)
+    @Scheduled(fixedRateString = "${yun.apilog.heartRate:60000}")
     public void heartLogTask() {
         if (apiLogInterceptor == null || apiLogInterceptor.beforeHeart()) {
             log.info("api data {}", value("api_data_heart", System.currentTimeMillis()));

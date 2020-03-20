@@ -83,6 +83,8 @@ server:
 #    io-threads: 16
 
 yun:
+  apilog:
+    heartRate: 60000
   evn:
     pro-name: pro
   auth:

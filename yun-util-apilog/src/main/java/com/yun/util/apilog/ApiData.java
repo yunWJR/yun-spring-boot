@@ -1,6 +1,7 @@
 package com.yun.util.apilog;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.yun.util.apilog.annotations.ApiLogFiled;
+import com.yun.util.apilog.interceptor.RequestWrapper;
 import com.yun.util.common.JsonUtil;
 import com.yun.util.common.ThrowableUtil;
 import org.springframework.http.server.ServerHttpRequest;
@@ -22,7 +23,6 @@ public class ApiData {
 
     private long startTime;
 
-    @JsonIgnore
     private long endTime;
 
     private long costTime;
@@ -43,16 +43,12 @@ public class ApiData {
 
     private Throwable throwable;
 
-    @JsonIgnore
     private String header;
 
-    @JsonIgnore
     private String body;
 
-    @JsonIgnore
     private String response;
 
-    @JsonIgnore
     private Map customMap = new HashMap();
 
     // endregion
@@ -94,7 +90,8 @@ public class ApiData {
     public static ApiData newItem() {
         ApiData apiData = new ApiData();
 
-        apiData.setStartTime(0);
+        // -1为错误数据，没有记录到开始时间
+        apiData.setStartTime(-1);
 
         return apiData;
     }
@@ -102,9 +99,9 @@ public class ApiData {
     public void updateEndTime() {
         this.endTime = System.currentTimeMillis();
 
-        // 无开始时间记录
-        if (this.startTime == 0) {
-            this.costTime = 99999;
+        // -1无开始时间记录
+        if (this.startTime == -1) {
+            this.costTime = -1;
             return;
         }
 
@@ -146,7 +143,7 @@ public class ApiData {
         updateEndTime();
     }
 
-    public Map getLogMap(ApiLogProperty prop) {
+    public Map getLogMap(ApiLogProperties prop) {
         Map map = new HashMap(customMap.size() + 20);
         if (prop.getIndex().isStartTime()) {
             map.put("startTime", startTime);
@@ -197,6 +194,10 @@ public class ApiData {
     }
 
     // endregion
+
+    public boolean isErrorData() {
+        return throwable != null;
+    }
 
     // region --Getter and Setter
 

@@ -1,4 +1,4 @@
-package com.yun.util.apilog;
+package com.yun.util.apilog.annotations;
 
 import java.lang.annotation.*;
 

@@ -1,5 +1,6 @@
-package com.yun.util.apilog;
+package com.yun.util.apilog.interceptor;
 
+import com.yun.util.apilog.ApiLogProperties;
 import org.springframework.context.annotation.Import;
 
 import java.lang.annotation.*;
@@ -13,7 +14,7 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.TYPE})
 @Documented
-@Import({HttpWrapperFilterConfig.class, ApiDataInterceptorConfig.class, ApiLogProperty.class})
+@Import({HttpWrapperFilterConfig.class, ApiDataInterceptorConfig.class, ApiLogProperties.class})
 public @interface EnableApiLogInterceptor {
 
 }

@@ -10,12 +10,17 @@ import org.springframework.stereotype.Component;
 
 @Component
 @ConfigurationProperties(prefix = "yun.apilog")
-public class ApiLogProperty {
+public class ApiLogProperties {
     private Index index = new Index();
 
     private String prefix = "api_data";
 
     private String msg = "api data";
+
+    /**
+     * 心跳信号时间间隔，默认60s
+     */
+    private String heartRate = "60000";
 
     public Index getIndex() {
         return index;
@@ -42,9 +47,9 @@ public class ApiLogProperty {
     }
 
     public static class Index {
-        private boolean startTime = false;
+        private boolean startTime = true;
 
-        private boolean endTime = false;
+        private boolean endTime = true;
 
         private boolean costTime = true;
 
