@@ -11,7 +11,10 @@ import org.springframework.web.servlet.config.annotation.*;
 
 @Configuration
 public class TokenAuthWebMvcConfigurer implements WebMvcConfigurer {
-    // 拦截器
+    /**
+     * 拦截器
+     * @param registry
+     */
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(new TokenAuthHandlerInterceptor())
@@ -34,7 +37,10 @@ public class TokenAuthWebMvcConfigurer implements WebMvcConfigurer {
     //             .maxAge(3600);
     // }
 
-    // 格视化
+    /**
+     * 格式化
+     * @param registry
+     */
     @Override
     public void addFormatters(FormatterRegistry registry) {
         // registry.addFormatter(new DateFormatter("yyyy-MM-dd HH:mm:ss"));
@@ -67,10 +73,12 @@ public class TokenAuthWebMvcConfigurer implements WebMvcConfigurer {
 
         registry.addResourceHandler("/v1/api/**")
                 .addResourceLocations("classpath:/META-INF/resources/v1/api/");
-
     }
 
-    // URL到视图的映射
+    /**
+     * URL到视图的映射
+     * @param registry
+     */
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
         // registry.addViewController("/index.html").setViewName("/index.btl");

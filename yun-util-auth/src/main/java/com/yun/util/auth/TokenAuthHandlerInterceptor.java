@@ -18,8 +18,6 @@ import java.io.IOException;
  * @createdOn: 2019/11/7 17:22.
  */
 
-// @Slf4j
-// @Component
 public class TokenAuthHandlerInterceptor implements HandlerInterceptor {
 
     /**
@@ -57,17 +55,18 @@ public class TokenAuthHandlerInterceptor implements HandlerInterceptor {
      * 在请求处理之前进行调用（Controller方法调用之前）
      */
     @Override
-    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
         // 跨域试探请求不处理 todo
         if (!(handler instanceof HandlerMethod)) {
             savePara(request);
             return true;
         }
+
         HandlerMethod handlerMethod = (HandlerMethod) handler;
 
         // 是否设置系统状态
         if (authUtil().noAuthWhenSystemStop(handlerMethod)) {
-            throw AuthException.ComErr("服务器已停止，请稍候重试");
+            throw AuthException.ComErr("服务状态已停止，请稍候重试");
         }
 
         // 根据注解确定是否检查
@@ -150,17 +149,17 @@ public class TokenAuthHandlerInterceptor implements HandlerInterceptor {
         AuthDtoUtil.removeAll();
 
         if (ex != null) {
-            this.handleException(response);
+            this.handleException(response, ex);
         }
     }
 
-    private void handleException(HttpServletResponse res) throws IOException {
+    private void handleException(HttpServletResponse res, Exception ex) throws IOException {
         res.resetBuffer();
         res.setHeader("Access-Control-Allow-Origin", "*");
         res.setHeader("Access-Control-Allow-Credentials", "true");
         res.setContentType("application/json");
         res.setCharacterEncoding("UTF-8");
-        res.getWriter().write("{\"code\":100009 ,\"message\" :\"解析token失败\"}");
+        res.getWriter().write(String.format("{\"code\":-1 ,\"message\" :\"%s\"}", ex.getMessage()));
         res.flushBuffer();
     }
 }

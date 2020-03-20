@@ -1,4 +1,4 @@
-package com.yun.util.auth;
+package com.yun.util.module.config;
 
 import org.springframework.context.annotation.Import;
 

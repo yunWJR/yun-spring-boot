@@ -32,10 +32,6 @@ public class AuthException extends RuntimeException {
         return new AuthException(error);
     }
 
-    public static AuthException ErrWithType(RspDataCodeType type) {
-        return new AuthException(type.getCode(), type.getMsg());
-    }
-
     // endregion
 
     // region --

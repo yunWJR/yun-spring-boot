@@ -19,13 +19,13 @@ public class AuthDtoUtil {
     public static Object getTokenDto(boolean throwEp) {
         Object dto = ThreadLocalUtil.get(AuthPropertyUtil.prop().getTokenAuthKey());
         if (dto == null && throwEp) {
-            throw AuthException.ErrWithType(RspDataCodeType.NoToken);
+            throw AuthException.ComErr("无Token数据");
         }
         return dto;
     }
 
     public static <T> T getTokenDto(Class<T> tClass, boolean throwEp) {
-        return getClassDto(tClass, AuthPropertyUtil.prop().getTokenAuthKey(), RspDataCodeType.NoToken, throwEp);
+        return getClassDto(tClass, AuthPropertyUtil.prop().getTokenAuthKey(), throwEp);
     }
 
     public static void saveAccessDto(Object dto) {
@@ -37,13 +37,13 @@ public class AuthDtoUtil {
     }
 
     public static <T> T getAccessDto(Class<T> tClass, boolean throwEp) {
-        return getClassDto(tClass, AuthPropertyUtil.prop().getAccessAuthKey(), RspDataCodeType.NoAccessExp, throwEp);
+        return getClassDto(tClass, AuthPropertyUtil.prop().getAccessAuthKey(), throwEp);
     }
 
     public static Object getAccessDto(boolean throwEp) {
         Object loginUser = ThreadLocalUtil.get(AuthPropertyUtil.prop().getAccessAuthKey());
         if (loginUser == null && throwEp) {
-            throw AuthException.ErrWithType(RspDataCodeType.NoAccessExp);
+            throw AuthException.ComErr("无Access数据");
         }
         return loginUser;
     }
@@ -57,13 +57,13 @@ public class AuthDtoUtil {
     }
 
     public static <T> T getDeviceDto(Class<T> tClass, boolean throwEp) {
-        return getClassDto(tClass, AuthPropertyUtil.prop().getDeviceTypeKey(), RspDataCodeType.NoDeviceExp, throwEp);
+        return getClassDto(tClass, AuthPropertyUtil.prop().getDeviceTypeKey(), throwEp);
     }
 
     public static Object getDeviceDto(boolean throwEp) {
         Object loginUser = ThreadLocalUtil.get(AuthPropertyUtil.prop().getDeviceTypeKey());
         if (loginUser == null && throwEp) {
-            throw AuthException.ErrWithType(RspDataCodeType.NoDeviceExp);
+            throw AuthException.ComErr("无Device数据");
         }
         return loginUser;
     }
@@ -72,7 +72,7 @@ public class AuthDtoUtil {
         ThreadLocalUtil.removeThreadLocal();
     }
 
-    public static <T> T getClassDto(Class<T> tClass, String key, RspDataCodeType code, boolean throwEp) {
+    public static <T> T getClassDto(Class<T> tClass, String key, boolean throwEp) {
         Object dto = ThreadLocalUtil.get(key);
 
         if (dto != null) {
@@ -82,7 +82,7 @@ public class AuthDtoUtil {
         }
 
         if (dto == null && throwEp) {
-            throw AuthException.ErrWithType(code);
+            throw AuthException.ComErr(String.format("无%s数据", key));
         }
 
         return null;
