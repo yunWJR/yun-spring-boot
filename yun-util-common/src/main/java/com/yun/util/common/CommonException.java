@@ -20,6 +20,11 @@ public class CommonException extends RuntimeException {
         this.code = code;
     }
 
+    public static CommonException comEp(String err) {
+        CommonException ep = new CommonException(-1, err);
+        return ep;
+    }
+
     // endregion
 
     public Integer getCode() {

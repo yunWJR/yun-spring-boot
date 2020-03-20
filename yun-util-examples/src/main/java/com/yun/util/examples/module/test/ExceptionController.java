@@ -1,7 +1,7 @@
 package com.yun.util.examples.module.test;
 
 import com.yun.util.auth.NoNeedAccessAuth;
-import com.yun.util.module.rsp.RspDataT;
+import com.yun.util.sb.rsp.RspDataT;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;

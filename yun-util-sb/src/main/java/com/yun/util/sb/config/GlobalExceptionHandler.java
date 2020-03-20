@@ -1,11 +1,12 @@
-package com.yun.util.module.config;
+package com.yun.util.sb.config;
 
 import com.yun.util.apilog.ApiDataUtil;
+import com.yun.util.common.CommonException;
 import com.yun.util.common.SpringEvn;
 import com.yun.util.common.ThrowableUtil;
-import com.yun.util.module.rsp.RspDataCodeType;
-import com.yun.util.module.rsp.RspDataException;
-import com.yun.util.module.rsp.RspDataT;
+import com.yun.util.sb.rsp.RspDataCodeType;
+import com.yun.util.sb.rsp.RspDataException;
+import com.yun.util.sb.rsp.RspDataT;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -69,6 +70,28 @@ public class GlobalExceptionHandler {
      * @param e
      * @return
      */
+    @ExceptionHandler(CommonException.class)
+    @ResponseBody
+    public RspDataT handleCommonException(CommonException e) {
+        logError("CommonException", e);
+
+        RspDataT rst = handleCommonExceptionPre(e);
+        if (rst != null) {
+            return rst;
+        }
+
+        return new RspDataT(e.getCode(), e.getMessage());
+    }
+
+    public RspDataT handleCommonExceptionPre(CommonException e) {
+        return null;
+    }
+
+    /**
+     * RspDataException 异常处理
+     * @param e
+     * @return
+     */
     @ExceptionHandler(RspDataException.class)
     @ResponseBody
     public RspDataT handleRspDataException(RspDataException e) {
@@ -80,7 +103,6 @@ public class GlobalExceptionHandler {
         }
 
         if (e.getRst() != null) {
-
             return e.getRst();
         }
 

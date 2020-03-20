@@ -49,7 +49,7 @@
 
         <dependency>
             <groupId>com.github.yunwjr</groupId>
-            <artifactId>yun-util-module</artifactId>
+            <artifactId>yun-util-sb</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
 

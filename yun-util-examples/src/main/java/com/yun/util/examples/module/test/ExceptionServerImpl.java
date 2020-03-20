@@ -1,7 +1,9 @@
 package com.yun.util.examples.module.test;
 
-import com.yun.util.module.rsp.RspDataException;
+import com.yun.util.sb.rsp.RspDataException;
 import org.springframework.stereotype.Service;
+
+import javax.persistence.EntityManager;
 
 /**
  * @author: yun
@@ -10,6 +12,8 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class ExceptionServerImpl {
+    private EntityManager entityManager;
+
     public void runtimeException() {
         throw new RuntimeException("exception test");
     }

@@ -1,8 +1,8 @@
 package com.yun.util.examples.config;
 
-import com.yun.util.module.config.GlobalExceptionHandler;
-import com.yun.util.module.rsp.RspDataException;
-import com.yun.util.module.rsp.RspDataT;
+import com.yun.util.sb.config.GlobalExceptionHandler;
+import com.yun.util.sb.rsp.RspDataException;
+import com.yun.util.sb.rsp.RspDataT;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.validator.internal.engine.ConstraintViolationImpl;
 import org.springframework.web.bind.annotation.ExceptionHandler;

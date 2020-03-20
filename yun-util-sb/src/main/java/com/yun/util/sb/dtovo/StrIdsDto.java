@@ -1,4 +1,4 @@
-package com.yun.util.module.dtovo;
+package com.yun.util.sb.dtovo;
 
 /**
  * @Description:

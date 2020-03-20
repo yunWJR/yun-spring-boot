@@ -1,4 +1,4 @@
-package com.yun.util.module.config;
+package com.yun.util.sb.config;
 
 import org.springframework.context.annotation.Import;
 

@@ -1,6 +1,6 @@
-package com.yun.util.examples.util;
+package com.yun.util.querydsl;
 
-import com.yun.util.sb.rsp.RspDataException;
+import com.yun.util.common.CommonException;
 
 import java.util.List;
 
@@ -12,15 +12,13 @@ import java.util.List;
 public class ParaUtil {
     public static boolean isStartFromOne = true;
 
-    public static Integer defPageSize = 10;
-
     public static Integer checkPageIndex(Integer pageIndex) {
         if (pageIndex == null) {
-            return 0;
+            return 1;
         }
 
-        if (pageIndex < (isStartFromOne ? 1 : 0)) {
-            throw RspDataException.RstComErrBeanWithStr("pageIndex不能小于0");
+        if (pageIndex < 0) {
+            throw CommonException.comEp("pageIndex不能小于0");
         }
 
         if (isStartFromOne) {
@@ -32,11 +30,11 @@ public class ParaUtil {
 
     public static Integer checkPageSize(Integer pageSize) {
         if (pageSize == null) {
-            return defPageSize;
+            return 10;
         }
 
         if (pageSize <= 0) {
-            throw RspDataException.RstComErrBeanWithStr("pageSize不能小于或等于0");
+            throw CommonException.comEp("pageSize不能小于或等于0");
         }
 
         return pageSize;
@@ -44,11 +42,11 @@ public class ParaUtil {
 
     public static void checkPagePara(Integer pageIndex, Integer pageSize) {
         if (pageIndex < 0) {
-            throw RspDataException.RstComErrBeanWithStr("pageIndex不能小于0");
+            throw CommonException.comEp("pageIndex不能小于0");
         }
 
         if (pageSize <= 0) {
-            throw RspDataException.RstComErrBeanWithStr("pageSize不能小于等于0");
+            throw CommonException.comEp("pageSize不能小于等于0");
         }
     }
 

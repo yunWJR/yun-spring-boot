@@ -1,4 +1,4 @@
-package com.yun.util.module.rsp;
+package com.yun.util.sb.rsp;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 

@@ -21,8 +21,9 @@
         <module>yun-util-auth</module>
         <module>yun-util-idgenerator</module>
         <module>yun-util-swagger</module>
-        <module>yun-util-module</module>
+        <module>yun-util-sb</module>
         <module>yun-util-token</module>
+        <module>yun-util-querydsl</module>
     </modules>
 
     <licenses>

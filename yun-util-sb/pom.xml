@@ -11,7 +11,7 @@
         <version>0.0.27</version>
     </parent>
 
-    <artifactId>yun-util-module</artifactId>
+    <artifactId>yun-util-sb</artifactId>
     <name>${project.artifactId}</name>
     <description>module模块</description>
     <url>https://github.com/yunWJR/yun-util</url>
@@ -23,6 +23,12 @@
         <dependency>
             <groupId>com.github.yunwjr</groupId>
             <artifactId>yun-util-common</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.yunwjr</groupId>
+            <artifactId>yun-util-auth</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
 
