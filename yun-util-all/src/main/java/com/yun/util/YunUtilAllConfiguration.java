@@ -6,6 +6,7 @@ import com.yun.util.auth.EnableAuthHandler;
 import com.yun.util.sb.config.EnableCorsFilter;
 import com.yun.util.common.SpringEvn;
 import com.yun.util.common.SpringEvnImpl;
+import com.yun.util.sb.rsp.EnableRspDataTransfer;
 import com.yun.util.swagger.EnableSwagger;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
@@ -30,6 +31,8 @@ import org.springframework.context.annotation.Configuration;
 @EnableHeartLog
 
 @EnableSwagger
+
+@EnableRspDataTransfer
 public class YunUtilAllConfiguration {
 
     @ConditionalOnMissingBean(SpringEvn.class)

@@ -4,7 +4,10 @@ import com.yun.util.apilog.ApiDataUtil;
 import com.yun.util.common.CommonException;
 import com.yun.util.common.SpringEvn;
 import com.yun.util.common.ThrowableUtil;
-import com.yun.util.sb.rsp.*;
+import com.yun.util.sb.rsp.RspDataCodeType;
+import com.yun.util.sb.rsp.RspDataException;
+import com.yun.util.sb.rsp.RspDataT;
+import com.yun.util.sb.rsp.RspDataTransfer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +35,7 @@ public class GlobalExceptionHandler {
     @Autowired
     private SpringEvn springEvn;
 
-    @Autowired
+    @Autowired(required = false)
     private RspDataTransfer rspDataTransfer;
 
     public boolean isProEvn() {
@@ -56,10 +59,10 @@ public class GlobalExceptionHandler {
         }
 
         if (isProEvn()) {
-            return rspDataTransfer.transferEp(RspDataCodeType.ComErr.getCode(), isDetailsInProEvn ? e.getMessage() : "参数异常");
+            return rstObj(RspDataCodeType.ComErr.getCode(), isDetailsInProEvn ? e.getMessage() : "参数异常");
         }
 
-        return rspDataTransfer.transferEp(RspDataCodeType.ComErr.getCode(), e.getMessage());
+        return rstObj(RspDataCodeType.ComErr.getCode(), e.getMessage());
     }
 
     public Object handleIllegalArgumentExceptionPre(IllegalArgumentException e) {
@@ -81,7 +84,7 @@ public class GlobalExceptionHandler {
             return rst;
         }
 
-        return rspDataTransfer.transferEp(e.getCode(), e.getMessage());
+        return rstObj(e.getCode(), e.getMessage());
     }
 
     public Object handleCommonExceptionPre(CommonException e) {
@@ -107,7 +110,7 @@ public class GlobalExceptionHandler {
             return e.getRst();
         }
 
-        return rspDataTransfer.transferEp(RspDataCodeType.ComErr.getCode(), e.getMessage());
+        return rstObj(RspDataCodeType.ComErr.getCode(), e.getMessage());
     }
 
     public Object handleRspDataExceptionPre(RspDataException e) {
@@ -130,7 +133,7 @@ public class GlobalExceptionHandler {
         }
 
         if (isProEvn()) {
-            return rspDataTransfer.transferEp(RspDataCodeType.ComErr.getCode(), isDetailsInProEvn ? e.getMessage() : "异常");
+            return rstObj(RspDataCodeType.ComErr.getCode(), isDetailsInProEvn ? e.getMessage() : "异常");
         }
 
         String errMsg = this.getExceptionMsg(e);
@@ -158,7 +161,7 @@ public class GlobalExceptionHandler {
         }
 
         if (isProEvn()) {
-            return rspDataTransfer.transferEp(RspDataCodeType.ComErr.getCode(), isDetailsInProEvn ? e.getMessage() : "参数验证失败");
+            return rstObj(RspDataCodeType.ComErr.getCode(), isDetailsInProEvn ? e.getMessage() : "参数验证失败");
         }
 
         List<FieldError> errors = e.getBindingResult().getFieldErrors();
@@ -168,7 +171,7 @@ public class GlobalExceptionHandler {
             errorStr.append(err).append(";");
         }
 
-        return rspDataTransfer.transferEp(RspDataCodeType.ComErr.getCode(), errorStr.toString());
+        return rstObj(RspDataCodeType.ComErr.getCode(), errorStr.toString());
     }
 
     public Object handleMethodArgumentNotValidExceptionPre(MethodArgumentNotValidException e, HttpServletRequest req) {
@@ -198,6 +201,16 @@ public class GlobalExceptionHandler {
         if (!ApiDataUtil.saveThrowable(e)) {
             log.error(title == null ? "error" : title, e);
         }
+    }
+
+    private Object rstObj(Integer code, String errorMsg) {
+        RspDataT rst = new RspDataT(code, errorMsg);
+
+        if (rspDataTransfer != null) {
+            return rspDataTransfer.transferEp(code, errorMsg);
+        }
+
+        return rst;
     }
 
     // endregion

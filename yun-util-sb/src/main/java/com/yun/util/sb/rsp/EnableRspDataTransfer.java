@@ -12,6 +12,6 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.TYPE})
 @Documented
-@Import({RspDataTransferI.class})
+@Import({RspDataProperties.class, RspDataTransferConfig.class})
 public @interface EnableRspDataTransfer {
 }

@@ -12,7 +12,7 @@ import java.util.Map;
  */
 
 @Component
-public class RspDataTransferI implements RspDataTransfer{
+public class RspDataTransferI implements RspDataTransfer {
 
     private final RspDataProperties rspDataProperties;
 
