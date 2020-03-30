@@ -8,7 +8,7 @@
     <parent>
         <groupId>com.github.yunwjr</groupId>
         <artifactId>yun-util</artifactId>
-        <version>0.0.28</version>
+        <version>0.0.29</version>
     </parent>
 
     <artifactId>yun-util-idgenerator</artifactId>
