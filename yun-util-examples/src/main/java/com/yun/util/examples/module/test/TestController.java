@@ -68,13 +68,13 @@ public class TestController {
     @PostMapping("checkDto")
     @ApiOperation("参数校验-测试用")
     @NoNeedAccessAuth
-    public RspDataT<String> checkDto(@RequestBody(required = true) @Valid CheckValidDTO data
+    public RspDataT<CheckValidDTO> checkDto(@RequestBody(required = true) @Valid CheckValidDTO data
     ) {
         if (isTestEnv()) {
             return null;
         }
 
-        return RspDataT.SurBean("验证通过");
+        return RspDataT.SurBean(data);
     }
 
     private boolean isTestEnv() {

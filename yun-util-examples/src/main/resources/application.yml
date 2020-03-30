@@ -83,6 +83,10 @@ server:
 #    io-threads: 16
 
 yun:
+  sb:
+    rsp-data:
+      errorMsg: msg
+
   apilog:
     heartRate: 60000
   evn:

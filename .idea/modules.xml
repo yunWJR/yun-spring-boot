@@ -8,11 +8,12 @@
       <module fileurl="file://$PROJECT_DIR$/yun-util-auth/yun-util-auth.iml" filepath="$PROJECT_DIR$/yun-util-auth/yun-util-auth.iml" />
       <module fileurl="file://$PROJECT_DIR$/yun-util-bom/yun-util-bom.iml" filepath="$PROJECT_DIR$/yun-util-bom/yun-util-bom.iml" />
       <module fileurl="file://$PROJECT_DIR$/yun-util-common/yun-util-common.iml" filepath="$PROJECT_DIR$/yun-util-common/yun-util-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/yun-util-examples/yun-util-examples.iml" filepath="$PROJECT_DIR$/yun-util-examples/yun-util-examples.iml" />
       <module fileurl="file://$PROJECT_DIR$/yun-util-idgenerator/yun-util-idgenerator.iml" filepath="$PROJECT_DIR$/yun-util-idgenerator/yun-util-idgenerator.iml" />
-      <module fileurl="file://$PROJECT_DIR$/yun-util-longjson/yun-util-longjson.iml" filepath="$PROJECT_DIR$/yun-util-longjson/yun-util-longjson.iml" />
-      <module fileurl="file://$PROJECT_DIR$/yun-util-module/yun-util-module.iml" filepath="$PROJECT_DIR$/yun-util-module/yun-util-module.iml" />
+      <module fileurl="file://$PROJECT_DIR$/yun-util-querydsl/yun-util-querydsl.iml" filepath="$PROJECT_DIR$/yun-util-querydsl/yun-util-querydsl.iml" />
+      <module fileurl="file://$PROJECT_DIR$/yun-util-sb/yun-util-sb.iml" filepath="$PROJECT_DIR$/yun-util-sb/yun-util-sb.iml" />
+      <module fileurl="file://$PROJECT_DIR$/yun-util-swagger/yun-util-swagger.iml" filepath="$PROJECT_DIR$/yun-util-swagger/yun-util-swagger.iml" />
       <module fileurl="file://$PROJECT_DIR$/yun-util-token/yun-util-token.iml" filepath="$PROJECT_DIR$/yun-util-token/yun-util-token.iml" />
-      <module fileurl="file://$PROJECT_DIR$/yun-util-xxx/yun-util-xxx.iml" filepath="$PROJECT_DIR$/yun-util-xxx/yun-util-xxx.iml" />
     </modules>
   </component>
 </project>

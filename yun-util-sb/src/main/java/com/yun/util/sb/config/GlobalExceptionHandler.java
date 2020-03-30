@@ -4,9 +4,7 @@ import com.yun.util.apilog.ApiDataUtil;
 import com.yun.util.common.CommonException;
 import com.yun.util.common.SpringEvn;
 import com.yun.util.common.ThrowableUtil;
-import com.yun.util.sb.rsp.RspDataCodeType;
-import com.yun.util.sb.rsp.RspDataException;
-import com.yun.util.sb.rsp.RspDataT;
+import com.yun.util.sb.rsp.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +32,9 @@ public class GlobalExceptionHandler {
     @Autowired
     private SpringEvn springEvn;
 
+    @Autowired
+    private RspDataTransfer rspDataTransfer;
+
     public boolean isProEvn() {
         return springEvn.isProEvn();
     }
@@ -46,22 +47,22 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(IllegalArgumentException.class)
     @ResponseStatus(HttpStatus.ACCEPTED)
     @ResponseBody
-    public RspDataT handleIllegalArgumentException(IllegalArgumentException e) {
+    public Object handleIllegalArgumentException(IllegalArgumentException e) {
         logError("IllegalArgumentException", e);
 
-        RspDataT rst = handleIllegalArgumentExceptionPre(e);
+        Object rst = handleIllegalArgumentExceptionPre(e);
         if (rst != null) {
             return rst;
         }
 
         if (isProEvn()) {
-            return new RspDataT(RspDataCodeType.ComErr, isDetailsInProEvn ? e.getMessage() : "参数异常");
+            return rspDataTransfer.transferEp(RspDataCodeType.ComErr.getCode(), isDetailsInProEvn ? e.getMessage() : "参数异常");
         }
 
-        return new RspDataT(RspDataCodeType.ComErr, e.getMessage());
+        return rspDataTransfer.transferEp(RspDataCodeType.ComErr.getCode(), e.getMessage());
     }
 
-    public RspDataT handleIllegalArgumentExceptionPre(IllegalArgumentException e) {
+    public Object handleIllegalArgumentExceptionPre(IllegalArgumentException e) {
         return null;
     }
 
@@ -72,18 +73,18 @@ public class GlobalExceptionHandler {
      */
     @ExceptionHandler(CommonException.class)
     @ResponseBody
-    public RspDataT handleCommonException(CommonException e) {
+    public Object handleCommonException(CommonException e) {
         logError("CommonException", e);
 
-        RspDataT rst = handleCommonExceptionPre(e);
+        Object rst = handleCommonExceptionPre(e);
         if (rst != null) {
             return rst;
         }
 
-        return new RspDataT(e.getCode(), e.getMessage());
+        return rspDataTransfer.transferEp(e.getCode(), e.getMessage());
     }
 
-    public RspDataT handleCommonExceptionPre(CommonException e) {
+    public Object handleCommonExceptionPre(CommonException e) {
         return null;
     }
 
@@ -94,10 +95,10 @@ public class GlobalExceptionHandler {
      */
     @ExceptionHandler(RspDataException.class)
     @ResponseBody
-    public RspDataT handleRspDataException(RspDataException e) {
+    public Object handleRspDataException(RspDataException e) {
         logError("RspDataException", e);
 
-        RspDataT rst = handleRspDataExceptionPre(e);
+        Object rst = handleRspDataExceptionPre(e);
         if (rst != null) {
             return rst;
         }
@@ -106,10 +107,10 @@ public class GlobalExceptionHandler {
             return e.getRst();
         }
 
-        return new RspDataT(RspDataCodeType.ComErr, e.getMessage());
+        return rspDataTransfer.transferEp(RspDataCodeType.ComErr.getCode(), e.getMessage());
     }
 
-    public RspDataT handleRspDataExceptionPre(RspDataException e) {
+    public Object handleRspDataExceptionPre(RspDataException e) {
         return null;
     }
 
@@ -120,16 +121,16 @@ public class GlobalExceptionHandler {
      */
     @ExceptionHandler(Exception.class)
     @ResponseBody
-    public RspDataT handleException(Exception e) {
+    public Object handleException(Exception e) {
         logError("Exception", e);
 
-        RspDataT rst = handleExceptionPre(e);
+        Object rst = handleExceptionPre(e);
         if (rst != null) {
             return rst;
         }
 
         if (isProEvn()) {
-            return new RspDataT(RspDataCodeType.ComErr, isDetailsInProEvn ? e.getMessage() : "异常");
+            return rspDataTransfer.transferEp(RspDataCodeType.ComErr.getCode(), isDetailsInProEvn ? e.getMessage() : "异常");
         }
 
         String errMsg = this.getExceptionMsg(e);
@@ -137,7 +138,7 @@ public class GlobalExceptionHandler {
         return RspDataT.ComErrBean(errMsg);
     }
 
-    public RspDataT handleExceptionPre(Exception e) {
+    public Object handleExceptionPre(Exception e) {
         return null;
     }
 
@@ -148,16 +149,16 @@ public class GlobalExceptionHandler {
      */
     @ExceptionHandler(MethodArgumentNotValidException.class)
     @ResponseBody
-    public RspDataT handleMethodArgumentNotValidException(MethodArgumentNotValidException e, HttpServletRequest req) {
+    public Object handleMethodArgumentNotValidException(MethodArgumentNotValidException e, HttpServletRequest req) {
         logError("MethodArgumentNotValidException", e);
 
-        RspDataT rst = handleMethodArgumentNotValidExceptionPre(e, req);
+        Object rst = handleMethodArgumentNotValidExceptionPre(e, req);
         if (rst != null) {
             return rst;
         }
 
         if (isProEvn()) {
-            return new RspDataT(RspDataCodeType.ComErr, isDetailsInProEvn ? e.getMessage() : "参数验证失败");
+            return rspDataTransfer.transferEp(RspDataCodeType.ComErr.getCode(), isDetailsInProEvn ? e.getMessage() : "参数验证失败");
         }
 
         List<FieldError> errors = e.getBindingResult().getFieldErrors();
@@ -167,10 +168,10 @@ public class GlobalExceptionHandler {
             errorStr.append(err).append(";");
         }
 
-        return new RspDataT(RspDataCodeType.ComErr, errorStr.toString());
+        return rspDataTransfer.transferEp(RspDataCodeType.ComErr.getCode(), errorStr.toString());
     }
 
-    public RspDataT handleMethodArgumentNotValidExceptionPre(MethodArgumentNotValidException e, HttpServletRequest req) {
+    public Object handleMethodArgumentNotValidExceptionPre(MethodArgumentNotValidException e, HttpServletRequest req) {
         return null;
     }
 

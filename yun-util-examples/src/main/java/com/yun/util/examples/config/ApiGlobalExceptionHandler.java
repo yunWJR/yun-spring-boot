@@ -22,7 +22,7 @@ import javax.validation.ConstraintViolationException;
 public class ApiGlobalExceptionHandler extends GlobalExceptionHandler {
 
     @Override
-    public RspDataT handleRspDataExceptionPre(RspDataException e) {
+    public Object handleRspDataExceptionPre(RspDataException e) {
         return new RspDataT();
     }
 
@@ -33,7 +33,7 @@ public class ApiGlobalExceptionHandler extends GlobalExceptionHandler {
      */
     @ExceptionHandler(ConstraintViolationException.class)
     @ResponseBody
-    public RspDataT ConstraintViolationException(ConstraintViolationException e) {
+    public Object ConstraintViolationException(ConstraintViolationException e) {
         logError("ConstraintViolationException", e);
 
         if (isProEvn()) {
