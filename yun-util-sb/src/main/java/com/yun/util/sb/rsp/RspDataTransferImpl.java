@@ -12,14 +12,14 @@ import java.util.Map;
  */
 
 @Component
-public class RspDataTransferI implements RspDataTransfer {
+public class RspDataTransferImpl implements RspDataTransfer {
 
     private final RspDataProperties rspDataProperties;
 
     private boolean isOrg = true;
 
     @Autowired
-    public RspDataTransferI(RspDataProperties rspDataProperties) {
+    public RspDataTransferImpl(RspDataProperties rspDataProperties) {
         this.rspDataProperties = rspDataProperties;
 
         RspDataProperties org = new RspDataProperties();

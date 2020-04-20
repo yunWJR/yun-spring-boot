@@ -18,6 +18,6 @@ public class RspDataTransferConfig {
     @Bean
     @ConditionalOnMissingBean
     RspDataTransfer rspDataTransfer() {
-        return new RspDataTransferI(prop);
+        return new RspDataTransferImpl(prop);
     }
 }
