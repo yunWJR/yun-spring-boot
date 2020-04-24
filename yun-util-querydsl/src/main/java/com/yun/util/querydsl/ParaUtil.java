@@ -14,18 +14,19 @@ public class ParaUtil {
 
     public static Integer checkPageIndex(Integer pageIndex) {
         if (pageIndex == null) {
-            return 1;
+            return 0;
         }
 
-        if (pageIndex < 0) {
-            throw CommonException.comEp("pageIndex不能小于0");
-        }
-
+        int nI = pageIndex;
         if (isStartFromOne) {
-            return pageIndex - 1;
+            nI = nI - 1;
         }
 
-        return pageIndex;
+        if (nI < 0) {
+            throw CommonException.comEp("pageIndex无效");
+        }
+
+        return nI;
     }
 
     public static Integer checkPageSize(Integer pageSize) {

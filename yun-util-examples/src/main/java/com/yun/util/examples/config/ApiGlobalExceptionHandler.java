@@ -33,7 +33,7 @@ public class ApiGlobalExceptionHandler extends GlobalExceptionHandler {
      */
     @ExceptionHandler(ConstraintViolationException.class)
     @ResponseBody
-    public Object ConstraintViolationException(ConstraintViolationException e) {
+    public Object constraintViolationException(ConstraintViolationException e) {
         logError("ConstraintViolationException", e);
 
         if (isProEvn()) {
