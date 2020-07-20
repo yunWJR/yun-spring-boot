@@ -1,8 +1,11 @@
 package com.yun.util.swagger;
 
+import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.AutoConfigurationPackages;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.util.StringUtils;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.ParameterBuilder;
 import springfox.documentation.builders.PathSelectors;
@@ -31,6 +34,9 @@ public class Swagger2Config {
 
     @Autowired
     private SwaggerProperty prop;
+
+    @Autowired
+    private BeanFactory beanFactory;
 
     @Bean
     public Docket createRestApi() {
@@ -86,11 +92,16 @@ public class Swagger2Config {
             operationParameters.add(tokenBd.build());
         }
 
+        String basePackage = prop.getBasePackage();
+        if (StringUtils.isEmpty(basePackage)) {
+            basePackage = AutoConfigurationPackages.get(beanFactory).get(0);
+        }
+
         return new Docket(DocumentationType.SWAGGER_2)
                 .globalOperationParameters(operationParameters)
                 .apiInfo(apiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage(prop.getBasePackage()))
+                .apis(RequestHandlerSelectors.basePackage(basePackage))
                 .paths(PathSelectors.any())
                 .build();
     }
