@@ -27,12 +27,7 @@ public class RspDataT<T> {
     private T result;
 
     /**
-     * 4.服务名称-可选
-     */
-    private String serverName = "";
-
-    /**
-     * 5.详细信息
+     * 4.详细信息
      */
     private String details = "";
 
@@ -177,15 +172,15 @@ public class RspDataT<T> {
     /**
      * @return
      */
-    public String getServerName() {
-        return serverName;
+    public String getDetails() {
+        return details;
     }
 
     /**
-     * @param serverName
+     * @param details
      */
-    public void setServerName(String serverName) {
-        this.serverName = serverName;
+    public void setDetails(String details) {
+        this.details = details;
     }
 
     // endregion

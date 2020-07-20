@@ -26,20 +26,20 @@
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger2</artifactId>
             <version>${springfox-swagger-ui.version}</version>
-            <exclusions>
-                <!--                去除 input 错误-->
-                <exclusion>
-                    <groupId>io.swagger</groupId>
-                    <artifactId>swagger-models</artifactId>
-                </exclusion>
-            </exclusions>
+<!--            <exclusions>-->
+<!--                &lt;!&ndash;                去除 input 错误&ndash;&gt;-->
+<!--                <exclusion>-->
+<!--                    <groupId>io.swagger</groupId>-->
+<!--                    <artifactId>swagger-models</artifactId>-->
+<!--                </exclusion>-->
+<!--            </exclusions>-->
         </dependency>
-        <!--                去除 input 错误-->
-        <dependency>
-            <groupId>io.swagger</groupId>
-            <artifactId>swagger-models</artifactId>
-            <version>${swagger-models.version}</version>
-        </dependency>
+<!--        &lt;!&ndash;                去除 input 错误&ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>io.swagger</groupId>-->
+<!--            <artifactId>swagger-models</artifactId>-->
+<!--            <version>${swagger-models.version}</version>-->
+<!--        </dependency>-->
         <!-- https://mvnrepository.com/artifact/io.swagger.core.v3/swagger-models -->
         <!--        <dependency>-->
         <!--            <groupId>io.swagger.core.v3</groupId>-->
@@ -48,6 +48,7 @@
         <!--        </dependency>-->
 
 
+<!--        https://mvnrepository.com/artifact/io.springfox/springfox-swagger-ui-->
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger-ui</artifactId>

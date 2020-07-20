@@ -3,8 +3,8 @@ spring:
     active: dev
   application:
     name: yun-util-examples
-  jmx:
-    default-domain: yun-util-examples
+#  jmx:
+#    default-domain: yun-util-examples
   output:
     ansi:
       enabled: detect
@@ -68,8 +68,8 @@ spring:
 
 server:
   port: 10099
-  #  servlet:
-  #    context-path: /cs-api
+  servlet:
+    context-path: /yun-util-api
   tomcat:
     #    20m
     max-http-post-size: 20971520
@@ -86,7 +86,6 @@ yun:
   sb:
     rsp-data:
       errorMsg: msg
-
   apilog:
     heartRate: 60000
   evn:

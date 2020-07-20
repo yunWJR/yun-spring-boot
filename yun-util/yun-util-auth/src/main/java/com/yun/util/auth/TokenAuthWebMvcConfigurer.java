@@ -73,6 +73,9 @@ public class TokenAuthWebMvcConfigurer implements WebMvcConfigurer {
 
         registry.addResourceHandler("/v1/api/**")
                 .addResourceLocations("classpath:/META-INF/resources/v1/api/");
+
+        registry.addResourceHandler("/v2/api/**")
+                .addResourceLocations("classpath:/META-INF/resources/v2/api/");
     }
 
     /**

@@ -59,11 +59,13 @@ public class ApiDataRequestBodyAdvice implements RequestBodyAdvice {
             apiData = ApiData.newItem();
         }
 
-        ApiLogFiledStatus status = ApiLogAnnotationsUtil.getFiledStatus(parameter.getMethod(), apiLogProperties);
-        apiData.setStatus(status);
+        if (apiData.getStatus() == null) {
+            ApiLogFiledStatus status = ApiLogAnnotationsUtil.getFiledStatus(parameter.getMethod(), apiLogProperties);
+            apiData.setStatus(status);
+        }
 
         // 保存 body
-        if (status.isHeader()) {
+        if (apiData.getStatus().isHeader()) {
             boolean isJsonBody = false;
             if (inputMessage.getHeaders() != null) {
                 List<String> ctHeaders = inputMessage.getHeaders().get("Content-Type");

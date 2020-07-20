@@ -5,7 +5,7 @@ import com.yun.util.apilog.ApiDataUtil;
 import com.yun.util.apilog.ApiLogInterceptor;
 import com.yun.util.apilog.ApiLogProperties;
 import com.yun.util.apilog.annotations.ApiLogAnnotationsUtil;
-import com.yun.util.apilog.annotations.ApiLogFiled;
+import com.yun.util.apilog.annotations.ApiLogFiledStatus;
 import com.yun.util.common.JsonUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -61,7 +61,10 @@ public class ApiDataResponseBodyAdvice implements ResponseBodyAdvice {
             apiData = ApiData.newItem();
         }
 
-        ApiLogFiled filed = ApiLogAnnotationsUtil.getFiled(returnType.getMethod());
+        if (apiData.getStatus() == null) {
+            ApiLogFiledStatus status = ApiLogAnnotationsUtil.getFiledStatus(returnType.getMethod(), apiLogProperties);
+            apiData.setStatus(status);
+        }
 
         // 保存 rsp
         if (apiData.getStatus().isResponseBody()) {
@@ -72,7 +75,7 @@ public class ApiDataResponseBodyAdvice implements ResponseBodyAdvice {
 
         // 保存 header
         if (apiData.getStatus().isHeader()) {
-            apiData.updateHttp(request, filed);
+            apiData.updateHttp(request);
         }
 
         // 判断是否需要记录日志

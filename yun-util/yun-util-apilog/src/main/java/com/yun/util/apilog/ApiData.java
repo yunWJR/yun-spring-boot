@@ -1,6 +1,5 @@
 package com.yun.util.apilog;
 
-import com.yun.util.apilog.annotations.ApiLogFiled;
 import com.yun.util.apilog.annotations.ApiLogFiledStatus;
 import com.yun.util.common.JsonUtil;
 import com.yun.util.common.ThrowableUtil;
@@ -108,7 +107,7 @@ public class ApiData {
         this.costTime = this.endTime - this.startTime;
     }
 
-    public void updateHttp(ServerHttpRequest request, ApiLogFiled filed) {
+    public void updateHttp(ServerHttpRequest request) {
         if (request == null) {
             return;
         }
@@ -125,18 +124,18 @@ public class ApiData {
             this.query = request.getURI().getQuery();
         }
 
-        if (request.getHeaders() != null && (filed == null || filed.header())) {
+        if (request.getHeaders() != null && status.isHeader()) {
             this.header = JsonUtil.toStr(request.getHeaders().entrySet());
         }
 
         // filed
-        if (filed != null && !filed.requestBody()) {
+        if (!status.isRequestBody()) {
             this.body = "disable";
         }
-        if (filed != null && !filed.responseBody()) {
+        if (!status.isResponseBody()) {
             this.response = "disable";
         }
-        if (filed != null && !filed.header()) {
+        if (!status.isHeader()) {
             this.header = "disable";
         }
 
