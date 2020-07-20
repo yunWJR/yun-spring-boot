@@ -7,7 +7,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  * @author yun
  * created_time 2018/7/25 14:50.
  */
-@ConfigurationProperties("snowflakeidworker")
+@ConfigurationProperties("yun.snowflakeid")
 public class SnowflakeIdWorkerProperties {
     /**
      * 工作机器ID(0~31)
