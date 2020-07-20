@@ -1,13 +1,11 @@
 package com.yun.util.apilog;
 
 import com.yun.util.apilog.annotations.ApiLogFiled;
-import com.yun.util.apilog.interceptor.RequestWrapper;
+import com.yun.util.apilog.annotations.ApiLogFiledStatus;
 import com.yun.util.common.JsonUtil;
 import com.yun.util.common.ThrowableUtil;
 import org.springframework.http.server.ServerHttpRequest;
 
-import javax.servlet.http.HttpServletRequest;
-import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -18,6 +16,8 @@ import java.util.Map;
  */
 
 public class ApiData {
+
+    private ApiLogFiledStatus status;
 
     // region --Field
 
@@ -59,33 +59,33 @@ public class ApiData {
         this.startTime = System.currentTimeMillis();
     }
 
-    public ApiData(HttpServletRequest request) {
-        this.startTime = System.currentTimeMillis();
-
-        this.url = request.getMethod() + " " + request.getRequestURI();
-
-        this.query = request.getQueryString();
-
-        Enumeration<String> names = request.getHeaderNames();
-        Map<String, String> headerMap = new HashMap<>();
-        //输出所有的头信息的名字
-        while (names.hasMoreElements()) {
-            //获取request 的请求头名字name
-            String name = names.nextElement();
-            //根据头名字获取对应的值
-            String value = request.getHeader(name);
-            //输出：
-            headerMap.put(name, value);
-        }
-
-        this.header = JsonUtil.toStr(headerMap);
-
-        try {
-            this.body = new RequestWrapper(request).getBodyString();
-        } catch (Exception e) {
-            this.body = "error body";
-        }
-    }
+    // public ApiData(HttpServletRequest request) {
+    //     this.startTime = System.currentTimeMillis();
+    //
+    //     this.url = request.getMethod() + " " + request.getRequestURI();
+    //
+    //     this.query = request.getQueryString();
+    //
+    //     Enumeration<String> names = request.getHeaderNames();
+    //     Map<String, String> headerMap = new HashMap<>();
+    //     //输出所有的头信息的名字
+    //     while (names.hasMoreElements()) {
+    //         //获取request 的请求头名字name
+    //         String name = names.nextElement();
+    //         //根据头名字获取对应的值
+    //         String value = request.getHeader(name);
+    //         //输出：
+    //         headerMap.put(name, value);
+    //     }
+    //
+    //     this.header = JsonUtil.toStr(headerMap);
+    //
+    //     try {
+    //         this.body = new RequestWrapper(request).getBodyString();
+    //     } catch (Exception e) {
+    //         this.body = "error body";
+    //     }
+    // }
 
     public static ApiData newItem() {
         ApiData apiData = new ApiData();
@@ -319,6 +319,14 @@ public class ApiData {
 
     public void setThrowable(Throwable throwable) {
         this.throwable = throwable;
+    }
+
+    public ApiLogFiledStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(ApiLogFiledStatus status) {
+        this.status = status;
     }
 
     // endregion

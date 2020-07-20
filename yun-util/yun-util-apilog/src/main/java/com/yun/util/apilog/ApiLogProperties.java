@@ -11,16 +11,48 @@ import org.springframework.stereotype.Component;
 @Component
 @ConfigurationProperties(prefix = "yun.apilog")
 public class ApiLogProperties {
+    /**
+     * 各项
+     */
     private Index index = new Index();
 
+    /**
+     * 日志前缀
+     */
     private String prefix = "api_data";
 
+    /**
+     * 消息体标题
+     */
     private String msg = "api data";
 
     /**
      * 心跳信号时间间隔，默认60s
      */
     private String heartRate = "60000";
+
+    /**
+     * 不记录日志
+     */
+    private boolean ignoreLog = false;
+
+    /**
+     * 是否记录 header
+     * @return
+     */
+    private boolean header = true;
+
+    /**
+     * 是否记录 requestBody
+     * @return
+     */
+    private boolean requestBody = true;
+
+    /**
+     * 是否记录 responseBody
+     * @return
+     */
+    private boolean responseBody = true;
 
     public Index getIndex() {
         return index;
@@ -44,6 +76,46 @@ public class ApiLogProperties {
 
     public void setMsg(String msg) {
         this.msg = msg;
+    }
+
+    public String getHeartRate() {
+        return heartRate;
+    }
+
+    public void setHeartRate(String heartRate) {
+        this.heartRate = heartRate;
+    }
+
+    public boolean isIgnoreLog() {
+        return ignoreLog;
+    }
+
+    public void setIgnoreLog(boolean ignoreLog) {
+        this.ignoreLog = ignoreLog;
+    }
+
+    public boolean isHeader() {
+        return header;
+    }
+
+    public void setHeader(boolean header) {
+        this.header = header;
+    }
+
+    public boolean isRequestBody() {
+        return requestBody;
+    }
+
+    public void setRequestBody(boolean requestBody) {
+        this.requestBody = requestBody;
+    }
+
+    public boolean isResponseBody() {
+        return responseBody;
+    }
+
+    public void setResponseBody(boolean responseBody) {
+        this.responseBody = responseBody;
     }
 
     public static class Index {

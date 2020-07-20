@@ -4,6 +4,7 @@ import com.yun.util.apilog.ApiData;
 import com.yun.util.apilog.ApiDataUtil;
 import com.yun.util.apilog.ApiLogInterceptor;
 import com.yun.util.apilog.ApiLogProperties;
+import com.yun.util.apilog.annotations.ApiLogAnnotationsUtil;
 import com.yun.util.apilog.annotations.ApiLogFiled;
 import com.yun.util.common.JsonUtil;
 import org.slf4j.Logger;
@@ -15,10 +16,6 @@ import org.springframework.http.server.ServerHttpResponse;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 
-import java.lang.annotation.Annotation;
-import java.lang.reflect.Method;
-import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
 
 import static net.logstash.logback.argument.StructuredArguments.value;
@@ -36,9 +33,6 @@ public class ApiDataResponseBodyAdvice implements ResponseBodyAdvice {
 
     private final ApiLogInterceptor apiLogInterceptor;
 
-    private Map<Method, ApiLogFiled> mtFiledMap = new HashMap<>();
-    private HashSet<Method> noFiledSet = new HashSet<>();
-
     public ApiDataResponseBodyAdvice(ApiLogProperties apiLogProperties, ApiLogInterceptor apiLogInterceptor) {
         this.apiLogProperties = apiLogProperties;
         this.apiLogInterceptor = apiLogInterceptor;
@@ -49,6 +43,16 @@ public class ApiDataResponseBodyAdvice implements ResponseBodyAdvice {
         return true;
     }
 
+    /**
+     * 记录返回数据和 header
+     * @param body
+     * @param returnType
+     * @param selectedContentType
+     * @param selectedConverterType
+     * @param request
+     * @param response
+     * @return
+     */
     @Override
     public Object beforeBodyWrite(Object body, MethodParameter returnType, MediaType selectedContentType,
                                   Class selectedConverterType, ServerHttpRequest request, ServerHttpResponse response) {
@@ -57,18 +61,22 @@ public class ApiDataResponseBodyAdvice implements ResponseBodyAdvice {
             apiData = ApiData.newItem();
         }
 
-        ApiLogFiled filed = getFiled(returnType.getMethod());
+        ApiLogFiled filed = ApiLogAnnotationsUtil.getFiled(returnType.getMethod());
 
-        if (filed == null || filed.responseBody()) {
+        // 保存 rsp
+        if (apiData.getStatus().isResponseBody()) {
             String rsp = getRsp(body, request);
 
             apiData.setResponse(rsp);
         }
 
-        apiData.updateHttp(request, filed);
+        // 保存 header
+        if (apiData.getStatus().isHeader()) {
+            apiData.updateHttp(request, filed);
+        }
 
         // 判断是否需要记录日志
-        if (apiLogInterceptor == null || apiLogInterceptor.beforeLog(apiData)) {
+        if (!apiData.getStatus().isIgnoreLog() && apiLogInterceptor == null || apiLogInterceptor.beforeLog(apiData)) {
             try {
                 Map alMap = apiData.getLogMap(apiLogProperties);
 
@@ -85,31 +93,6 @@ public class ApiDataResponseBodyAdvice implements ResponseBodyAdvice {
         ApiDataUtil.removeAdviceData();
 
         return body;
-    }
-
-    private ApiLogFiled getFiled(Method mt) {
-        ApiLogFiled item = mtFiledMap.get(mt);
-        if (item != null) {
-            return item;
-        }
-
-        if (noFiledSet.contains(mt)) {
-            return null;
-        }
-
-        for (Annotation at : mt.getDeclaredAnnotations()) {
-            if (at.annotationType() == ApiLogFiled.class) {
-
-                ApiLogFiled filed = (ApiLogFiled) at;
-
-                mtFiledMap.put(mt, filed);
-                return filed;
-            }
-        }
-
-        noFiledSet.add(mt);
-
-        return null;
     }
 
     private String getRsp(Object body, ServerHttpRequest request) {

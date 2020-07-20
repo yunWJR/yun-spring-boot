@@ -2,6 +2,9 @@ package com.yun.util.apilog.advice;
 
 import com.yun.util.apilog.ApiData;
 import com.yun.util.apilog.ApiDataUtil;
+import com.yun.util.apilog.ApiLogProperties;
+import com.yun.util.apilog.annotations.ApiLogAnnotationsUtil;
+import com.yun.util.apilog.annotations.ApiLogFiledStatus;
 import com.yun.util.common.JsonUtil;
 import org.springframework.core.MethodParameter;
 import org.springframework.http.HttpInputMessage;
@@ -20,6 +23,12 @@ import java.util.List;
 
 @RestControllerAdvice
 public class ApiDataRequestBodyAdvice implements RequestBodyAdvice {
+
+    private final ApiLogProperties apiLogProperties;
+
+    public ApiDataRequestBodyAdvice(ApiLogProperties apiLogProperties) {
+        this.apiLogProperties = apiLogProperties;
+    }
 
     @Override
     public boolean supports(MethodParameter methodParameter, Type targetType, Class<? extends HttpMessageConverter<?>> converterType) {
@@ -44,28 +53,35 @@ public class ApiDataRequestBodyAdvice implements RequestBodyAdvice {
     @Override
     public Object afterBodyRead(Object body, HttpInputMessage inputMessage, MethodParameter parameter,
                                 Type targetType, Class<? extends HttpMessageConverter<?>> converterType) {
+
         ApiData apiData = ApiDataUtil.getAdviceData();
         if (apiData == null) {
             apiData = ApiData.newItem();
         }
 
-        boolean isJsonBody = false;
-        if (inputMessage.getHeaders() != null) {
-            List<String> ctHeaders = inputMessage.getHeaders().get("Content-Type");
-            if (ctHeaders != null && ctHeaders.size() > 0) {
-                for (String ctHeader : ctHeaders) {
-                    if (ApiDataUtil.canToJson(ctHeader)) {
-                        isJsonBody = true;
-                        break;
+        ApiLogFiledStatus status = ApiLogAnnotationsUtil.getFiledStatus(parameter.getMethod(), apiLogProperties);
+        apiData.setStatus(status);
+
+        // 保存 body
+        if (status.isHeader()) {
+            boolean isJsonBody = false;
+            if (inputMessage.getHeaders() != null) {
+                List<String> ctHeaders = inputMessage.getHeaders().get("Content-Type");
+                if (ctHeaders != null && ctHeaders.size() > 0) {
+                    for (String ctHeader : ctHeaders) {
+                        if (ApiDataUtil.canToJson(ctHeader)) {
+                            isJsonBody = true;
+                            break;
+                        }
                     }
                 }
             }
-        }
 
-        if (isJsonBody) {
-            apiData.setBody(JsonUtil.toStr(body));
-        } else {
-            apiData.setBody(body.toString());
+            if (isJsonBody) {
+                apiData.setBody(JsonUtil.toStr(body));
+            } else {
+                apiData.setBody(body.toString());
+            }
         }
 
         ApiDataUtil.saveAdviceData(apiData);
