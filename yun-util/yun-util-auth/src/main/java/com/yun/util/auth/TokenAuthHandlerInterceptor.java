@@ -48,6 +48,10 @@ public class TokenAuthHandlerInterceptor implements HandlerInterceptor {
             authUtil = SpringContextUtil.getBean(AuthUtil.class);
         }
 
+        if (authUtil == null) {
+            throw AuthException.ComErr("AuthUtil 不存在");
+        }
+
         return authUtil;
     }
 

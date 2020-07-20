@@ -18,7 +18,11 @@ public class SpringContextUtil implements ApplicationContextAware {
         return applicationContext;
     }
 
-    // 目前通过此种方式获取注入的spring bean
+    /**
+     * 通过此种方式获取注入的spring bean
+     * @param applicationContext
+     * @throws BeansException
+     */
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
         SpringContextUtil.applicationContext = applicationContext;

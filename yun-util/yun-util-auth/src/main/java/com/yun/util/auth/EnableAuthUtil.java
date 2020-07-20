@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Import;
 import java.lang.annotation.*;
 
 /**
+ * 开启权限处理工具
  * @author yun
  * created_time 2019-07-29 15:14.
  */
