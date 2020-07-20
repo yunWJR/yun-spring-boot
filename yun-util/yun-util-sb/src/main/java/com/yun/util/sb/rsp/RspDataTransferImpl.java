@@ -19,21 +19,21 @@ public class RspDataTransferImpl implements RspDataTransfer {
     private boolean isOrg = true;
 
     @Autowired
-    public RspDataTransferImpl(RspDataProperties rspDataProperties) {
-        this.rspDataProperties = rspDataProperties;
+    public RspDataTransferImpl(RspDataProperties prop) {
+        this.rspDataProperties = prop;
 
         RspDataProperties org = new RspDataProperties();
-        if (!org.getCodeKey().equals(rspDataProperties.getCodeKey())) {
+        if (!org.getCodeKey().equals(prop.getCodeKey())) {
             isOrg = false;
             return;
         }
 
-        if (!org.getDataKey().equals(rspDataProperties.getDataKey())) {
+        if (!org.getDataKey().equals(prop.getDataKey())) {
             isOrg = false;
             return;
         }
 
-        if (!org.getErrorMsgKey().equals(rspDataProperties.getErrorMsgKey())) {
+        if (!org.getErrorMsgKey().equals(prop.getErrorMsgKey())) {
             isOrg = false;
             return;
         }
@@ -60,8 +60,8 @@ public class RspDataTransferImpl implements RspDataTransfer {
         Map<String, Object> mapRst = new HashMap<>(3);
 
         mapRst.put(rspDataProperties.getCodeKey(), rspDataT.getCode());
-        mapRst.put(rspDataProperties.getDataKey(), rspDataT.getData());
-        mapRst.put(rspDataProperties.getErrorMsgKey(), rspDataT.getErrorMsg());
+        mapRst.put(rspDataProperties.getDataKey(), rspDataT.getResult());
+        mapRst.put(rspDataProperties.getErrorMsgKey(), rspDataT.getMessage());
 
         return mapRst;
     }

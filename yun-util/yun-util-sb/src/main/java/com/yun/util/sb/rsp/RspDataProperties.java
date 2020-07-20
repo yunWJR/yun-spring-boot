@@ -16,8 +16,8 @@ import java.util.List;
 @ConfigurationProperties(prefix = PropertyDefine.PROP_PRE + ".rsp-data")
 public class RspDataProperties {
     private String codeKey = "code";
-    private String dataKey = "data";
-    private String errorMsgKey = "errorMsg";
+    private String dataKey = "result";
+    private String errorMsgKey = "message";
 
     private List<KeyName> other = new ArrayList<>();
 

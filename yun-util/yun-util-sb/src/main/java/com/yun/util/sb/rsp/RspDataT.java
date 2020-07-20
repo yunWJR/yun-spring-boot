@@ -19,17 +19,22 @@ public class RspDataT<T> {
     /**
      * 2.错误信息
      */
-    private String errorMsg = "";
+    private String message = "";
 
     /**
      * 3.结果数据
      */
-    private T data;
+    private T result;
 
     /**
      * 4.服务名称-可选
      */
     private String serverName = "";
+
+    /**
+     * 5.详细信息
+     */
+    private String details = "";
 
     // endregion
 
@@ -43,12 +48,12 @@ public class RspDataT<T> {
 
     /**
      * Instantiates a new Base rst bean.
-     * @param data the data
+     * @param result the data
      */
-    public RspDataT(T data) {
+    public RspDataT(T result) {
         this.initForSuc();
 
-        this.data = data;
+        this.result = result;
     }
 
     /**
@@ -57,32 +62,32 @@ public class RspDataT<T> {
      */
     public RspDataT(RspDataCodeType type) {
         this.code = type.getCode();
-        this.errorMsg = type.getMsg();
+        this.message = type.getMsg();
     }
 
     /**
      * Instantiates a new Base rst bean.
-     * @param type     the itemType
-     * @param errorMsg the error msg
+     * @param type    the itemType
+     * @param message the error msg
      */
-    public RspDataT(RspDataCodeType type, String errorMsg) {
+    public RspDataT(RspDataCodeType type, String message) {
         this.code = type.getCode();
 
-        if (errorMsg != null && errorMsg.length() > 0) {
-            this.errorMsg = errorMsg;
+        if (message != null && message.length() > 0) {
+            this.message = message;
         } else {
-            this.errorMsg = type.getMsg();
+            this.message = type.getMsg();
         }
     }
 
     /**
      * Instantiates a new Base rst bean.
-     * @param code     the code
-     * @param errorMsg the error msg
+     * @param code    the code
+     * @param message the error msg
      */
-    public RspDataT(int code, String errorMsg) {
+    public RspDataT(int code, String message) {
         this.code = code;
-        this.errorMsg = errorMsg;
+        this.message = message;
     }
 
     // endregion
@@ -141,32 +146,32 @@ public class RspDataT<T> {
      * Gets error msg.
      * @return the error msg
      */
-    public String getErrorMsg() {
-        return errorMsg;
+    public String getMessage() {
+        return message;
     }
 
     /**
      * Sets error msg.
-     * @param errorMsg the error msg
+     * @param message the error msg
      */
-    public void setErrorMsg(String errorMsg) {
-        this.errorMsg = errorMsg;
+    public void setMessage(String message) {
+        this.message = message;
     }
 
     /**
      * Gets data.
      * @return the data
      */
-    public T getData() {
-        return data;
+    public T getResult() {
+        return result;
     }
 
     /**
      * Sets data.
-     * @param data the data
+     * @param result the data
      */
-    public void setData(T data) {
-        this.data = data;
+    public void setResult(T result) {
+        this.result = result;
     }
 
     /**
@@ -215,7 +220,7 @@ public class RspDataT<T> {
      */
     public void updateByCodeType(RspDataCodeType type) {
         this.code = type.getCode();
-        this.errorMsg = type.getMsg();
+        this.message = type.getMsg();
     }
 
     /**
@@ -231,13 +236,13 @@ public class RspDataT<T> {
     public void initForComErr() {
         this.updateByCodeType(RspDataCodeType.ComErr);
 
-        this.setData(null);
+        this.setResult(null);
     }
 
     public <E> RspDataT<E> errRst() {
         RspDataT<E> err = new RspDataT<E>();
         err.setCode(this.code);
-        err.setErrorMsg(this.errorMsg);
+        err.setMessage(this.message);
 
         return err;
     }

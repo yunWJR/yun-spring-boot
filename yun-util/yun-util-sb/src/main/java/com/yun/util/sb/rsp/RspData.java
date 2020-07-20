@@ -19,7 +19,7 @@ public class RspData extends RspDataT<Object> {
     public RspData(Object data) {
         this.initForSuc();
 
-        setData(data);
+        setResult(data);
     }
 
     /**
@@ -28,7 +28,7 @@ public class RspData extends RspDataT<Object> {
      */
     public RspData(RspDataCodeType type) {
         setCode(type.getCode());
-        setErrorMsg(type.getMsg());
+        setMessage(type.getMsg());
     }
 
     /**
@@ -40,9 +40,9 @@ public class RspData extends RspDataT<Object> {
         setCode(type.getCode());
 
         if (errorMsg != null && errorMsg.length() > 0) {
-            setErrorMsg(errorMsg);
+            setMessage(errorMsg);
         } else {
-            setErrorMsg(type.getMsg());
+            setMessage(type.getMsg());
         }
     }
 
@@ -53,7 +53,7 @@ public class RspData extends RspDataT<Object> {
      */
     public RspData(int code, String errorMsg) {
         setCode(code);
-        setErrorMsg(errorMsg);
+        setMessage(errorMsg);
     }
 
     // endregion

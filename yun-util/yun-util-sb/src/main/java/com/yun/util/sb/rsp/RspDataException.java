@@ -16,7 +16,7 @@ public class RspDataException extends RuntimeException {
     // region --Constructor
 
     public RspDataException(RspData rst) {
-        super(rst.getErrorMsg());
+        super(rst.getMessage());
         this.rst = rst;
     }
 
