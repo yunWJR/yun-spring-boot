@@ -7,8 +7,8 @@ import org.springframework.context.annotation.Configuration;
 import javax.servlet.Filter;
 
 /**
- * @author: yun
- * @createdOn: 2019/8/30 09:45.
+ * @author yun
+ * created_time 2019/8/30 09:45.
  */
 
 @Configuration

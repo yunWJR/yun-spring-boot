@@ -1,8 +1,8 @@
 package com.yun.util.common;
 
 /**
- * @author: yun
- * @createdOn: 2018/6/8 09:08.
+ * @author yun
+ * created_time 2018/6/8 09:08.
  */
 
 public class StringUtil {

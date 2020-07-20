@@ -1,8 +1,8 @@
 package com.yun.util.querydsl;
 
 /**
- * @author: yun
- * @createdOn: 2019/11/8 14:21.
+ * @author yun
+ * created_time 2019/11/8 14:21.
  */
 
 import com.yun.util.common.CommonException;

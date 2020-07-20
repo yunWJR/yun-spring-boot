@@ -9,8 +9,8 @@ import java.io.IOException;
 
 /**
  * Long 类型字段序列化时转为字符串，避免丢失精度
- * @author: yun
- * @createdOn: 2018/7/27 09:04.
+ * @author yun
+ * created_time 2018/7/27 09:04.
  */
 public class LongJsonSerializer extends JsonSerializer<Long> {
     @Override

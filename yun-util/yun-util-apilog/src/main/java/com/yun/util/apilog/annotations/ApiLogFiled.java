@@ -3,8 +3,8 @@ package com.yun.util.apilog.annotations;
 import java.lang.annotation.*;
 
 /**
- * @author: yun
- * @createdOn: 2019/11/12 16:59.
+ * @author yun
+ * created_time 2019/11/12 16:59.
  */
 
 @Retention(RetentionPolicy.RUNTIME)

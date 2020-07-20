@@ -1,8 +1,8 @@
 package com.yun.util.auth;
 
 /**
- * @author: yun
- * @createdOn: 2018/6/7 14:19.
+ * @author yun
+ * created_time 2018/6/7 14:19.
  */
 
 public class AuthException extends RuntimeException {

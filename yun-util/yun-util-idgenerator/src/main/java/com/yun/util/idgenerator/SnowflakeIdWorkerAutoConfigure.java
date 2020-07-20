@@ -9,8 +9,8 @@ import org.springframework.context.annotation.Configuration;
 
 /**
  * SnowflakeIdWorker 自动配置类
- * @author: yun
- * @createdOn: 2018/7/25 14:50.
+ * @author yun
+ * created_time 2018/7/25 14:50.
  */
 @Configuration
 @ConditionalOnClass(SnowflakeIdWorker.class)

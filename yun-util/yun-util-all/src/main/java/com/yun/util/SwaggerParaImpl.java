@@ -7,8 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**
- * @author: yun
- * @createdOn: 2020/3/19 10:03.
+ * @author yun
+ * created_time 2020/3/19 10:03.
  */
 
 @Component

@@ -4,8 +4,8 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**
  * snowflakeid 配置信息
- * @author: yun
- * @createdOn: 2018/7/25 14:50.
+ * @author yun
+ * created_time 2018/7/25 14:50.
  */
 @ConfigurationProperties("snowflakeidworker")
 public class SnowflakeIdWorkerProperties {

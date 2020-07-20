@@ -5,8 +5,8 @@ import com.yun.util.apilog.ApiLogInterceptor;
 import org.springframework.stereotype.Component;
 
 /**
- * @author: yun
- * @createdOn: 2019/9/19 13:47.
+ * @author yun
+ * created_time 2019/9/19 13:47.
  */
 
 @Component

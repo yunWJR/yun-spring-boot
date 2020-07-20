@@ -44,11 +44,8 @@ public class Uuid {
     }
 
     /**
-     * @param @return 参数
+     * TODO 获取随机的6位数字密码
      * @return String    返回类型
-     * @throws
-     * @Title: getRandomPwd
-     * @Description: TODO 获取随机的6位数字密码
      */
     public static String getRandomPwd() {
         int[] array = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};

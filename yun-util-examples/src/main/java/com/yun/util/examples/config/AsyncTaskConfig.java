@@ -9,8 +9,8 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import java.util.concurrent.Executor;
 
 /**
- * @author: yun
- * @createdOn: 2019-04-10 13:42.
+ * @author yun
+ * created_time 2019-04-10 13:42.
  */
 
 @Configuration

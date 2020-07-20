@@ -5,8 +5,8 @@ import java.io.PrintWriter;
 import java.io.StringWriter;
 
 /**
- * @author: yun
- * @createdOn: 2020/3/19 16:21.
+ * @author yun
+ * created_time 2020/3/19 16:21.
  */
 
 public class ThrowableUtil {

@@ -2,8 +2,8 @@ package com.yun.util.sb.rsp;
 
 /**
  * The itemType Base rst bean.
- * @author: yun
- * @createdOn: 2018 /5/29 14:38.
+ * @author yun
+ * created_time 2018 /5/29 14:38.
  */
 public class RspData extends RspDataT<Object> {
     /**

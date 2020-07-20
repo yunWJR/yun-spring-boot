@@ -9,8 +9,8 @@ import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
 /**
- * @author: yun
- * @createdOn: 2019-03-29 18:31.
+ * @author yun
+ * created_time 2019-03-29 18:31.
  */
 
 @Data

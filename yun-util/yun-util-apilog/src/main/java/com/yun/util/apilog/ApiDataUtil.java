@@ -4,8 +4,8 @@ import com.yun.util.common.ThreadLocalUtil;
 import org.springframework.http.MediaType;
 
 /**
- * @author: yun
- * @createdOn: 2019/8/30 14:02.
+ * @author yun
+ * created_time 2019/8/30 14:02.
  */
 
 public class ApiDataUtil {

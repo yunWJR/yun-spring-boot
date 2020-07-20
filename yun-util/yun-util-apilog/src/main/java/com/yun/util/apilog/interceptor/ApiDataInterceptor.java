@@ -15,8 +15,8 @@ import static net.logstash.logback.argument.StructuredArguments.value;
 
 /**
  * 拦截请求，记录请求数据和返回数据
- * @author: yun
- * @createdOn: 2019/8/30 09:47.
+ * @author yun
+ * created_time 2019/8/30 09:47.
  */
 
 public class ApiDataInterceptor implements HandlerInterceptor {

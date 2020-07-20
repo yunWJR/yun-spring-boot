@@ -1,8 +1,8 @@
 package com.yun.util.common;
 
 /**
- * @author: yun
- * @createdOn: 2018/7/26 15:25.
+ * @author yun
+ * created_time 2018/7/26 15:25.
  */
 
 public class ValueUtil {

@@ -8,8 +8,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * @author: yun
- * @createdOn: 2019-07-12 13:36.
+ * @author yun
+ * created_time 2019-07-12 13:36.
  */
 
 public class PropUtil {

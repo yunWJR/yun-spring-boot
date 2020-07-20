@@ -3,8 +3,8 @@ package com.yun.util.auth;
 import com.yun.util.common.ThreadLocalUtil;
 
 /**
- * @author: yun
- * @createdOn: 2019-07-02 15:36.
+ * @author yun
+ * created_time 2019-07-02 15:36.
  */
 
 public class AuthDtoUtil {

@@ -13,8 +13,8 @@ import javax.validation.ConstraintViolationException;
 
 /**
  * 全局的的异常拦截器
- * @author: yun
- * @createdOn: 2019-02-25 13:23.
+ * @author yun
+ * created_time 2019-02-25 13:23.
  */
 
 @Slf4j

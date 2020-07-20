@@ -5,8 +5,8 @@ import com.yun.util.common.StringUtil;
 import com.yun.util.sb.rsp.RspDataException;
 
 /**
- * @author: yun
- * @createdOn: 2019/9/7 22:34.
+ * @author yun
+ * created_time 2019/9/7 22:34.
  */
 
 public class BaseServiceImpl {

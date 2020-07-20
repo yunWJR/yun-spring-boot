@@ -4,8 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * @author: yun
- * @createdOn: 2019-07-02 15:37.
+ * @author yun
+ * created_time 2019-07-02 15:37.
  */
 
 public class ThreadLocalUtil {

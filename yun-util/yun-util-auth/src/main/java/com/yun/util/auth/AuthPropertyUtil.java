@@ -7,8 +7,8 @@ import javax.annotation.PostConstruct;
 
 /**
  * AuthProperty 工具类
- * @author: yun
- * @createdOn: 2019-07-29 14:59.
+ * @author yun
+ * created_time 2019-07-29 14:59.
  */
 
 @Component

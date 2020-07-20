@@ -2,8 +2,8 @@ package com.yun.util.token;
 
 /**
  * AuthToken验证的配置参数
- * @author: yun
- * @createdOn: 2018 /6/4 19:59.
+ * @author yun
+ * created_time 2018 /6/4 19:59.
  */
 public class AuthTokenParam {
 

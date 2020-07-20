@@ -8,8 +8,8 @@ import org.springframework.web.filter.CorsFilter;
 
 /**
  * 跨域拦截器
- * @author: yun
- * @createdOn: 2019-03-11 10:08.
+ * @author yun
+ * created_time 2019-03-11 10:08.
  */
 
 @Configuration

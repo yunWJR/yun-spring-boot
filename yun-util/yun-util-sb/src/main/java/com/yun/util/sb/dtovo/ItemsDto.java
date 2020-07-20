@@ -3,9 +3,9 @@ package com.yun.util.sb.dtovo;
 import java.util.List;
 
 /**
- * @Description:
- * @Author: yun
- * @CreatedOn: 2018/5/28 18:33.
+ * @param <T>
+ * @author yun
+ * created_time 2018/5/28 18:33.
  */
 public class ItemsDto<T> {
     private List<T> items;

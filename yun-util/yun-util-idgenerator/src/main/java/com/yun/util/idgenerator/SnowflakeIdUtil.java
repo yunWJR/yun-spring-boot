@@ -7,8 +7,8 @@ import javax.annotation.PostConstruct;
 
 /**
  * IdentifierGenerator不能注入 bean，使用该类的静态对象来接收注入的 bean
- * @author: yun
- * @createdOn: 2018/7/25 15:15.
+ * @author yun
+ * created_time 2018/7/25 15:15.
  */
 
 @Component

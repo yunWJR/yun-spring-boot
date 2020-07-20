@@ -5,8 +5,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 
 /**
- * @author: yun
- * @createdOn: 2019-05-30 13:05.
+ * @author yun
+ * created_time 2019-05-30 13:05.
  */
 
 @Configuration

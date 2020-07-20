@@ -12,8 +12,8 @@ import java.util.Date;
 
 /**
  * The itemType Auth token util tokenParam.
- * @author: yun
- * @createdOn: 2018 /6/4 20:24.
+ * @author yun
+ * created_time 2018 /6/4 20:24.
  */
 public class AuthTokenUtil {
 

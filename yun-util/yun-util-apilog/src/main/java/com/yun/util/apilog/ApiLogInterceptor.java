@@ -1,8 +1,8 @@
 package com.yun.util.apilog;
 
 /**
- * @author: yun
- * @createdOn: 2019/9/9 17:09.
+ * @author yun
+ * created_time 2019/9/9 17:09.
  */
 
 public interface ApiLogInterceptor {

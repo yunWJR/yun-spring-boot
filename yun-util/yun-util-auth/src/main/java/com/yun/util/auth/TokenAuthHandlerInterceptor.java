@@ -14,8 +14,8 @@ import java.io.IOException;
  * 拦截器
  * 1、检查 token
  * 2、记录请求参数
- * @author: yun
- * @createdOn: 2019/11/7 17:22.
+ * @author yun
+ * created_time 2019/11/7 17:22.
  */
 
 public class TokenAuthHandlerInterceptor implements HandlerInterceptor {

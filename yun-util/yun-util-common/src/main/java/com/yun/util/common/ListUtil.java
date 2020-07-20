@@ -5,8 +5,8 @@ import java.util.*;
 /**
  * The itemType List util.
  * todo 使用 stream 识别
- * @author: yun
- * @createdOn: 2018 /8/3 16:44.
+ * @author yun
+ * created_time 2018 /8/3 16:44.
  */
 public class ListUtil {
     /**

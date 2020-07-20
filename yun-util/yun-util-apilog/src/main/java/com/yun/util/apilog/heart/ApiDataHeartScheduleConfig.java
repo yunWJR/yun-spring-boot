@@ -11,8 +11,8 @@ import org.springframework.scheduling.annotation.Scheduled;
 import static net.logstash.logback.argument.StructuredArguments.value;
 
 /**
- * @author: yun
- * @createdOn: 2019/9/5 16:13.
+ * @author yun
+ * created_time 2019/9/5 16:13.
  */
 
 @Configuration

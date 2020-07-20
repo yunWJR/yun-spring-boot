@@ -5,8 +5,8 @@ import com.yun.util.sb.rsp.RspDataException;
 import java.util.List;
 
 /**
- * @author: yun
- * @createdOn: 2019-03-01 08:46.
+ * @author yun
+ * created_time 2019-03-01 08:46.
  */
 
 public class ParaUtil {

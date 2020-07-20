@@ -5,8 +5,8 @@ import com.yun.util.common.JsonUtil;
 import java.util.Map;
 
 /**
- * @author: yun
- * @createdOn: 2020/3/20 16:57.
+ * @author yun
+ * created_time 2020/3/20 16:57.
  */
 
 public interface RspDataTransfer {

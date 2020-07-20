@@ -3,8 +3,8 @@ package com.yun.util.sb.rsp;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
- * @author: yun
- * @createdOn: 2018/8/7 10:13.
+ * @author yun
+ * created_time 2018/8/7 10:13.
  */
 
 public class RspDataT<T> {

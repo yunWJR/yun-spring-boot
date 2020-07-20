@@ -4,8 +4,8 @@ import java.util.Map;
 
 /**
  * The itemType Auth token payload.
- * @author: yun
- * @createdOn: 2018 /6/5 14:21.
+ * @author yun
+ * created_time 2018 /6/5 14:21.
  */
 public class AuthTokenPayload {
 

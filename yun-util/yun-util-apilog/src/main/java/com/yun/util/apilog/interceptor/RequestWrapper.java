@@ -10,8 +10,8 @@ import java.nio.charset.Charset;
 
 /**
  * 包装HttpServletRequest，目的是让其输入流可重复读
- * @author: yun
- * @createdOn: 2019/8/30 09:44.
+ * @author yun
+ * created_time 2019/8/30 09:44.
  */
 
 public class RequestWrapper extends HttpServletRequestWrapper {

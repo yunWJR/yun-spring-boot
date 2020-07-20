@@ -3,8 +3,8 @@ package com.yun.util.auth;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * @author: yun
- * @createdOn: 2019/11/7 17:22.
+ * @author yun
+ * created_time 2019/11/7 17:22.
  */
 
 public interface TokenAuthHandler {

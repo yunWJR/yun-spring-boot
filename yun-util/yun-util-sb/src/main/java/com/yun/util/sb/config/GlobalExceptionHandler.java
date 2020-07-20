@@ -23,8 +23,8 @@ import java.util.List;
 
 /**
  * 全局的的异常拦截器
- * @author: yun
- * @createdOn: 2019-02-25 13:23.
+ * @author yun
+ * created_time 2019-02-25 13:23.
  */
 // @RestControllerAdvice 由客户端继承后使用
 public class GlobalExceptionHandler {

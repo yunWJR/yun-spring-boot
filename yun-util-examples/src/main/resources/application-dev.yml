@@ -2,7 +2,7 @@ spring:
   datasource:
     url: jdbc:mysql://127.0.0.1:3306/yun-util?characterEncoding=utf8&useSSL=false
     username: root
-    password: Yun123
+    password: yun123
 
   jpa:
     properties:

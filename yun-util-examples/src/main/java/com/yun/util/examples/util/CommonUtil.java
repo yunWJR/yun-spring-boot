@@ -6,8 +6,8 @@ import java.util.function.Function;
 import java.util.function.Predicate;
 
 /**
- * @author: yun
- * @createdOn: 2019-03-19 16:40.
+ * @author yun
+ * created_time 2019-03-19 16:40.
  */
 
 public class CommonUtil {

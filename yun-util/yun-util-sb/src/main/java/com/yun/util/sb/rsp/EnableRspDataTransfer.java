@@ -5,8 +5,8 @@ import org.springframework.context.annotation.Import;
 import java.lang.annotation.*;
 
 /**
- * @author: yun
- * @createdOn: 2020/3/20 16:41.
+ * @author yun
+ * created_time 2020/3/20 16:41.
  */
 
 @Retention(RetentionPolicy.RUNTIME)

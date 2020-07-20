@@ -5,8 +5,8 @@ import com.querydsl.core.QueryResults;
 import java.util.List;
 
 /**
- * @author: yun
- * @createdOn: 2019-02-28 18:54.
+ * @author yun
+ * created_time 2019-02-28 18:54.
  */
 
 public class PageBean<T> {

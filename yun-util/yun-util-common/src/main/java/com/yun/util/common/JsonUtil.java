@@ -16,8 +16,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * @author: yun
- * @createdOn: 2018/7/20 13:56.
+ * @author yun
+ * created_time 2018/7/20 13:56.
  */
 
 public class JsonUtil {

@@ -9,7 +9,7 @@
 
     <groupId>com.github.yunwjr</groupId>
     <artifactId>yun-util-parent</artifactId>
-    <version>0.0.29</version>
+    <version>${yuvision}</version>
     <name>yun-util-parent</name>
     <description>yun-util-parent</description>
     <url>https://github.com/yunWJR/yun-util</url>
@@ -20,6 +20,8 @@
     </modules>
 
     <properties>
+        <yuvision>0.0.29</yuvision>
+
         <java.version>1.8</java.version>
         <compile.version>8</compile.version>
 
@@ -55,26 +57,26 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <!--                <version>3.8.1</version>-->
+                <version>3.8.1</version>
                 <configuration>
                     <source>${compile.version}</source>
                     <target>${compile.version}</target>
                 </configuration>
             </plugin>
-            <!-- Javadoc -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-javadoc-plugin</artifactId>
-                <version>3.1.1</version>
-                <executions>
-                    <execution>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>jar</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
+<!--            &lt;!&ndash; Javadoc &ndash;&gt;-->
+<!--            <plugin>-->
+<!--                <groupId>org.apache.maven.plugins</groupId>-->
+<!--                <artifactId>maven-javadoc-plugin</artifactId>-->
+<!--                <version>3.1.1</version>-->
+<!--                <executions>-->
+<!--                    <execution>-->
+<!--                        <phase>package</phase>-->
+<!--                        <goals>-->
+<!--                            <goal>jar</goal>-->
+<!--                        </goals>-->
+<!--                    </execution>-->
+<!--                </executions>-->
+<!--            </plugin>-->
         </plugins>
     </build>
 </project>

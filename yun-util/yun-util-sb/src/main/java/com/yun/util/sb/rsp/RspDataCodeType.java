@@ -2,8 +2,8 @@ package com.yun.util.sb.rsp;
 
 /**
  * The enum Base rst code itemType.
- * @author: yun
- * @createdOn: 2018 /5/29 15:42.
+ * @author yun
+ * created_time 2018 /5/29 15:42.
  */
 public enum RspDataCodeType {
 

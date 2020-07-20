@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * @author: yun
- * @createdOn: 2019-04-11 10:16.
+ * @author yun
+ * created_time 2019-04-11 10:16.
  */
 
 @Slf4j

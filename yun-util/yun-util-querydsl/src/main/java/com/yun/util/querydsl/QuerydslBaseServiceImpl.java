@@ -8,8 +8,8 @@ import javax.annotation.PostConstruct;
 import javax.persistence.EntityManager;
 
 /**
- * @author: yun
- * @createdOn: 2019/9/7 22:51.
+ * @author yun
+ * created_time 2019/9/7 22:51.
  */
 
 public class QuerydslBaseServiceImpl extends BaseServiceImpl {

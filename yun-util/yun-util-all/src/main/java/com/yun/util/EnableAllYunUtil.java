@@ -6,14 +6,14 @@ import java.lang.annotation.*;
 
 /**
  * 开启所有的 YunUtil 功能，详见 {@link YunUtilAllConfiguration}
- * @author: yun
- * @createdOn: 2019/8/30 14:38.
+ * @author yun
+ * created_time 2019/8/30 14:38.
  */
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.TYPE})
 @Documented
-@Import({YunUtilAllConfiguration.class,SwaggerParaImpl.class})
+@Import({YunUtilAllConfiguration.class, SwaggerParaImpl.class})
 public @interface EnableAllYunUtil {
 
 }

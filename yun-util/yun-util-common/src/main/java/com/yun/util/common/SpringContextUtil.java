@@ -6,8 +6,8 @@ import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Component;
 
 /**
- * @author: yun
- * @createdOn: 2019-02-25 17:37.
+ * @author yun
+ * created_time 2019-02-25 17:37.
  */
 
 @Component
