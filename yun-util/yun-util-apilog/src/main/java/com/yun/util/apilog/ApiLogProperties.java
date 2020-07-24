@@ -1,5 +1,6 @@
 package com.yun.util.apilog;
 
+import com.yun.util.base.PropertyDefine;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
@@ -9,8 +10,10 @@ import org.springframework.stereotype.Component;
  */
 
 @Component
-@ConfigurationProperties(prefix = "yun.apilog")
+@ConfigurationProperties(prefix = ApiLogProperties.PREFIX)
 public class ApiLogProperties {
+    public static final String PREFIX = PropertyDefine.BASE_PREFIX + ".apilog";
+
     /**
      * 各项
      */

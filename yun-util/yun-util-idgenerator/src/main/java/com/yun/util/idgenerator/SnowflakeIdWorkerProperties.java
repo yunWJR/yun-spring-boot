@@ -1,5 +1,6 @@
 package com.yun.util.idgenerator;
 
+import com.yun.util.base.PropertyDefine;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**
@@ -7,8 +8,10 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  * @author yun
  * created_time 2018/7/25 14:50.
  */
-@ConfigurationProperties("yun.snowflakeid")
+@ConfigurationProperties(prefix = SnowflakeIdWorkerProperties.PREFIX)
 public class SnowflakeIdWorkerProperties {
+    public static final String PREFIX = PropertyDefine.BASE_PREFIX + ".snowflakeid";
+
     /**
      * 工作机器ID(0~31)
      */

@@ -11,27 +11,16 @@
         <version>0.0.29</version>
     </parent>
 
-    <artifactId>yun-util-common</artifactId>
+    <artifactId>yun-util-base</artifactId>
     <name>${project.artifactId}</name>
-    <description>common 模块</description>
+    <description>base 模块</description>
     <url>https://github.com/yunWJR/yun-util</url>
 
     <properties>
     </properties>
 
     <dependencies>
-        <dependency>
-            <groupId>com.github.yunwjr</groupId>
-            <artifactId>yun-util-base</artifactId>
-            <version>${project.parent.version}</version>
-        </dependency>
 
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>${jackson-core.version}</version>
-            <optional>true</optional>
-        </dependency>
     </dependencies>
 
     <build>

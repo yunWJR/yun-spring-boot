@@ -1,5 +1,6 @@
 package com.yun.util.swagger;
 
+import com.yun.util.base.PropertyDefine;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
@@ -12,8 +13,10 @@ import java.util.List;
  */
 
 @Component
-@ConfigurationProperties(prefix = "yun.swagger")
+@ConfigurationProperties(prefix = SwaggerProperty.PREFIX)
 public class SwaggerProperty {
+    public static final String PREFIX = PropertyDefine.BASE_PREFIX + ".swagger";
+
     private String basePackage;
 
     private String title = "api文档";

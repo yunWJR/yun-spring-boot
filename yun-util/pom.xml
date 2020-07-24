@@ -21,6 +21,7 @@
     <url>https://github.com/yunWJR/yun-util</url>
 
     <modules>
+        <module>yun-util-base</module>
         <module>yun-util-all</module>
         <module>yun-util-bom</module>
         <module>yun-util-common</module>

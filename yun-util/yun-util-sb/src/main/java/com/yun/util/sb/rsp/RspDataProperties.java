@@ -1,6 +1,6 @@
 package com.yun.util.sb.rsp;
 
-import com.yun.util.sb.PropertyDefine;
+import com.yun.util.base.PropertyDefine;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
@@ -13,8 +13,10 @@ import java.util.List;
  */
 
 @Component
-@ConfigurationProperties(prefix = PropertyDefine.PROP_PRE + ".rsp-data")
+@ConfigurationProperties(prefix = RspDataProperties.PREFIX)
 public class RspDataProperties {
+    public static final String PREFIX = PropertyDefine.BASE_PREFIX + ".responseData";
+
     private String codeKey = "code";
     private String dataKey = "result";
     private String errorMsgKey = "message";

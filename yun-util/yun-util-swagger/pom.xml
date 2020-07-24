@@ -20,6 +20,12 @@
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>com.github.yunwjr</groupId>
+            <artifactId>yun-util-base</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
+
         <!--swagger2-->
         <!--https://mvnrepository.com/artifact/io.springfox/springfox-swagger-ui-->
         <dependency>

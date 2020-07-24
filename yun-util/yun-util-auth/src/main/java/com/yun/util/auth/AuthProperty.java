@@ -1,5 +1,6 @@
 package com.yun.util.auth;
 
+import com.yun.util.base.PropertyDefine;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
@@ -9,8 +10,10 @@ import org.springframework.stereotype.Component;
  */
 
 @Component
-@ConfigurationProperties(prefix = "yun.auth")
+@ConfigurationProperties(prefix = AuthProperty.PREFIX)
 public class AuthProperty {
+    public static final String PREFIX = PropertyDefine.BASE_PREFIX + ".auth";
+
     private String tokenAuthKey = "Authorization";
     private String accessAuthKey = "ACCESS_AUTH";
     private String deviceTypeKey = "DEVICE_TYPE";
