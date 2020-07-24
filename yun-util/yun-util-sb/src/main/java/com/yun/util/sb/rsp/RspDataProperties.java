@@ -15,7 +15,8 @@ import java.util.List;
 @Component
 @ConfigurationProperties(prefix = RspDataProperties.PREFIX)
 public class RspDataProperties {
-    public static final String PREFIX = PropertyDefine.BASE_PREFIX + ".responseData";
+    // 不能用驼峰，用-分隔
+    public static final String PREFIX = PropertyDefine.BASE_PREFIX + ".response-data";
 
     private String codeKey = "code";
     private String dataKey = "result";
