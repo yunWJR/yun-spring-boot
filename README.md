@@ -18,7 +18,7 @@
 <dependency>
     <groupId>com.github.yunwjr</groupId>
     <artifactId>yun-util-all</artifactId>
-    <version>0.0.29</version>
+    <version>0.0.30</version>
 </dependency>
 ```
 

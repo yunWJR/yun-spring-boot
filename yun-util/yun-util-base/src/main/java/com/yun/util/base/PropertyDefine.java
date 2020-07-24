@@ -7,7 +7,7 @@ package com.yun.util.base;
 
 public class PropertyDefine {
     /**
-     *
+     * 属性前缀
      */
     public static final String BASE_PREFIX = "yun";
 }

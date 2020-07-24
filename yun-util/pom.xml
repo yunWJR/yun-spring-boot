@@ -10,12 +10,12 @@
     <parent>
         <groupId>com.github.yunwjr</groupId>
         <artifactId>yun-util-parent</artifactId>
-        <version>0.0.29</version>
+        <version>0.0.30</version>
     </parent>
 
     <groupId>com.github.yunwjr</groupId>
     <artifactId>yun-util</artifactId>
-    <version>0.0.29</version>
+    <version>0.0.30</version>
     <name>yun-util</name>
     <description>yun-util</description>
     <url>https://github.com/yunWJR/yun-util</url>
@@ -146,15 +146,17 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-javadoc-plugin</artifactId>
-                        <version>3.2.0</version>
+                        <!--                        <version>3.2.0</version>-->
+                        <version>2.9.1</version>
                         <configuration>
+                            <aggregate>true</aggregate>
                             <show>private</show>
                             <nohelp>true</nohelp>
                             <charset>UTF-8</charset>
                             <encoding>UTF-8</encoding>
                             <docencoding>UTF-8</docencoding>
-<!--                            <additionalparam>-Xdoclint:none-->
-<!--                            </additionalparam>  &lt;!&ndash; TODO 临时解决不规范的javadoc生成报错,后面要规范化后把这行去掉 &ndash;&gt;-->
+                            <!--                            <additionalparam>-Xdoclint:none-->
+                            <!--                            </additionalparam>  &lt;!&ndash; TODO 临时解决不规范的javadoc生成报错,后面要规范化后把这行去掉 &ndash;&gt;-->
                         </configuration>
                         <executions>
                             <execution>
@@ -238,8 +240,8 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
-                <!--                <version>3.1.1</version>-->
-                <version>3.2.0</version>
+                <version>2.9.1</version>
+                <!--                <version>3.2.0</version>-->
                 <executions>
                     <execution>
                         <phase>package</phase>
@@ -248,6 +250,9 @@
                         </goals>
                     </execution>
                 </executions>
+                <configuration>
+                    <aggregate>true</aggregate>
+                </configuration>
             </plugin>
         </plugins>
     </build>

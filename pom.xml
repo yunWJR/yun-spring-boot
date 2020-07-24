@@ -9,7 +9,8 @@
 
     <groupId>com.github.yunwjr</groupId>
     <artifactId>yun-util-parent</artifactId>
-    <version>${yuvision}</version>
+<!--    <version>${yuvision}</version>-->
+    <version>0.0.30</version>
     <name>yun-util-parent</name>
     <description>yun-util-parent</description>
     <url>https://github.com/yunWJR/yun-util</url>
@@ -20,7 +21,7 @@
     </modules>
 
     <properties>
-        <yuvision>0.0.29</yuvision>
+        <yuvision>0.0.30</yuvision>
 
         <java.version>1.8</java.version>
         <compile.version>8</compile.version>
