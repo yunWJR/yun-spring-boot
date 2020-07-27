@@ -8,7 +8,7 @@
     <parent>
         <groupId>com.github.yunwjr</groupId>
         <artifactId>yun-util</artifactId>
-        <version>0.0.30</version>
+        <version>0.0.31</version>
     </parent>
 
     <artifactId>yun-util-token</artifactId>
@@ -26,11 +26,28 @@
             <version>${project.parent.version}</version>
         </dependency>
 
+<!--        <dependency>-->
+<!--            <groupId>io.jsonwebtoken</groupId>-->
+<!--            <artifactId>jjwt</artifactId>-->
+<!--            <version>${jjwt.version}</version>-->
+<!--&lt;!&ndash;            <optional>true</optional>&ndash;&gt;-->
+<!--        </dependency>-->
         <dependency>
             <groupId>io.jsonwebtoken</groupId>
-            <artifactId>jjwt</artifactId>
-            <version>${jjwt.version}</version>
-            <optional>true</optional>
+            <artifactId>jjwt-api</artifactId>
+            <version>0.11.2</version>
+        </dependency>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-impl</artifactId>
+            <version>0.11.2</version>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-jackson</artifactId> <!-- or jjwt-gson if Gson is preferred -->
+            <version>0.11.2</version>
+            <scope>runtime</scope>
         </dependency>
 
     </dependencies>
@@ -47,6 +64,7 @@
                 <configuration>
                     <source>${compile.version}</source>
                     <target>${compile.version}</target>
+                    <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
         </plugins>

@@ -10,7 +10,7 @@
     <groupId>com.github.yunwjr</groupId>
     <artifactId>yun-util-parent</artifactId>
 <!--    <version>${yuvision}</version>-->
-    <version>0.0.30</version>
+    <version>0.0.31</version>
     <name>yun-util-parent</name>
     <description>yun-util-parent</description>
     <url>https://github.com/yunWJR/yun-util</url>
@@ -50,6 +50,22 @@
     </properties>
 
     <build>
+        <!-- To define the plugin version in your parent POM -->
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.8.1</version>
+                    <configuration>
+                        <source>${compile.version}</source>
+                        <target>${compile.version}</target>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+
+        <!-- To use the plugin goals in your POM or parent POM -->
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -58,6 +74,7 @@
                 <configuration>
                     <source>${compile.version}</source>
                     <target>${compile.version}</target>
+                    <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
         </plugins>

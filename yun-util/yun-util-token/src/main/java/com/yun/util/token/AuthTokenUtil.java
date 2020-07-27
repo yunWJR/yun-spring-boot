@@ -2,12 +2,10 @@ package com.yun.util.token;
 
 import com.yun.util.common.StringUtil;
 import io.jsonwebtoken.*;
-import org.springframework.beans.factory.annotation.Autowired;
-import sun.misc.BASE64Decoder;
+import io.jsonwebtoken.security.Keys;
 
-import javax.crypto.SecretKey;
-import javax.crypto.spec.SecretKeySpec;
 import java.io.IOException;
+import java.security.Key;
 import java.util.Date;
 
 /**
@@ -35,7 +33,6 @@ public class AuthTokenUtil {
      * Instantiates a new Jwt tokenParam.
      * @param tokenParam the tokenParam
      */
-    @Autowired
     public AuthTokenUtil(AuthTokenParam tokenParam) {
         this.tokenParam = tokenParam;
     }
@@ -98,6 +95,7 @@ public class AuthTokenUtil {
     // endregion
 
     // region --private method
+
     private String createToken(AuthTokenPayload payload, String issuer, String secretKey, long ttlMillis) {
         try {
             //指定签名的时候使用的签名算法，也就是header那部分。
@@ -108,7 +106,7 @@ public class AuthTokenUtil {
             Date now = new Date(nowMillis);
 
             // 加密 key
-            SecretKey key = generalKey(secretKey);
+            Key key = generalKey(secretKey);
 
             // builder，默认压缩
             JwtBuilder builder = Jwts
@@ -132,7 +130,7 @@ public class AuthTokenUtil {
                     // .setId(null) //设置jti(JWT ID)：是JWT的唯一标识，根据业务需要，这个可以设置为一个不重复的值，主要用来作为一次性token,从而回避重放攻击。
                     .setIssuedAt(now) // iat: jwt的签发时间
                     .setAudience(issuer)
-                    .signWith(signatureAlgorithm, key); // 设置签名使用的签名算法和签名使用的秘钥
+                    .signWith(key, signatureAlgorithm); // 设置签名使用的签名算法和签名使用的秘钥
 
             // 添加过期时间
             if (ttlMillis > 0) {
@@ -157,20 +155,20 @@ public class AuthTokenUtil {
         }
     }
 
-    private SecretKey generalKey(String key) throws IOException {
-        BASE64Decoder decoder = new BASE64Decoder();
-        byte[] encodedKey = decoder.decodeBuffer(key);
-        SecretKey sKey = new SecretKeySpec(encodedKey, 0, encodedKey.length, "AES");
-        return sKey;
+    private Key generalKey(String key) throws IOException {
+        Key k = Keys.secretKeyFor(SignatureAlgorithm.HS256);
+
+        return k;
     }
 
     private AuthTokenPayload getValidToken(String token, String secretKey) {
         try {
-            SecretKey key = generalKey(secretKey);
+            Key key = generalKey(secretKey);
 
             Jws<Claims> claims = Jwts
-                    .parser() //得到DefaultJwtParser
+                    .parserBuilder() //得到DefaultJwtParser
                     .setSigningKey(key) //设置签名的秘钥
+                    .build()
                     .parseClaimsJws(token); //设置需要解析的jwt
 
             // Algorithm algorithm = Algorithm.HMAC256(secretKey);

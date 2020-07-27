@@ -9,27 +9,44 @@ public class AuthTokenParam {
 
     // region --Field
 
-    // 加密 key
+    /**
+     * 加密 key
+     */
     private String secretKey = "alksdjflalsdjflkasdjflkasjd";
 
-    // auth token 的位置，1：header 默认值 2:para
+    /**
+     * auth token 的位置，1：header 默认值 2:para
+     */
     private Integer authTokenLocal = 1;
 
-    // auth token的 key
+    /**
+     * auth token的 key
+     */
     private String authTokenKeyName = "auth-token";
 
+    /**
+     * auth
+     */
     private String tokenIssuer = "auth";
 
-    // 过期时间
+    /**
+     * 过期时间
+     */
     private long ttlMillis = 1000 * 1000;
 
-    // 忽略 token 为 null，测试时候用
+    /**
+     * 忽略 token 为 null，测试时候用
+     */
     private boolean ignoreToken = false;
 
-    // 采用 ThreadLocal 传输
+    /**
+     * 采用 ThreadLocal 传输
+     */
     private boolean isThreadLocalMode = true;
 
-    // 默认所有方法需要 token 验证，如果不需要验证，则加 NoAuthToken 注解
+    /**
+     * 默认所有方法需要 token 验证，如果不需要验证，则加 NoAuthToken 注解
+     */
     private boolean isAllNeedTokenOn = true;
 
     // endregion
