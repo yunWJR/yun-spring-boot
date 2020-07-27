@@ -5,11 +5,16 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <parent>
+        <groupId>com.github.yunwjr</groupId>
+        <artifactId>yun-parent</artifactId>
+        <version>0.0.1.RELEASE</version>
+    </parent>
+
     <packaging>pom</packaging>
 
     <groupId>com.github.yunwjr</groupId>
     <artifactId>yun-util-parent</artifactId>
-<!--    <version>${yuvision}</version>-->
     <version>0.0.31</version>
     <name>yun-util-parent</name>
     <description>yun-util-parent</description>
@@ -21,7 +26,7 @@
     </modules>
 
     <properties>
-        <yuvision>0.0.30</yuvision>
+        <yuvision>0.0.31</yuvision>
 
         <java.version>1.8</java.version>
         <compile.version>8</compile.version>
@@ -56,7 +61,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
-                    <version>3.8.1</version>
+<!--                    <version>3.8.1</version>-->
                     <configuration>
                         <source>${compile.version}</source>
                         <target>${compile.version}</target>
@@ -70,7 +75,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.1</version>
+<!--                <version>3.8.1</version>-->
                 <configuration>
                     <source>${compile.version}</source>
                     <target>${compile.version}</target>
