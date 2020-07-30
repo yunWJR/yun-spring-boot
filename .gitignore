@@ -7,8 +7,8 @@
 HELP.md
 target/
 !.mvn/wrapper/maven-wrapper.jar
-!**/src/main/**
-!**/src/test/**
+!yun-spring-boot-tests/yun-spring-boot-tests-boot/src/main/**
+!yun-spring-boot-tests/yun-spring-boot-tests-boot/src/test/**
 
 ### logs
 logs

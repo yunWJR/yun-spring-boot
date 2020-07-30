@@ -1,0 +1,6 @@
+--------------------------------->>
+
+yun spring boot
+
+SpringBoot Version : ${spring-boot.formatted-version}
+YunSpringBoot Version : ${yun.spring.boot.version}

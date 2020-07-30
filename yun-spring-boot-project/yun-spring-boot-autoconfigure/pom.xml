@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <artifactId>yun-spring-boot-parent</artifactId>
+        <groupId>com.github.yunwjr</groupId>
+        <version>${yun-srping-boot.version}</version>
+        <relativePath>../yun-spring-boot-parent</relativePath>
+    </parent>
+
+    <artifactId>yun-spring-boot-autoconfigure</artifactId>
+
+    <properties>
+        <yun.spring.boot.version>${project.version}</yun.spring.boot.version>
+    </properties>
+
+    <dependencies>
+        <!--SpringBoot-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jdbc</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+        <!--YunSpringBoot base-->
+        <dependency>
+            <groupId>com.github.yunwjr</groupId>
+            <artifactId>yun-spring-boot</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>com.github.yunwjr</groupId>
+            <artifactId>yun-spring-boot-common</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+        <!--tool-->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <scope>compile</scope>
+            <optional>true</optional>
+        </dependency>
+
+
+        <!--swagger2-->
+
+        <!--https://mvnrepository.com/artifact/io.springfox/springfox-swagger-ui-->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/io.springfox/springfox-swagger-ui-->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.github.xiaoymin/swagger-bootstrap-ui -->
+        <!-- 替换为knife4j-spring-ui-->
+        <dependency>
+            <groupId>com.github.xiaoymin</groupId>
+            <artifactId>swagger-bootstrap-ui</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+        <!--        <dependency>-->
+        <!--            <groupId>com.github.xiaoymin</groupId>-->
+        <!--            <artifactId>knife4j-spring-ui</artifactId>-->
+        <!--            <optional>true</optional>-->
+        <!--        </dependency>-->
+
+        <!--swagger2-->
+
+    </dependencies>
+
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+                <excludes>
+                    <exclude>application.properties</exclude>
+                </excludes>
+            </resource>
+        </resources>
+    </build>
+</project>

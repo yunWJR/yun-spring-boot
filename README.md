@@ -1,6 +1,6 @@
-# yun-util: springboot 开发工具
+# yun-spring-boot:  基于springboot 构建服务
 
-提供 springboot 开发的常用工具
+提供 基于springboot 构建服务的框架
 
 
 
@@ -12,14 +12,12 @@
 
 
 
-## Maven
+## 使用：
+
+
 
 ```xml
-<dependency>
-    <groupId>com.github.yunwjr</groupId>
-    <artifactId>yun-util-all</artifactId>
-    <version>0.0.31</version>
-</dependency>
+
 ```
 
 

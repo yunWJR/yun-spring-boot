@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.github.yunwjr</groupId>
+        <artifactId>yun-spring-boot-pom</artifactId>
+        <version>${yun-srping-boot.version}</version>
+        <relativePath>../..</relativePath>
+    </parent>
+
+    <packaging>pom</packaging>
+    <artifactId>yun-spring-boot-dependencies</artifactId>
+
+    <properties>
+        <!--Spring Projects-->
+        <spring.version>5.2.7.RELEASE</spring.version>
+        <spring.boot.version>2.3.1.RELEASE</spring.boot.version>
+
+        <!--Others-->
+        <jackson-core.version>2.10.3</jackson-core.version>
+        <reflections.version>0.9.11</reflections.version>
+        <guava.version>29.0-jre</guava.version>
+        <swagger.version>2.9.2</swagger.version>
+        <swagger-bootstrap-ui.version>1.9.6</swagger-bootstrap-ui.version>
+        <knife4j-spring-ui.version>2.0.4</knife4j-spring-ui.version>
+
+        <!--Plugins-->
+        <maven-plugin-api.version>3.6.3</maven-plugin-api.version>
+        <maven-plugin-annotations.version>3.6.0</maven-plugin-annotations.version>
+        <maven-plugin-plugin.version>3.6.3</maven-plugin-plugin.version>
+        <maven-jar-plugin.version>3.2.0</maven-jar-plugin.version>
+        <build-helper-maven-plugin.version>3.2.0</build-helper-maven-plugin.version>
+
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <!--spring-boot-dependencies-->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring.boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-tx</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+
+            <!--YunSpringBoot Dependencies-->
+            <dependency>
+                <groupId>com.github.yunwjr</groupId>
+                <artifactId>yun-spring-boot</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.yunwjr</groupId>
+                <artifactId>yun-spring-boot-autoconfigure</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.yunwjr</groupId>
+                <artifactId>yun-spring-boot-common</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <!--YunSpringBoot Starters-->
+            <dependency>
+                <groupId>com.github.yunwjr</groupId>
+                <artifactId>yun-spring-boot-starter</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.yunwjr</groupId>
+                <artifactId>yun-spring-boot-starter-swagger</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <!--tool-->
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>${guava.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.reflections</groupId>
+                <artifactId>reflections</artifactId>
+                <version>${reflections.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-databind</artifactId>
+                <version>${jackson-core.version}</version>
+                <optional>true</optional>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.maven</groupId>
+                <artifactId>maven-plugin-api</artifactId>
+                <version>${maven-plugin-api.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.maven.plugin-tools</groupId>
+                <artifactId>maven-plugin-annotations</artifactId>
+                <version>${maven-plugin-annotations.version}</version>
+            </dependency>
+
+            <!--swagger2-->
+
+            <!--https://mvnrepository.com/artifact/io.springfox/springfox-swagger-ui-->
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger2</artifactId>
+                <version>${swagger.version}</version>
+            </dependency>
+
+            <!-- https://mvnrepository.com/artifact/io.springfox/springfox-swagger-ui-->
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger-ui</artifactId>
+                <version>${swagger.version}</version>
+            </dependency>
+
+            <!-- https://mvnrepository.com/artifact/com.github.xiaoymin/swagger-bootstrap-ui -->
+            <!-- 替换为knife4j-spring-ui-->
+            <dependency>
+                <groupId>com.github.xiaoymin</groupId>
+                <artifactId>swagger-bootstrap-ui</artifactId>
+                <version>${swagger-bootstrap-ui.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.github.xiaoymin</groupId>
+                <artifactId>knife4j-spring-ui</artifactId>
+                <version>${knife4j-spring-ui.version}</version>
+            </dependency>
+
+            <!--swagger2-->
+
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-jar-plugin</artifactId>
+                    <version>${maven-jar-plugin.version}</version>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>build-helper-maven-plugin</artifactId>
+                    <version>${build-helper-maven-plugin.version}</version>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-plugin-plugin</artifactId>
+                    <version>${maven-plugin-plugin.version}</version>
+                </plugin>
+
+            </plugins>
+        </pluginManagement>
+    </build>
+
+</project>

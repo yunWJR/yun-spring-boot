@@ -1,0 +1,105 @@
+spring:
+  profiles:
+    active: dev
+  application:
+    name: yun-util-examples
+#  jmx:
+#    default-domain: yun-util-examples
+  output:
+    ansi:
+      enabled: detect
+
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+    hikari:
+      minimum-idle: 5 # 最小链接数
+      maximum-pool-size: 20 # 最大连接数
+      auto-commit: true # 自动提交
+      idle-timeout: 30000 # 最大空闲时间（毫秒）
+      pool-name: DataPoolHikari # 链接池名
+      max-lifetime: 180000 # 最大生命周期（毫秒）
+      connection-timeout: 30000 # 连接超时时间（毫秒）
+      connection-test-query: SELECT 1 # 心跳检测
+
+    druid:
+      # 连接池的配置信息
+      # 初始化大小，最小，最大
+      initialSize: 8
+      minIdle: 8
+      maxActive: 200
+
+      # 配置获取连接等待超时的时间
+      maxWait: 60000
+      # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+      timeBetweenEvictionRunsMillis: 60000
+      # 配置一个连接在池中最小生存的时间，单位是毫秒
+      minEvictableIdleTimeMillis: 300000
+      validationQuery: select 'x'
+      testWhileIdle: true
+      testOnBorrow: false
+      testOnReturn: false
+      # 打开PSCache，并且指定每个连接上PSCache的大小
+      poolPreparedStatements: true
+      maxOpenPreparedStatements: 20
+      # 配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙
+      filters: wall,stat
+      # 配置DruidStatFilter
+      web-stat-filter:
+        enabled: true #是否启用StatFilter默认值false
+        url-pattern: "/*"
+        exclusions: "*.js,*.gif,*.jpg,*.bmp,*.png,*.css,*.ico,/druid/*"
+      #        session-stat-enable:
+      #        session-stat-max-count:
+      #        principal-session-name:
+      #        principal-cookie-name:
+      #        profile-enable:
+
+      # 配置DruidStatViewServlet
+      stat-view-servlet:
+        enabled: true #是否启用StatViewServlet（监控页面）默认值为false（考虑到安全问题默认并未启动，如需启用建议设置密码或白名单以保障安全）
+        url-pattern: "/druid/*"
+        reset-enable: true
+        login-username: admin
+        login-password: skkj123
+        allow: "*"
+        deny:
+
+server:
+  port: 10099
+  servlet:
+    context-path: /yun-util-api
+#  tomcat:
+    #    20m
+#    max-http-post-size: 20971520
+  #    max-threads: 200
+  #    max-connections: 20000
+  #    accept-count: 20000
+  compression:
+    enabled: true
+    min-response-size: 12048 # 无效 todo
+#  undertow:
+#    io-threads: 16
+
+yun-spring-boot:
+  responseData:
+    errorMsg: msg
+  apilog:
+    heartRate: 60000
+  evn:
+    pro-name: pro
+  auth:
+    access-auth-key: test
+  swagger:
+    title: yun-util api
+#    base-package: com.yun.util.examples
+    enable-on-pro: true
+#    para[0]:
+#      name: appId
+#      description: appId，有则填
+#      paramType: header
+#      modelRef: long
+#      required: false
+
+
