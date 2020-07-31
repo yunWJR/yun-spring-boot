@@ -39,7 +39,7 @@
             <dependency>
                 <groupId>com.github.yunwjr</groupId>
                 <artifactId>yun-spring-boot-dependencies</artifactId>
-                <version>${api-boot.version}</version>
+                <version>${yun-spring-boot.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>

@@ -56,29 +56,29 @@
             <dependency>
                 <groupId>com.github.yunwjr</groupId>
                 <artifactId>yun-spring-boot</artifactId>
-                <version>${project.version}</version>
+                <version>${yun-srping-boot.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.github.yunwjr</groupId>
                 <artifactId>yun-spring-boot-autoconfigure</artifactId>
-                <version>${project.version}</version>
+                <version>${yun-srping-boot.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.github.yunwjr</groupId>
                 <artifactId>yun-spring-boot-common</artifactId>
-                <version>${project.version}</version>
+                <version>${yun-srping-boot.version}</version>
             </dependency>
 
             <!--YunSpringBoot Starters-->
             <dependency>
                 <groupId>com.github.yunwjr</groupId>
                 <artifactId>yun-spring-boot-starter</artifactId>
-                <version>${project.version}</version>
+                <version>${yun-srping-boot.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.github.yunwjr</groupId>
                 <artifactId>yun-spring-boot-starter-swagger</artifactId>
-                <version>${project.version}</version>
+                <version>${yun-srping-boot.version}</version>
             </dependency>
 
             <!--tool-->

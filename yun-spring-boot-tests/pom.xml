@@ -14,7 +14,7 @@
         <maven.test.skip>true</maven.test.skip>
         <maven.javadoc.skip>true</maven.javadoc.skip>
         <maven.deploy.skip>true</maven.deploy.skip>
-        <api-boot.version>${project.version}</api-boot.version>
+        <yun-spring-boot.version>${project.version}</yun-spring-boot.version>
         <spring-boot.version>2.3.1.RELEASE</spring-boot.version>
     </properties>
 
