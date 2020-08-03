@@ -80,6 +80,11 @@
                 <artifactId>yun-spring-boot-starter-swagger</artifactId>
                 <version>${yun-srping-boot.version}</version>
             </dependency>
+            <dependency>
+                <groupId>com.github.yunwjr</groupId>
+                <artifactId>yun-spring-boot-starter-authorization</artifactId>
+                <version>${yun-srping-boot.version}</version>
+            </dependency>
 
             <!--tool-->
             <dependency>

@@ -1,11 +1,12 @@
 package com.github.yunwjr.yun.spring.boot.autoconfigure.swagger;
 
-import lombok.Data;
 import com.github.yunwjr.yun.spring.boot.common.PropertyDefine;
+import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -30,6 +31,8 @@ public class SwaggerProperties {
     private boolean enableOnPro = false;
 
     private List<Para> para = new ArrayList<>();
+
+    private List<String> pathPatterns = Arrays.asList("/swagger-resources/**", "/webjars/**", "/v2/**", "/swagger-ui.html/**", "/doc.html/**");
 
     @Data
     public static class Para {

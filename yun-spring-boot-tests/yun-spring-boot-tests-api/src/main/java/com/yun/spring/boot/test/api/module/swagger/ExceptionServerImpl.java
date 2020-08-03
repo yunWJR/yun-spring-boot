@@ -1,4 +1,4 @@
-package com.yun.util.examples.module.test;
+package com.yun.spring.boot.test.api.module.swagger;
 
 import org.springframework.stereotype.Service;
 

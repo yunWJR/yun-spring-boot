@@ -19,6 +19,7 @@
     <modules>
         <module>yun-spring-boot-starter</module>
         <module>yun-spring-boot-starter-swagger</module>
+        <module>yun-spring-boot-starter-authorization</module>
     </modules>
 
 </project>

@@ -4,19 +4,23 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <artifactId>yun-spring-boot-parent</artifactId>
+        <artifactId>yun-spring-boot-starters</artifactId>
         <groupId>com.github.yunwjr</groupId>
         <version>${yun-srping-boot.version}</version>
-        <relativePath>../yun-spring-boot-parent</relativePath>
     </parent>
 
-    <name>yun-spring-boot</name>
-    <artifactId>yun-spring-boot</artifactId>
+    <properties>
+    </properties>
+
+    <description>authorization 模块</description>
+    <artifactId>yun-spring-boot-starter-authorization</artifactId>
+
 
     <dependencies>
+        <!--YunSpringBoot Starter-->
         <dependency>
             <groupId>com.github.yunwjr</groupId>
-            <artifactId>yun-spring-boot-common</artifactId>
+            <artifactId>yun-spring-boot-starter</artifactId>
         </dependency>
 
         <dependency>
@@ -35,7 +39,6 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
         </dependency>
-
     </dependencies>
 
 </project>

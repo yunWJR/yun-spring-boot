@@ -22,6 +22,6 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>yun-spring-boot-tests-swagger</module>
+        <module>yun-spring-boot-tests-api</module>
     </modules>
 </project>

@@ -1,11 +1,11 @@
-package com.yun.util.examples;
+package com.yun.spring.boot.test.api;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SwaggerTestApplication {
+public class TestApiApplication {
     public static void main(String[] args) {
-        SpringApplication.run(SwaggerTestApplication.class, args);
+        SpringApplication.run(TestApiApplication.class, args);
     }
 }

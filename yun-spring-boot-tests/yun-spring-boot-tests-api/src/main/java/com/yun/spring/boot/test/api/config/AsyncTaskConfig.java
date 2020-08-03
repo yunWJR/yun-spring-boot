@@ -1,4 +1,4 @@
-package com.yun.util.examples.config;
+package com.yun.spring.boot.test.api.config;
 
 import org.springframework.aop.interceptor.AsyncUncaughtExceptionHandler;
 import org.springframework.context.annotation.Configuration;

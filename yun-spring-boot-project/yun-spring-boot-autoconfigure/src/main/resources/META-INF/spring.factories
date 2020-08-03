@@ -1,3 +1,4 @@
 # Auto Configure
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-    com.github.yunwjr.yun.spring.boot.autoconfigure.swagger.SwaggerAutoConfiguration
+    com.github.yunwjr.yun.spring.boot.autoconfigure.swagger.SwaggerAutoConfiguration,\
+    com.github.yunwjr.yun.spring.boot.autoconfigure.authorization.AuthorizationAutoConfiguration

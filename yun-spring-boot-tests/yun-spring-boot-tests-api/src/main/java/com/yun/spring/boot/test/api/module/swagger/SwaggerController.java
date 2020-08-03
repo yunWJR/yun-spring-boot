@@ -1,4 +1,4 @@
-package com.yun.util.examples.module.test;
+package com.yun.spring.boot.test.api.module.swagger;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -14,9 +14,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 @Slf4j
 @RestController
-@RequestMapping("v1/api/test")
-@Api(tags = "00-09-测试模块")
-public class TestController {
+@RequestMapping("v1/api/swagger")
+@Api(tags = "00-01-swagger")
+public class SwaggerController {
 
     @GetMapping("checkAuth")
     @ApiOperation("检查权限")
