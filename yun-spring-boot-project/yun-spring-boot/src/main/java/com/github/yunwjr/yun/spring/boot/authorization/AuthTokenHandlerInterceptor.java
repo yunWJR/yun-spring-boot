@@ -1,6 +1,7 @@
 package com.github.yunwjr.yun.spring.boot.authorization;
 
 import com.github.yunwjr.yun.spring.boot.common.StringUtil;
+import org.springframework.http.HttpMethod;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
@@ -39,8 +40,8 @@ public class AuthTokenHandlerInterceptor implements HandlerInterceptor {
      */
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
-        // 跨域试探请求不处理 todo
-        if (!(handler instanceof HandlerMethod)) {
+        // OPTIONS不处理
+        if (request.getMethod().equals(HttpMethod.OPTIONS.name())) {
             savePara(request);
             return true;
         }
