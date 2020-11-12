@@ -4,10 +4,10 @@ import com.yun.util.apilog.ApiDataUtil;
 import com.yun.util.common.CommonException;
 import com.yun.util.common.SpringEvn;
 import com.yun.util.common.ThrowableUtil;
+import com.yun.util.sb.rsp.RspData;
 import com.yun.util.sb.rsp.RspDataCodeType;
 import com.yun.util.sb.rsp.RspDataException;
 import com.yun.util.sb.rsp.RspDataT;
-import com.yun.util.sb.rsp.RspDataTransfer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,8 +36,9 @@ public class GlobalExceptionHandler {
     @Autowired
     private SpringEvn springEvn;
 
-    @Autowired(required = false)
-    private RspDataTransfer rspDataTransfer;
+    // // TODO: 2020/11/12 yun  暂未实现
+    // @Autowired(required = false)
+    // private RspDataTransfer rspDataTransfer;
 
     public boolean isProEvn() {
         return springEvn.isProEvn();
@@ -205,13 +206,13 @@ public class GlobalExceptionHandler {
     }
 
     private Object rstObj(Integer code, String errorMsg) {
-        RspDataT rst = new RspDataT(code, errorMsg);
+        RspData rsp = new RspData(code, errorMsg);
 
-        if (rspDataTransfer != null) {
-            return rspDataTransfer.transferEp(code, errorMsg);
-        }
+        // if (rspDataTransfer != null) {
+        //     return rspDataTransfer.transferEp(code, errorMsg);
+        // }
 
-        return rst;
+        return rsp;
     }
 
     // endregion

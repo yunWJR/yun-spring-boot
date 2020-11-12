@@ -5,6 +5,7 @@ import com.yun.util.common.StringUtil;
 import com.yun.util.sb.rsp.RspDataException;
 
 /**
+ * Service 封装
  * @author yun
  * created_time 2019/9/7 22:34.
  */
