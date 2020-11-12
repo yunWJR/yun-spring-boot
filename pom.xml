@@ -5,17 +5,11 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <parent>
-        <groupId>com.github.yunwjr</groupId>
-        <artifactId>yun-parent</artifactId>
-        <version>0.0.1.RELEASE</version>
-    </parent>
-
     <packaging>pom</packaging>
 
     <groupId>com.github.yunwjr</groupId>
     <artifactId>yun-util-parent</artifactId>
-    <version>0.0.31</version>
+    <version>${revision}</version>
     <name>yun-util-parent</name>
     <description>yun-util-parent</description>
     <url>https://github.com/yunWJR/yun-util</url>
@@ -26,7 +20,7 @@
     </modules>
 
     <properties>
-        <yuvision>0.0.31</yuvision>
+        <revision>0.0.32</revision>
 
         <java.version>1.8</java.version>
         <compile.version>8</compile.version>
@@ -52,6 +46,9 @@
 
         <querydsl.version>4.3.0</querydsl.version>
         <!--        <querydsl.version>4.3.0</querydsl.version>-->
+
+
+        <flatten-maven-plugin.version>1.2.4</flatten-maven-plugin.version>
     </properties>
 
     <build>
@@ -61,7 +58,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
-<!--                    <version>3.8.1</version>-->
+                    <version>3.8.1</version>
                     <configuration>
                         <source>${compile.version}</source>
                         <target>${compile.version}</target>
@@ -75,12 +72,39 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-<!--                <version>3.8.1</version>-->
+                <version>3.8.1</version>
                 <configuration>
                     <source>${compile.version}</source>
                     <target>${compile.version}</target>
                     <encoding>UTF-8</encoding>
                 </configuration>
+            </plugin>
+
+            <!-- 精简pom，实现版本占位符-->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>flatten-maven-plugin</artifactId>
+                <version>${flatten-maven-plugin.version}</version>
+                <configuration>
+                    <updatePomFile>true</updatePomFile>
+                    <flattenMode>resolveCiFriendliesOnly</flattenMode>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>flatten</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>flatten</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>flatten.clean</id>
+                        <phase>clean</phase>
+                        <goals>
+                            <goal>clean</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>

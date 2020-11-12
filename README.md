@@ -1,10 +1,10 @@
-# yun-util: springboot 开发工具
+## yun-util: springboot 开发工具
 
-提供 springboot 开发的常用工具
+提供 springboot 开发的常用封装
 
+# 一、基本信息
 
-
-## 版本需求：
+## 1、环境
 
 - java:1.8
 
@@ -12,38 +12,73 @@
 
 
 
-## Maven
+## 2、使用（Maven）
 
 ```xml
 <dependency>
     <groupId>com.github.yunwjr</groupId>
     <artifactId>yun-util-all</artifactId>
-    <version>0.0.31</version>
+    <version>${yu-vision}</version>
 </dependency>
 ```
 
 
 
-## 各模块说明：
+## 3、示例
 
-### apilog-接口日志记录
+查看 yun-util-examples 目录
 
-- 记录每个接口的参数（header、请求值、返回值）、接口请求用时、接口错误堆栈
+# 二、各模块说明：
+
+## apilog
+
+接口日志记录
+
+- 记录每个接口的参数（header、请求值、返回值）、接口请求用时、接口错误堆栈详情
 - 自定义日志心跳信号
 - 可添加自定义信息。
-- 可存储到 ES（通过 logstash）
+- 可存储到 ES
 
 
 
-### auth-权限管理辅助类
+## auth
+
+权限管理
 
 - 基于 token 的权限管理
-
 - token定义、存储
 
-  
 
-### sb-分层各模块工具
+
+## base
+
+项目基本信息配置
+
+
+
+## common
+
+共用工具类
+
+
+
+## idgenerator
+
+分布式 ID 生成器
+
+- 基于Snowflake
+
+
+
+## querydsl
+
+JAP+querydsl 方案封装
+
+
+
+## sb
+
+业务部分通用工具
 
 - GlobalExceptionHandler：全局异常拦截
 
@@ -55,59 +90,61 @@
 
   
 
+## swagger
 
-### common-通用工具
-
-通用工具类
-
-
-
-### idgenerator-分布式 ID 生成器
-
-- 基于Snowflake
-
-  
-
-### querydsl-封装
-
-JAP+querydsl 方案封装
+swagger 接口文档配置
 
 
 
-### mybatis -mybatis封装 todo
+## token
+
+token 生成辅助类
 
 
 
-### swagger-配置辅助
+## mybatis  todo
 
-swagger配置辅助类
-
-
-
-### limit-限流工具（准备从 yun-limit 迁入）
+mybatis封装 todo
 
 
 
-### lock-锁  todo
+## limit todo
+
+限流工具（准备从 yun-limit 迁入）
 
 
 
-### OSS -对象存储  todo
+## lock todo
+
+锁  todo
 
 
 
-### PAY - 支付处理  todo
+## oss todo
+
+对象存储  todo
 
 
 
-### message - 消息管理  todo
+## pay todo
+
+支付处理  todo
 
 
 
-### WC - 微信工具  todo
+## message todo
+
+消息管理  todo
 
 
 
-### REDIS -redis辅助工具  todo
+## wc todo
 
-[]()
+微信工具  todo
+
+
+
+## redis todo
+
+redis辅助工具  todo
+
