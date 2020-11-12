@@ -22,7 +22,7 @@ public class SpringEvnImpl implements SpringEvn {
     @Override
     public boolean isProEvn() {
         if (isPro == null) {
-            if (StringUtil.hasCtn(proName)) {
+            if (VerifyUtil.hasCtn(proName)) {
                 isPro = proName.equals(profile);
             } else {
                 isPro = "pro".equals(profile.toLowerCase()) || "prod".equals(profile.toLowerCase());

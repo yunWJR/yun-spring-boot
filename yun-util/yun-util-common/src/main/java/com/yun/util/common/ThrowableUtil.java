@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 import java.io.StringWriter;
 
 /**
+ * 异常信息处理
  * @author yun
  * created_time 2020/3/19 16:21.
  */
@@ -14,6 +15,11 @@ public class ThrowableUtil {
         return new ThrowableUtil().getStackMessage(e);
     }
 
+    /**
+     * 获取堆栈详情
+     * @param e
+     * @return
+     */
     public String getStackMessage(Throwable e) {
         StringWriter sw = null;
         PrintWriter pw = null;
