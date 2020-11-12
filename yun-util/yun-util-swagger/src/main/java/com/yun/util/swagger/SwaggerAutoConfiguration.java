@@ -1,8 +1,12 @@
 package com.yun.util.swagger;
 
+import com.yun.util.auth.AuthPathInterceptor;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.AutoConfigurationPackages;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.util.StringUtils;
@@ -22,21 +26,30 @@ import java.util.List;
 
 /**
  * @author yun
- * created_time 2019-02-25 13:12.
+ * <p>
+ * create_time  2020/7/29 14:37.
  */
 
 @Configuration
+@EnableConfigurationProperties(SwaggerProperties.class)
+@ConditionalOnProperty(prefix = SwaggerProperties.PREFIX, name = "enable", havingValue = "true", matchIfMissing = true)
+// @AutoConfigureBefore(AuthorizationAutoConfiguration.class)
 @EnableSwagger2
-public class Swagger2Config {
-
+public class SwaggerAutoConfiguration {
     @Autowired
     private SwaggerPara swaggerPara;
 
     @Autowired
-    private SwaggerProperty prop;
+    private SwaggerProperties prop;
 
     @Autowired
     private BeanFactory beanFactory;
+
+    @Bean
+    @ConditionalOnMissingBean
+    public SwaggerPara swaggerPara() {
+        return new SwaggerParaImpl();
+    }
 
     @Bean
     public Docket createRestApi() {
@@ -51,7 +64,7 @@ public class Swagger2Config {
         boolean hasDevicePara = false;
 
         if (prop.getPara() != null && swaggerPara != null) {
-            for (SwaggerProperty.Para para : prop.getPara()) {
+            for (SwaggerProperties.Para para : prop.getPara()) {
                 if (para.getName().equals(swaggerPara.getTokenAuthKey())) {
                     hasTokenPara = true;
                 } else if (para.getName().equals(swaggerPara.getDeviceTypeKey())) {
@@ -70,7 +83,7 @@ public class Swagger2Config {
         }
 
         // 没有 token 则自动添加
-        if (!hasTokenPara) {
+        if (!hasTokenPara && !StringUtils.isEmpty(swaggerPara.getTokenAuthKey())) {
             ParameterBuilder tokenBd = new ParameterBuilder();
             tokenBd.name(swaggerPara.getTokenAuthKey())
                     .description("登录后的token，有则填")
@@ -81,7 +94,7 @@ public class Swagger2Config {
             operationParameters.add(tokenBd.build());
         }
 
-        if (!hasDevicePara) {
+        if (!hasDevicePara && !StringUtils.isEmpty(swaggerPara.getDeviceTypeKey())) {
             ParameterBuilder tokenBd = new ParameterBuilder();
             tokenBd.name(swaggerPara.getDeviceTypeKey())
                     .description("设备类型")
@@ -112,5 +125,10 @@ public class Swagger2Config {
                 .description(prop.getDescription())
                 .version(prop.getVersion())
                 .build();
+    }
+
+    @Bean("swaggerAuthPathInterceptor")
+    public AuthPathInterceptor swaggerAuthPathInterceptor(SwaggerProperties swaggerProperties) {
+        return new SwaggerAuthPathInterceptor(swaggerProperties);
     }
 }
