@@ -32,7 +32,8 @@ import org.springframework.context.annotation.Configuration;
 
 @EnableSwagger
 
-@EnableRspDataTransfer
+// @EnableRspDataTransfer
+
 public class YunUtilAllConfiguration {
 
     @ConditionalOnMissingBean(SpringEvn.class)

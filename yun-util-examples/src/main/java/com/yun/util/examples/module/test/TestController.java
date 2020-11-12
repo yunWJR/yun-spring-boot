@@ -1,6 +1,6 @@
 package com.yun.util.examples.module.test;
 
-import com.yun.util.auth.NoNeedAccessAuth;
+import com.yun.util.authorization.AuthStatus;
 import com.yun.util.common.SpringEvn;
 import com.yun.util.sb.rsp.RspDataT;
 import io.swagger.annotations.Api;
@@ -33,7 +33,7 @@ public class TestController {
 
     @GetMapping("checkValid")
     @ApiOperation("检查服务是否正常")
-    @NoNeedAccessAuth
+    @AuthStatus(required = false)
     public RspDataT<String> checkValid() {
         // if (isTestEnv()) {
         //     return null;
@@ -49,7 +49,7 @@ public class TestController {
 
     @GetMapping("checkDur")
     @ApiOperation("耗时测试-测试用")
-    @NoNeedAccessAuth
+    @AuthStatus(required = false)
     // @Transactional
     public RspDataT<String> checkDur() {
         if (isTestEnv()) {
@@ -67,7 +67,7 @@ public class TestController {
 
     @PostMapping("checkDto")
     @ApiOperation("参数校验-测试用")
-    @NoNeedAccessAuth
+    @AuthStatus(required = false)
     public RspDataT<CheckValidDTO> checkDto(@RequestBody(required = true) @Valid CheckValidDTO data
     ) {
         if (isTestEnv()) {

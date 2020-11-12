@@ -1,6 +1,6 @@
 package com.yun.util.examples.config.yunutil;
 
-import com.yun.util.auth.TokenAuthHandler;
+import com.yun.util.authorization.AuthTokenHandler;
 import com.yun.util.common.StringUtil;
 import org.springframework.stereotype.Component;
 
@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
  */
 
 @Component
-public class YunUtilTokenAuthHandler implements TokenAuthHandler {
+public class YunUtilTokenAuthHandler implements AuthTokenHandler {
 
     /**
      * 检查 token 是否有效

@@ -1,9 +1,11 @@
 package com.yun.util.swagger;
 
-import com.yun.util.auth.AuthPathInterceptor;
+import com.yun.util.authorization.AuthPathInterceptor;
+import com.yun.util.authorization.AuthorizationAutoConfiguration;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.AutoConfigurationPackages;
+import org.springframework.boot.autoconfigure.AutoConfigureBefore;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -33,7 +35,7 @@ import java.util.List;
 @Configuration
 @EnableConfigurationProperties(SwaggerProperties.class)
 @ConditionalOnProperty(prefix = SwaggerProperties.PREFIX, name = "enable", havingValue = "true", matchIfMissing = true)
-// @AutoConfigureBefore(AuthorizationAutoConfiguration.class)
+@AutoConfigureBefore(AuthorizationAutoConfiguration.class)
 @EnableSwagger2
 public class SwaggerAutoConfiguration {
     @Autowired

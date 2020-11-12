@@ -88,7 +88,7 @@ public enum RspDataCodeType {
      * @param code code
      * @param msg  msg
      */
-    private RspDataCodeType(Integer code, String msg) {
+    RspDataCodeType(Integer code, String msg) {
         this.code = code;
         this.msg = msg;
     }

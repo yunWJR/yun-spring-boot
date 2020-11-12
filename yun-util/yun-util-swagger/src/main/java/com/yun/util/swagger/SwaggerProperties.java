@@ -33,7 +33,7 @@ public class SwaggerProperties {
     private List<Para> para = new ArrayList<>();
 
     // "/swagger-resources/**", "*.js", "/**/*.js", "*.css", "/**/*.css", "*.html", "/**/*.html"
-    private List<String> pathPatterns = Arrays.asList("/swagger-resources/**", "/swagger-ui.html/**", "/doc.html/**");
+    private List<String> pathPatterns = Arrays.asList("/swagger-resources/**", "/swagger-ui.html/**", "/doc.html/**", "/v2/api-docs/**");
 
     @Data
     public static class Para {

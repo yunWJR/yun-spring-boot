@@ -1,6 +1,5 @@
 package com.yun.util.authorization;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration;
@@ -23,8 +22,8 @@ import org.springframework.util.Assert;
         AuthorizationWebAutoConfiguration.class
 })
 public class AuthorizationAutoConfiguration {
-    @Autowired
-    private AuthProperties authProperties;
+    // @Autowired
+    // private AuthProperties authProperties;
 
     @Bean
     @ConditionalOnMissingBean

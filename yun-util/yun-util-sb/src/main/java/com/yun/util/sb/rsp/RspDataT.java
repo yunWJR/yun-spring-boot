@@ -193,11 +193,7 @@ public class RspDataT<T> {
      */
     @JsonIgnore // isSuc 会默认为 get 方法，忽略该字段
     public boolean isSuc() {
-        if (code == RspDataCodeType.Suc.getCode() || code == RspDataCodeType.None.getCode()) {
-            return true;
-        }
-
-        return false;
+        return code == RspDataCodeType.Suc.getCode() || code == RspDataCodeType.None.getCode();
     }
 
     /**

@@ -1,6 +1,6 @@
 package com.yun.util.swagger;
 
-import com.yun.util.auth.AuthPathInterceptor;
+import com.yun.util.authorization.AuthPathInterceptor;
 
 import java.util.List;
 

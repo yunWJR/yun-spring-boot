@@ -1,6 +1,6 @@
 package com.yun.util.examples.module.test;
 
-import com.yun.util.auth.NoNeedAccessAuth;
+import com.yun.util.authorization.AuthStatus;
 import com.yun.util.sb.rsp.RspDataT;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -26,7 +26,7 @@ public class ExceptionController {
 
     @GetMapping("RuntimeException")
     @ApiOperation("RuntimeException")
-    @NoNeedAccessAuth
+    @AuthStatus(required = false)
     public RspDataT<String> runtimeException() {
         exceptionServer.runtimeException();
         return RspDataT.SurBean("验证通过");
@@ -34,7 +34,7 @@ public class ExceptionController {
 
     @GetMapping("RspDataException")
     @ApiOperation("RspDataException")
-    @NoNeedAccessAuth
+    @AuthStatus(required = false)
     public RspDataT<String> rspDataException() {
         exceptionServer.rspDataException();
 
