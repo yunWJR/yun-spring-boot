@@ -18,7 +18,7 @@ public class JrpUtil {
     public static <T1, T2> T1 findById(JpaRepository<T1, T2> jrp, T2 itemId, String err) {
         if (itemId == null) {
             if (err != null) {
-                throw CommonException.comEp(err);
+                throw CommonException.CommonEp(err);
             }
 
             return null;
@@ -30,7 +30,7 @@ public class JrpUtil {
         }
 
         if (err != null) {
-            throw CommonException.comEp(err);
+            throw CommonException.CommonEp(err);
         }
 
         return null;

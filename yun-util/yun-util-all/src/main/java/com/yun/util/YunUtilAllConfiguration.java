@@ -2,7 +2,7 @@ package com.yun.util;
 
 import com.yun.util.apilog.advice.EnableApiLogControllerAdvice;
 import com.yun.util.apilog.heart.EnableHeartLog;
-import com.yun.util.auth.EnableAuthHandler;
+import com.yun.util.authorization.EnableAuthHandler;
 import com.yun.util.common.SpringEvn;
 import com.yun.util.common.SpringEvnImpl;
 import com.yun.util.sb.config.EnableCorsFilter;

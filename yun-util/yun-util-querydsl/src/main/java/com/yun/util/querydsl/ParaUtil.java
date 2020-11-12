@@ -23,7 +23,7 @@ public class ParaUtil {
         }
 
         if (nI < 0) {
-            throw CommonException.comEp("pageIndex无效");
+            throw CommonException.CommonEp("pageIndex无效");
         }
 
         return nI;
@@ -35,7 +35,7 @@ public class ParaUtil {
         }
 
         if (pageSize <= 0) {
-            throw CommonException.comEp("pageSize不能小于或等于0");
+            throw CommonException.CommonEp("pageSize不能小于或等于0");
         }
 
         return pageSize;
@@ -43,11 +43,11 @@ public class ParaUtil {
 
     public static void checkPagePara(Integer pageIndex, Integer pageSize) {
         if (pageIndex < 0) {
-            throw CommonException.comEp("pageIndex不能小于0");
+            throw CommonException.CommonEp("pageIndex不能小于0");
         }
 
         if (pageSize <= 0) {
-            throw CommonException.comEp("pageSize不能小于等于0");
+            throw CommonException.CommonEp("pageSize不能小于等于0");
         }
     }
 

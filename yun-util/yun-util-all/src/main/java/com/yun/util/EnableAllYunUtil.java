@@ -13,7 +13,7 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.TYPE})
 @Documented
-@Import({YunUtilAllConfiguration.class, SwaggerParaImpl.class})
+@Import({YunUtilAllConfiguration.class})
 public @interface EnableAllYunUtil {
 
 }

@@ -15,12 +15,17 @@ public class CommonException extends RuntimeException {
 
     // region --Constructor
 
+    public CommonException() {
+        super("未知错误");
+        this.code = -1;
+    }
+
     public CommonException(Integer code, String error) {
         super(error);
         this.code = code;
     }
 
-    public static CommonException comEp(String err) {
+    public static CommonException CommonEp(String err) {
         CommonException ep = new CommonException(-1, err);
         return ep;
     }
