@@ -2,6 +2,7 @@ package com.yun.util.auth;
 
 import com.yun.util.common.SpringContextUtil;
 import com.yun.util.common.StringUtil;
+import org.springframework.http.HttpMethod;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
@@ -60,7 +61,12 @@ public class TokenAuthHandlerInterceptor implements HandlerInterceptor {
      */
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
-        // 跨域试探请求不处理 todo
+        // OPTIONS 不鉴权
+        if (HttpMethod.OPTIONS.matches(request.getMethod())) {
+            return true;
+        }
+
+        // 类型判断
         if (!(handler instanceof HandlerMethod)) {
             savePara(request);
             return true;
@@ -163,7 +169,7 @@ public class TokenAuthHandlerInterceptor implements HandlerInterceptor {
         res.setHeader("Access-Control-Allow-Credentials", "true");
         res.setContentType("application/json");
         res.setCharacterEncoding("UTF-8");
-        res.getWriter().write(String.format("{\"code\":-1 ,\"message\" :\"%s\"}", ex.getMessage()));
+        res.getWriter().write(String.format("{\"code\":-1 ,\"message\" :\"%s\"}", ex.getMessage())); // todo 格式化要求
         res.flushBuffer();
     }
 }
