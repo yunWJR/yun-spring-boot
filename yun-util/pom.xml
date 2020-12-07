@@ -32,6 +32,7 @@
         <module>yun-util-sb</module>
         <module>yun-util-token</module>
         <module>yun-util-querydsl</module>
+        <module>yun-util-limiter</module>
     </modules>
 
     <licenses>

@@ -45,11 +45,6 @@ public class AuthTokenHandlerInterceptor implements HandlerInterceptor {
             savePara(request);
             return true;
         }
-        // // OPTIONS 不鉴权
-        // if (HttpMethod.OPTIONS.matches(request.getMethod())) {
-        //     savePara(request);
-        //     return true;
-        // }
 
         // 类型判断
         if (!(handler instanceof HandlerMethod)) {
@@ -64,10 +59,10 @@ public class AuthTokenHandlerInterceptor implements HandlerInterceptor {
             throw AuthException.CommonEp("服务状态已停止，请稍候重试");
         }
 
-        // 根据注解确定是否检查
-        if (authStatusUtil.notRequiredAuth(handlerMethod)) {
+        // 检查是否需要权限。注解和自定义方法
+        if (authStatusUtil.notRequiredAuth(handlerMethod) || authTokenHandler.isNotRequiredAuth(request)) {
             savePara(request);
-            return true;
+            return authTokenHandler.handleNoAuth(request);
         }
 
         // token 检查
@@ -87,6 +82,9 @@ public class AuthTokenHandlerInterceptor implements HandlerInterceptor {
 
         // 获取设备类型
         savePara(request);
+
+        // 保存前业务处理（针对用户的限流）
+        authTokenHandler.handleBeforeSaveUser(request, user);
 
         // 保存用户信息
         authContextHolder.saveAuthObj(user);

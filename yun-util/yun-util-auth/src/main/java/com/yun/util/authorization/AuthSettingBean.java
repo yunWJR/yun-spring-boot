@@ -8,11 +8,11 @@ package com.yun.util.authorization;
 public class AuthSettingBean {
     private String authKey = "Authorization";
 
-    private String deviceTypeKey = "DEVICE_TYPE";
+    private String deviceTypeKey = "Yun-Device-Type";
 
-    private String apiKeyKey = "API_KEY";
+    private String apiKeyKey = "Yun-Api-Key";
 
-    private String apiSecretKey = "API_SECRET";
+    private String apiSecretKey = "Yun-Api-Secret";
 
     /**
      * 所有都需要授权
