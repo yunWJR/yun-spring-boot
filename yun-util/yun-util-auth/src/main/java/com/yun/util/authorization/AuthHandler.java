@@ -4,52 +4,44 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
+ * 授权 handler
  * @author yun
  * created_time 2019/11/7 17:22.
  */
 
-public interface AuthTokenHandler {
+public interface AuthHandler {
     /**
-     * 自定义权限检查（ request）
-     * @param request
+     * 排序
      * @return
      */
-    default boolean isNotRequiredAuth(HttpServletRequest request) {
-        // 可以对 URL 进行匹配
-        return false;
+    default int getOrder() {
+        return 0;
     }
 
     /**
-     * 无需权限的时候，业务处理
+     * 无需权限的时候，业务处理。
      * @param request
-     * @return
+     * @param response
+     * @param handler
      */
-    default boolean handleNoAuth(HttpServletRequest request) {
+    default void handleNotRequiredAuth(HttpServletRequest request, HttpServletResponse response, Object handler) {
         // 可以做无权限限流校验（IP 限流）
-        return true;
     }
 
     /**
      * 检查 token 是否有效
-     * @param tokenStr
+     * @param authStr
      * @param request
      * @return
      */
-    Object checkUser(String tokenStr, HttpServletRequest request);
+    Object checkUser(String authStr, HttpServletRequest request);
 
     /**
      * 保存额外的请求参数
      * @param request
+     * @param type
      */
-    default void savePara(HttpServletRequest request) {
-    }
-
-    /**
-     * 自定义处理未授权返回
-     * @return
-     */
-    default boolean canHandleNoAuthResponse() {
-        return false;
+    default void savePara(HttpServletRequest request, String type) {
     }
 
     /**
@@ -65,10 +57,20 @@ public interface AuthTokenHandler {
 
     /**
      * 保存用户信息前，业务处理
-     * @param request
      * @param user
+     * @param request
+     * @param response
+     * @param handler
      */
-    default void handleBeforeSaveUser(HttpServletRequest request, Object user) {
+    default void handleBeforeSaveUser(Object user, HttpServletRequest request, HttpServletResponse response, Object handler) {
         // 针对 user 的全局限流
+    }
+
+    /**
+     * @param request
+     * @return
+     */
+    default boolean notRequiredAuthRequest(HttpServletRequest request) {
+        return false;
     }
 }

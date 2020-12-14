@@ -40,6 +40,7 @@
     <module>yun-util-sb</module>
     <module>yun-util-token</module>
     <module>yun-util-querydsl</module>
+    <module>yun-util-limiter</module>
   </modules>
   <scm>
     <connection>scm:git:https://github.com/yunWJR/yun-util.git</connection>
@@ -98,6 +99,12 @@
       <groupId>org.projectlombok</groupId>
       <artifactId>lombok</artifactId>
       <version>${lombok.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.google.guava</groupId>
+      <artifactId>guava</artifactId>
+      <version>30.0-jre</version>
+      <optional>true</optional>
     </dependency>
   </dependencies>
   <build>

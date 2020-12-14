@@ -1,6 +1,6 @@
 package com.yun.util.examples.config.yunutil;
 
-import com.yun.util.authorization.AuthTokenHandler;
+import com.yun.util.authorization.AuthHandler;
 import com.yun.util.common.StringUtil;
 import org.springframework.stereotype.Component;
 
@@ -12,36 +12,21 @@ import javax.servlet.http.HttpServletRequest;
  */
 
 @Component
-public class YunUtilTokenAuthHandler implements AuthTokenHandler {
+public class YunUtilTokenAuthHandler implements AuthHandler {
 
     /**
      * 检查 token 是否有效
-     * @param tokenStr
+     * @param authStr
      * @param request
      * @return
      */
     @Override
-    public Object checkUser(String tokenStr, HttpServletRequest request) {
-        if (StringUtil.hasCtn(tokenStr) && !"none".equals(tokenStr)) {
+    public Object checkUser(String authStr, HttpServletRequest request) {
+        if (StringUtil.hasCtn(authStr) && !"none".equals(authStr)) {
             return new Object();
         }
 
         return null;
     }
 
-    /**
-     * 保存额外的请求参数
-     * @param request
-     */
-    @Override
-    public void savePara(HttpServletRequest request) {
-        // String appIdStr = request.getHeader(GlobalDefine.AppIdHeaderName);
-        // if (!StringUtil.isNullOrEmpty(appIdStr)) {
-        //     Long appId = Long.valueOf(appIdStr);
-        //
-        //     if (appId != null) {
-        //         ThreadLocalUtil.put(GlobalDefine.AppIdHeaderName, appId);
-        //     }
-        // }
-    }
 }

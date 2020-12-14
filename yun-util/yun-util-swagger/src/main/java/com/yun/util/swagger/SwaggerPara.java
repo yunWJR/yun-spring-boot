@@ -14,10 +14,16 @@ public interface SwaggerPara {
         return false;
     }
 
+    /**
+     * @return
+     */
     default String getTokenAuthKey() {
         return null;
     }
 
+    /**
+     * @return
+     */
     default String getDeviceTypeKey() {
         return null;
     }

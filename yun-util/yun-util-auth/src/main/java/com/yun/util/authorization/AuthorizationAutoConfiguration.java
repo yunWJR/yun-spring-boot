@@ -7,7 +7,7 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
-import org.springframework.util.Assert;
+import org.springframework.context.annotation.Primary;
 
 /**
  * @author yun
@@ -32,17 +32,22 @@ public class AuthorizationAutoConfiguration {
     }
 
     @Bean
-    @ConditionalOnMissingBean
-    public AuthStatusUtil authUtil(AuthProperties authProperties) {
-        return new AuthStatusUtil(authProperties.getSetting().getAllRequiredAuth());
+    @Primary
+    public AuthHandlerComposite authHandlerComposite() {
+        return new AuthHandlerComposite();
     }
 
     @Bean
     @ConditionalOnMissingBean
-    public AuthTokenHandlerInterceptor authTokenHandlerInterceptor(AuthTokenHandler authTokenHandler, AuthStatusUtil authStatusUtil, AuthProperties authProperties, AuthContextHolder authContextHolder) {
-        Assert.notNull(authTokenHandler, "AuthTokenHandler must not be null");
-
-        return new AuthTokenHandlerInterceptor(authTokenHandler, authStatusUtil, authProperties.getSetting(), authContextHolder);
+    public AuthHandlerUtil authUtil(AuthProperties authProperties, AuthHandlerComposite authHandlerComposite) {
+        return new AuthHandlerUtil(authProperties.getSetting().getAllRequiredAuth(), authHandlerComposite);
     }
 
+    @Bean
+    @ConditionalOnMissingBean
+    public AuthHandlerInterceptor authTokenHandlerInterceptor(
+            AuthHandlerUtil authHandlerUtil, AuthProperties authProperties, AuthContextHolder authContextHolder, AuthPathInterceptor[] pathInterceptors) {
+
+        return new AuthHandlerInterceptor(authHandlerUtil, authProperties, authContextHolder, pathInterceptors);
+    }
 }
