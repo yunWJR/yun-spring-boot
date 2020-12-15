@@ -16,6 +16,7 @@ import org.springframework.context.annotation.Import;
         LimiterHandler.class
 })
 public class AspectLimiterAutoConfiguration {
+
     @Bean
     @ConditionalOnMissingBean
     public MethodParamExpressionParser methodParamExpressionParser() {
@@ -24,7 +25,7 @@ public class AspectLimiterAutoConfiguration {
 
     @Bean
     @ConditionalOnMissingBean
-    public LimiterHandler limiterHandler(MethodParamExpressionParser methodParamExpressionParser) {
-        return new LimiterHandler(methodParamExpressionParser);
+    public LimiterHandler limiterHandler(MethodParamExpressionParser methodParamExpressionParser, AspectLimiterHandler aspectLimiterHandler) {
+        return new LimiterHandler(methodParamExpressionParser, aspectLimiterHandler);
     }
 }

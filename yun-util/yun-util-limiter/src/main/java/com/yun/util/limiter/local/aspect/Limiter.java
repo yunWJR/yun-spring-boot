@@ -37,4 +37,11 @@ public @interface Limiter {
      * @return
      */
     long timeout() default 0;
+
+    /**
+     * name加入id
+     * 需要实现{@link AspectLimiterHandler#limiterId()}方法
+     * @return
+     */
+    boolean id() default false;
 }
