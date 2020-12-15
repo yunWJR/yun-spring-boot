@@ -48,7 +48,7 @@ public class GlobalLimiterServiceImpl {
      *
      */
     public void checkAllRequest() {
-        commonLimiter.check("allRequest", limiterProperties.getAllRequestQps());
+        commonLimiter.checkValid("allRequest", limiterProperties.getAllRequestQps());
     }
 
     /**
