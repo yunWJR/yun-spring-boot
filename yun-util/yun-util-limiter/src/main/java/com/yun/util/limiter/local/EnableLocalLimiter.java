@@ -1,5 +1,6 @@
 package com.yun.util.limiter.local;
 
+import com.yun.util.limiter.local.aspect.AspectLimiterAutoConfiguration;
 import com.yun.util.limiter.local.global.GlobalLimiterAutoConfiguration;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Import;
@@ -15,7 +16,7 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.TYPE})
 @Documented
-@Import({GlobalLimiterAutoConfiguration.class})
+@Import({GlobalLimiterAutoConfiguration.class, AspectLimiterAutoConfiguration.class})
 @EnableConfigurationProperties(LimiterProperties.class)
 public @interface EnableLocalLimiter {
 }
