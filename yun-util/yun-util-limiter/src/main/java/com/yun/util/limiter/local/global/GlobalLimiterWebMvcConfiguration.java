@@ -18,7 +18,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @AutoConfigureAfter(GlobalLimiterAutoConfiguration.class)
 public class GlobalLimiterWebMvcConfiguration implements WebMvcConfigurer {
     @Autowired
-    private GlobalLimiterHandlerInterceptor authHandlerInterceptor;
+    private GlobalLimiterHandlerInterceptor globalLimiterHandlerInterceptor;
 
     /**
      * 拦截器
@@ -26,8 +26,9 @@ public class GlobalLimiterWebMvcConfiguration implements WebMvcConfigurer {
      */
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(authHandlerInterceptor)
-                .addPathPatterns(authHandlerInterceptor.allowPathPatterns())
-                .excludePathPatterns(authHandlerInterceptor.excludePathPatterns());
+        registry.addInterceptor(globalLimiterHandlerInterceptor)
+                .addPathPatterns(globalLimiterHandlerInterceptor.allowPathPatterns())
+                .excludePathPatterns(globalLimiterHandlerInterceptor.excludePathPatterns())
+                .order(globalLimiterHandlerInterceptor.order());
     }
 }

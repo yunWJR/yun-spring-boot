@@ -1,7 +1,7 @@
 package com.yun.util.limiter.local.global;
 
 import cn.hutool.extra.servlet.ServletUtil;
-import org.springframework.core.annotation.Order;
+import com.yun.util.base.order.InterceptorRegistrationOrder;
 import org.springframework.http.HttpMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
@@ -19,7 +19,6 @@ import java.util.List;
  * created_time 2019/11/7 17:22.
  */
 
-@Order(10)
 public class GlobalLimiterHandlerInterceptor implements HandlerInterceptor {
     private final GlobalLimiterServiceImpl globalLimiterService;
 
@@ -85,5 +84,12 @@ public class GlobalLimiterHandlerInterceptor implements HandlerInterceptor {
         HashSet<String> excludes = new HashSet<>();
 
         return new ArrayList<String>(excludes);
+    }
+
+    /**
+     * @return
+     */
+    public int order() {
+        return InterceptorRegistrationOrder.GlobalLimiterOrder;
     }
 }

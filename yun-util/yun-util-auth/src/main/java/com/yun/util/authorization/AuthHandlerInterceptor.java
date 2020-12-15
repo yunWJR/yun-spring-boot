@@ -1,7 +1,7 @@
 package com.yun.util.authorization;
 
+import com.yun.util.base.order.InterceptorRegistrationOrder;
 import com.yun.util.common.StringUtil;
-import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpMethod;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -23,7 +23,6 @@ import java.util.List;
  * created_time 2019/11/7 17:22.
  */
 
-@Order(9)
 public class AuthHandlerInterceptor implements HandlerInterceptor {
 
     private final AuthHandlerUtil authHandlerUtil;
@@ -222,5 +221,12 @@ public class AuthHandlerInterceptor implements HandlerInterceptor {
         }
 
         return new ArrayList<String>(excludes);
+    }
+
+    /**
+     * @return
+     */
+    public int order() {
+        return InterceptorRegistrationOrder.AuthHandlerOrder;
     }
 }
