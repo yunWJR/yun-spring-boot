@@ -2,9 +2,10 @@ package com.yun.util;
 
 import com.yun.util.apilog.advice.EnableApiLogControllerAdvice;
 import com.yun.util.apilog.heart.EnableHeartLog;
-import com.yun.util.authorization.EnableAuthHandler;
+import com.yun.util.authorization.EnableAuth;
 import com.yun.util.common.SpringEvn;
 import com.yun.util.common.SpringEvnImpl;
+import com.yun.util.limiter.local.EnableLocalLimiter;
 import com.yun.util.sb.config.EnableCorsFilter;
 import com.yun.util.swagger.EnableSwagger;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
@@ -23,7 +24,9 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 
-@EnableAuthHandler
+@EnableLocalLimiter
+
+@EnableAuth
 @EnableCorsFilter
 
 @EnableApiLogControllerAdvice

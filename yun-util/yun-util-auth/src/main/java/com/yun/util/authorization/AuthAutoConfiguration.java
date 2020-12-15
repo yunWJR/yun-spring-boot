@@ -19,11 +19,9 @@ import org.springframework.context.annotation.Primary;
 @EnableConfigurationProperties(AuthProperties.class)
 @AutoConfigureAfter(WebMvcAutoConfiguration.class)
 @Import({
-        AuthorizationWebAutoConfiguration.class
+        AuthWebMvcConfiguration.class
 })
-public class AuthorizationAutoConfiguration {
-    // @Autowired
-    // private AuthProperties authProperties;
+public class AuthAutoConfiguration {
 
     @Bean
     @ConditionalOnMissingBean

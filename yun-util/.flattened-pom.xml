@@ -58,7 +58,7 @@
     <java.version>1.8</java.version>
     <hutool-all.version>5.2.3</hutool-all.version>
     <spring-boot.version>2.2.0.RELEASE</spring-boot.version>
-    <guava.version>28.2-jre</guava.version>
+    <guava.version>30.0-jre</guava.version>
     <slf4j-api.version>2.0.0-alpha1</slf4j-api.version>
     <jjwt.version>0.9.1</jjwt.version>
     <springframework.version>5.2.0.RELEASE</springframework.version>
@@ -101,9 +101,15 @@
       <version>${lombok.version}</version>
     </dependency>
     <dependency>
+      <groupId>cn.hutool</groupId>
+      <artifactId>hutool-all</artifactId>
+      <version>${hutool-all.version}</version>
+      <optional>true</optional>
+    </dependency>
+    <dependency>
       <groupId>com.google.guava</groupId>
       <artifactId>guava</artifactId>
-      <version>30.0-jre</version>
+      <version>${guava.version}</version>
       <optional>true</optional>
     </dependency>
   </dependencies>

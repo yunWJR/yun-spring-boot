@@ -11,13 +11,12 @@
         <version>${revision}</version>
     </parent>
 
-    <artifactId>yun-util-all</artifactId>
+    <artifactId>yun-util-limiter</artifactId>
     <name>${project.artifactId}</name>
-    <description>yun-uti的所有功能</description>
+    <description>limiter子功能模块</description>
     <url>https://github.com/yunWJR/yun-util</url>
 
     <properties>
-
     </properties>
 
     <dependencies>
@@ -28,45 +27,10 @@
         </dependency>
 
         <dependency>
-            <groupId>com.github.yunwjr</groupId>
-            <artifactId>yun-util-apilog</artifactId>
-            <version>${project.parent.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.github.yunwjr</groupId>
-            <artifactId>yun-util-auth</artifactId>
-            <version>${project.parent.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.github.yunwjr</groupId>
-            <artifactId>yun-util-idgenerator</artifactId>
-            <version>${project.parent.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.github.yunwjr</groupId>
-            <artifactId>yun-util-swagger</artifactId>
-            <version>${project.parent.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.github.yunwjr</groupId>
-            <artifactId>yun-util-sb</artifactId>
-            <version>${project.parent.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.github.yunwjr</groupId>
-            <artifactId>yun-util-token</artifactId>
-            <version>${project.parent.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.github.yunwjr</groupId>
-            <artifactId>yun-util-limiter</artifactId>
-            <version>${project.parent.version}</version>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>${javax.servlet-api.version}</version>
+            <optional>true</optional>
         </dependency>
     </dependencies>
 
@@ -82,6 +46,7 @@
                 <configuration>
                     <source>${compile.version}</source>
                     <target>${compile.version}</target>
+                    <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
         </plugins>

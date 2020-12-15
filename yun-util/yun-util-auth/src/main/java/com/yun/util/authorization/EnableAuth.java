@@ -13,6 +13,6 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.TYPE})
 @Documented
-@Import({AuthorizationAutoConfiguration.class})
-public @interface EnableAuthHandler {
+@Import({AuthAutoConfiguration.class})
+public @interface EnableAuth {
 }

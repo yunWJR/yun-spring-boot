@@ -15,7 +15,7 @@
     <module>yun-util-examples</module>
   </modules>
   <properties>
-    <hutool-all.version>5.2.3</hutool-all.version>
+    <hutool-all.version>5.5.2</hutool-all.version>
     <lombok.version>1.18.12</lombok.version>
     <flatten-maven-plugin.version>1.2.4</flatten-maven-plugin.version>
     <slf4j-api.version>2.0.0-alpha1</slf4j-api.version>
@@ -29,7 +29,7 @@
     <querydsl.version>4.3.0</querydsl.version>
     <java.version>1.8</java.version>
     <jackson-core.version>2.10.3</jackson-core.version>
-    <guava.version>28.2-jre</guava.version>
+    <guava.version>30.0-jre</guava.version>
     <compile.version>8</compile.version>
     <jjwt.version>0.9.1</jjwt.version>
     <springfox-swagger-ui.version>2.9.2</springfox-swagger-ui.version>

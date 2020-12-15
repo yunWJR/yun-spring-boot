@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
- *
  * @author yun
  */
 @Service
@@ -17,6 +16,7 @@ public class LimiterServiceImpl {
      *
      */
     private final ConcurrentHashMap<Long, RateLimiter> userLimiter = new ConcurrentHashMap<>();
+
     /**
      *
      */

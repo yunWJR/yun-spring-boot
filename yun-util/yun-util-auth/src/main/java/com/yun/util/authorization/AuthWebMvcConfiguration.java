@@ -15,8 +15,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 @ConditionalOnWebApplication(type = ConditionalOnWebApplication.Type.SERVLET)
-@AutoConfigureAfter(AuthorizationAutoConfiguration.class)
-public class AuthorizationWebAutoConfiguration implements WebMvcConfigurer {
+@AutoConfigureAfter(AuthAutoConfiguration.class)
+public class AuthWebMvcConfiguration implements WebMvcConfigurer {
     @Autowired
     private AuthHandlerInterceptor authHandlerInterceptor;
 

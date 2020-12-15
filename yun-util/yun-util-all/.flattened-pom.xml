@@ -55,6 +55,11 @@
       <artifactId>yun-util-token</artifactId>
       <version>${project.parent.version}</version>
     </dependency>
+    <dependency>
+      <groupId>com.github.yunwjr</groupId>
+      <artifactId>yun-util-limiter</artifactId>
+      <version>${project.parent.version}</version>
+    </dependency>
   </dependencies>
   <build>
     <plugins>
