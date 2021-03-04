@@ -20,11 +20,22 @@ import java.util.stream.Collectors;
 @Component
 @Primary
 public class AuthHandlerComposite implements AuthHandler {
-    private List<AuthHandler> list = null;
+    /**
+     *
+     */
+    private List<AuthHandler> list = new ArrayList<>();
 
+    /**
+     * @param items
+     */
     @Autowired(required = false)
     public void setConfigurers(List<AuthHandler> items) {
         this.list = items;
+
+        if (this.list == null) {
+            this.list = new ArrayList<>();
+            return;
+        }
 
         this.resortList();
     }

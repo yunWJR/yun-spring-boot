@@ -12,7 +12,9 @@
 
 
 
-## 2、使用（Maven）
+## 2、使用（Maven）[]()
+
+1）pom 引入全部项目
 
 ```xml
 <dependency>
@@ -21,6 +23,20 @@
     <version>${yu-vision}</version>
 </dependency>
 ```
+
+
+
+2）配置
+
+```java
+@Configuration
+@EnableAllYunUtil
+public class YunUtilConfig {
+
+}
+```
+
+
 
 
 
