@@ -3,6 +3,7 @@
 *.iml
 
 *.flattened-pom.xml
+.flattened-pom.xml
 
 .DS_Store
 

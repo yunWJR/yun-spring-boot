@@ -20,35 +20,45 @@
     </modules>
 
     <properties>
-        <revision>0.0.32</revision>
+        <revision>0.0.33</revision>
+
+        <!--        https://mvnrepository.com/artifact/org.codehaus.mojo/flatten-maven-plugin-->
+        <flatten-maven-plugin.version>1.2.5</flatten-maven-plugin.version>
 
         <java.version>1.8</java.version>
         <compile.version>8</compile.version>
 
         <!-- 最新的-->
-        <spring-boot.version>2.2.0.RELEASE</spring-boot.version>
-        <springframework.version>5.2.0.RELEASE</springframework.version>
+        <spring-boot.version>2.4.3</spring-boot.version>
+        <!--        <springframework.version>5.2.0.RELEASE</springframework.version>-->
 
-        <hutool-all.version>5.5.2</hutool-all.version>
-        <lombok.version>1.18.12</lombok.version>
+        <!--        https://mvnrepository.com/artifact/cn.hutool/hutool-all-->
+        <hutool-all.version>5.5.9</hutool-all.version>
+        <!--        https://mvnrepository.com/artifact/org.projectlombok/lombok-->
+        <lombok.version>1.18.18</lombok.version>
+        <!--        https://mvnrepository.com/artifact/io.jsonwebtoken/jjwt-->
         <jjwt.version>0.9.1</jjwt.version>
 
-        <javax.servlet-api.version>4.0.1</javax.servlet-api.version>
+        <!--        <javax.servlet-api.version>4.0.1</javax.servlet-api.version>-->
 
         <logstash-logback-encoder.version>6.3</logstash-logback-encoder.version>
-        <jackson-core.version>2.10.3</jackson-core.version>
-        <slf4j-api.version>2.0.0-alpha1</slf4j-api.version>
+        <!--        <slf4j-api.version>2.0.0-alpha1</slf4j-api.version>-->
+        <!--        <jackson-core.version>2.10.3</jackson-core.version>-->
 
-        <springfox-swagger-ui.version>2.9.2</springfox-swagger-ui.version>
-        <swagger-models.version>1.5.24</swagger-models.version>
-        <knife4j-spring-ui.version>2.0.2</knife4j-spring-ui.version>
-        <guava.version>30.0-jre</guava.version>
+        <springfox-swagger-ui.version>3.0.0</springfox-swagger-ui.version>
+        <!--        <swagger-models.version>1.5.24</swagger-models.version>-->
+        <!--        https://mvnrepository.com/artifact/com.github.xiaoymin/knife4j-spring-ui-->
+        <knife4j-spring-ui.version>3.0.2</knife4j-spring-ui.version>
 
-        <querydsl.version>4.3.0</querydsl.version>
-        <!--        <querydsl.version>4.3.0</querydsl.version>-->
+        <!--        https://mvnrepository.com/artifact/com.google.guava/guava-->
+        <guava.version>30.1-jre</guava.version>
 
+        <!--        https://mvnrepository.com/artifact/org.apache.commons/commons-lang3-->
+        <commons-lang3.version>3.12.0</commons-lang3.version>
 
-        <flatten-maven-plugin.version>1.2.4</flatten-maven-plugin.version>
+        <!--        https://mvnrepository.com/artifact/com.querydsl/querydsl-jpa-->
+        <querydsl.version>4.4.0</querydsl.version>
+
     </properties>
 
     <build>

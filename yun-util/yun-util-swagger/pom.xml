@@ -32,20 +32,20 @@
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger2</artifactId>
             <version>${springfox-swagger-ui.version}</version>
-<!--            <exclusions>-->
-<!--                &lt;!&ndash;                去除 input 错误&ndash;&gt;-->
-<!--                <exclusion>-->
-<!--                    <groupId>io.swagger</groupId>-->
-<!--                    <artifactId>swagger-models</artifactId>-->
-<!--                </exclusion>-->
-<!--            </exclusions>-->
+            <!--            <exclusions>-->
+            <!--                &lt;!&ndash;                去除 input 错误&ndash;&gt;-->
+            <!--                <exclusion>-->
+            <!--                    <groupId>io.swagger</groupId>-->
+            <!--                    <artifactId>swagger-models</artifactId>-->
+            <!--                </exclusion>-->
+            <!--            </exclusions>-->
         </dependency>
-<!--        &lt;!&ndash;                去除 input 错误&ndash;&gt;-->
-<!--        <dependency>-->
-<!--            <groupId>io.swagger</groupId>-->
-<!--            <artifactId>swagger-models</artifactId>-->
-<!--            <version>${swagger-models.version}</version>-->
-<!--        </dependency>-->
+        <!--        &lt;!&ndash;                去除 input 错误&ndash;&gt;-->
+        <!--        <dependency>-->
+        <!--            <groupId>io.swagger</groupId>-->
+        <!--            <artifactId>swagger-models</artifactId>-->
+        <!--            <version>${swagger-models.version}</version>-->
+        <!--        </dependency>-->
         <!-- https://mvnrepository.com/artifact/io.swagger.core.v3/swagger-models -->
         <!--        <dependency>-->
         <!--            <groupId>io.swagger.core.v3</groupId>-->
@@ -54,7 +54,7 @@
         <!--        </dependency>-->
 
 
-<!--        https://mvnrepository.com/artifact/io.springfox/springfox-swagger-ui-->
+        <!--        https://mvnrepository.com/artifact/io.springfox/springfox-swagger-ui-->
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger-ui</artifactId>
@@ -62,30 +62,32 @@
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/com.github.xiaoymin/swagger-bootstrap-ui -->
-        <!--        替换为knife4j-spring-ui-->
-        <!--        <dependency>-->
-        <!--            <groupId>com.github.xiaoymin</groupId>-->
-        <!--            <artifactId>swagger-bootstrap-ui</artifactId>-->
-        <!--            <version>1.9.6</version>-->
-        <!--        </dependency>-->
-
+        <!--        knife4j-spring-ui 和 swagger-bootstrap-ui 任意一个-->
         <dependency>
             <groupId>com.github.xiaoymin</groupId>
-            <artifactId>knife4j-spring-ui</artifactId>
-            <version>${knife4j-spring-ui.version}</version>
+            <artifactId>swagger-bootstrap-ui</artifactId>
+            <version>1.9.6</version>
         </dependency>
+
+        <!--        <dependency>-->
+        <!--            <groupId>com.github.xiaoymin</groupId>-->
+        <!--            <artifactId>knife4j-spring-ui</artifactId>-->
+        <!--            <version>${knife4j-spring-ui.version}</version>-->
+        <!--        </dependency>-->
 
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
             <version>${guava.version}</version>
         </dependency>
+
         <dependency>
             <groupId>com.github.yunwjr</groupId>
             <artifactId>yun-util-auth</artifactId>
-            <version>0.0.32</version>
+            <version>${project.parent.version}</version>
             <scope>compile</scope>
         </dependency>
+
     </dependencies>
 
     <build>
